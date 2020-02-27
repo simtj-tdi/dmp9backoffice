@@ -23,5 +23,8 @@ Route::get('/backoffice', function () {
     return view('backoffice');
 });
 
-// 자주묻는질문(faq)
-Route::resources(['faqs' => 'FaqController']);
+Route::middleware(['auth', 'role'])->group( function () {
+    Route::resources(['users' => 'UserController']);
+});
+
+

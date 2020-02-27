@@ -32,53 +32,28 @@
         <img class="c-sidebar-brand-minimized" src="assets/brand/coreui-signet-white.svg" width="118" height="46" alt="CoreUI Logo">
     </div>
     <ul class="c-sidebar-nav">
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="http://coreui.test/">
-                <i class="cil-speedometer c-sidebar-nav-icon"></i>
-                Dashboard
-            </a>
-        </li>
-        <li class="c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                <i class="cil-calculator c-sidebar-nav-icon"></i>
-                Settings
-            </a>
-            <ul class="c-sidebar-nav-dropdown-items">
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="http://coreui.test/notes"><span class="c-sidebar-nav-icon"></span>Notes</a>
-                </li>
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="http://coreui.test/users"><span class="c-sidebar-nav-icon"></span>Users</a>
-                </li>
-            </ul>
-        </li>
+
         <li class="c-sidebar-nav-title">
-            Theme
+            회원
         </li>
 
         <li class="c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>Buttons</a>
+            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>회원관리</a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="http://coreui.test/buttons/buttons"><span class="c-sidebar-nav-icon"></span>Buttons</a>
+                    <a class="c-sidebar-nav-link" href="/users"><span class="c-sidebar-nav-icon"></span>회원리스트</a>
                 </li>
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="http://coreui.test/buttons/button-group"><span class="c-sidebar-nav-icon"></span>Buttons Group</a>
-                </li>
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="http://coreui.test/buttons/dropdowns"><span class="c-sidebar-nav-icon"></span>Dropdowns</a>
-                </li>
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="http://coreui.test/buttons/brand-buttons"><span class="c-sidebar-nav-icon"></span>Brand Buttons</a>
-                </li>
+
             </ul>
         </li>
+        <!--
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="http://coreui.test/charts">
                 <i class="cil-chart-pie c-sidebar-nav-icon"></i>
                 Charts
             </a>
         </li>
+        -->
     </ul>
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
 </div>
