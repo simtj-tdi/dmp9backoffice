@@ -46,6 +46,28 @@
 
             </ul>
         </li>
+
+        <li class="c-sidebar-nav-dropdown">
+            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>게시판관리</a>
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/faqs"><span class="c-sidebar-nav-icon"></span>자주 묻는 질문</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/questions"><span class="c-sidebar-nav-icon"></span>문의 및 답변</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="c-sidebar-nav-dropdown">
+            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>데이터요청관리</a>
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/orders"><span class="c-sidebar-nav-icon"></span>데이터요청리스트</a>
+                </li>
+            </ul>
+        </li>
+
         <!--
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="http://coreui.test/charts">

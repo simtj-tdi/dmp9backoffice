@@ -25,6 +25,9 @@ Route::get('/backoffice', function () {
 
 Route::middleware(['auth', 'role'])->group( function () {
     Route::resources(['users' => 'UserController']);
+    Route::resources(['faqs' => 'FaqController']);
+    Route::resources(['questions' => 'QuestionController']);
+    Route::resources(['orders' => 'OrderController']);
 });
 
 
