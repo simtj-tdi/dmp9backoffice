@@ -26,11 +26,6 @@ class UserRepository implements UserRepositoryInterface
             ->format();
     }
 
-    public function create($request)
-    {
-        // TODO: Implement create() method.
-    }
-
     public function update($request, $id)
     {
         $user = user::where('id', $id)->firstOrFail();

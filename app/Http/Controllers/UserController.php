@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\UserRepositoryInterface;
-use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -39,7 +38,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->userRepository->update($request, $id);
-
 
         return redirect()->route('users.index');
     }

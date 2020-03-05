@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Repositories;
-
 
 use App\Order;
 
@@ -20,22 +18,26 @@ class OrderRepository implements OrderRepositoryInterface
 
     public function findById($id)
     {
-        // TODO: Implement findById() method.
+        return order::where('id', $id)
+            ->firstOrFail()
+            ->format();
     }
 
     public function create($request)
     {
-        // TODO: Implement create() method.
+        auth()->user()->faqs()->create($request);
     }
 
     public function update($request, $id)
     {
-        // TODO: Implement update() method.
+        $order = order::where('id', $id)->firstOrFail();
+        $request['state'] = order::STATE_2;
+        $order->update($request->only('state', 'data_count', 'buy_price', 'expiration_date'));
     }
 
     public function destory($id)
     {
-        // TODO: Implement destory() method.
+        order::where('id', $id)->delete();
     }
 
 }
