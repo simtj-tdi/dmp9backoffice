@@ -12,18 +12,24 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
+
+// 권한 예외 처리
+Route::get('/role', function() {
+    Auth::logout();
+
+    return view('role');
+})->name('role');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/backoffice', function () {
-    return view('backoffice');
-});
 
 Route::middleware(['auth', 'role'])->group( function () {
+    Route::get('/backoffice', function () {
+        return view('backoffice');
+    });
+
     Route::resources(['users' => 'UserController']);
     Route::resources(['faqs' => 'FaqController']);
     Route::resources(['questions' => 'QuestionController']);

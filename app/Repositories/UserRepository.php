@@ -3,7 +3,6 @@
 
 namespace App\Repositories;
 
-
 use App\User;
 
 class UserRepository implements UserRepositoryInterface
@@ -41,5 +40,6 @@ class UserRepository implements UserRepositoryInterface
     {
         user::where('id', $id)->delete();
     }
+
 
 }
