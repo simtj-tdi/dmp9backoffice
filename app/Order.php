@@ -3,13 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Parsedown;
 
 class Order extends Model
 {
-    CONST STATE_1 = 1;      // 주문 신청
-    CONST STATE_2 = 2;      // 결제 요청
-    CONST STATE_3 = 3;      // 결제 완료
-    CONST STATE_4 = 4;      // 유효 기간 완료
+    CONST STATE_1 = 1;      // 요청중
+    CONST STATE_2 = 2;      // 추출중
+    CONST STATE_3 = 3;      // 승인요청
+    CONST STATE_4 = 4;      // 결제완료
 
     protected $guarded = ['*','id'];
 
@@ -24,6 +25,7 @@ class Order extends Model
             'state' => $this->state,
             'data_types' => $this->data_types,
             'data_category' => $this->data_category,
+            'data_content' => $this->data_content,
             'data_name' => $this->data_name,
             'data_count' => $this->data_count,
             'buy_price' => $this->buy_price,
@@ -35,5 +37,15 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getContentHtmlAttribute()
+    {
+        return \Parsedown::instance()->text($this->data_content);
+    }
+
+    public function getMarkPriceAttribute()
+    {
+        return number_format($this->buy_price);
     }
 }

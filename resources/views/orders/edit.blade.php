@@ -27,19 +27,18 @@
                 <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i> No. {{ $order['order_id'] }} </div>
+                            <i class="fa fa-align-justify"></i> No. {{ $order['order_id'] }}
                             <div class="card-body">
                                 <h5>광고주:</h5>
                                 <p> {{ $order['advertiser'] }}</p>
-                                <h5>플랫폼 유형:</h5>
-                                <p> {{ $order['data_types'] }}</p>
                                 <h5>플랫폼 유형:</h5>
                                 <p> {{ $order['data_types'] }}</p>
                                 <h5>데이터명:</h5>
                                 <p> {{ $order['data_name'] }}</p>
                                 <h5>데이터항목:</h5>
                                 <p> {{ $order['data_category'] }}</p>
-
+                                <h5>설명:</h5>
+                                <p> {!! $order['data_content'] !!} </p>
                                 <form method="POST" action="{{ route('orders.update', $order['order_id']) }}">
                                     @csrf
                                     @method('PUT')
@@ -51,8 +50,7 @@
                                                 <option value="1" {{ $order['state'] == '1' ? 'selected' : '' }} >요청중</option>
                                                 <option value="2" {{ $order['state'] == '2' ? 'selected' : '' }} >추출중</option>
                                                 <option value="3" {{ $order['state'] == '3' ? 'selected' : '' }} >승인요청</option>
-                                                <option value="4" {{ $order['state'] == '4' ? 'selected' : '' }} >결제대기</option>
-                                                <option value="5" {{ $order['state'] == '5' ? 'selected' : '' }} >결제완료</option>
+                                                <option value="5" {{ $order['state'] == '4' ? 'selected' : '' }} >결제완료</option>
                                             </select>
                                         </div>
                                     </div>
