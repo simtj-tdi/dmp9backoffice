@@ -17,14 +17,14 @@
 
                                 <div class="form-group row">
                                     <div class="col">
-                                        <label>Title</label>
+                                        <label>제목</label>
                                         <input class="form-control" type="text" placeholder="Title" name="title" value="{{ $faq['title'] }}" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col">
-                                        <label>Content</label>
+                                        <label>내용</label>
                                         <textarea class="form-control" type="text" placeholder="Email" name="content"  required autofocus>{{ $faq['content'] }}</textarea>
                                     </div>
                                 </div>

@@ -31,7 +31,6 @@ class OrderRepository implements OrderRepositoryInterface
     public function update($request, $id)
     {
         $order = order::where('id', $id)->firstOrFail();
-        $request['state'] = order::STATE_2;
         $order->update($request->only('state', 'data_count', 'buy_price', 'expiration_date'));
     }
 

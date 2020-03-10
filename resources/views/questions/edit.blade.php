@@ -15,14 +15,13 @@
                                 @method('PUT')
                                 <input type="hidden" name="question_id" value="{{ $question['question_id'] }}">
 
-                                <h4>Name:</h4>
+                                <h5>작성자:</h5>
                                 <p> {{ $question['name'] }}</p>
-                                <h4>Title:</h4>
+                                <h5>제목:</h5>
                                 <p> {{ $question['title'] }}</p>
-                                <h4>Content:</h4>
+                                <h5>내용:</h5>
                                 <p> {{ $question['content'] }}</p>
-
-                                <h4>Answers:</h4>
+                                <h5>답변:</h5>
                                 <p>
                                     <textarea class="form-control" type="text" placeholder="answers" name="content"  required autofocus>
                                         @if ($question['answers']->count() >0)

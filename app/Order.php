@@ -16,12 +16,13 @@ class Order extends Model
     public function format()
     {
         return [
+            'advertiser'=> $this->advertiser,
             'order_id' => $this->id,
             'user_id' => $this->user_id,
             'payment_id' => $this->payment_id,
             'order_no' => $this->order_no,
             'state' => $this->state,
-            'types' => $this->types,
+            'data_types' => $this->data_types,
             'data_category' => $this->data_category,
             'data_name' => $this->data_name,
             'data_count' => $this->data_count,

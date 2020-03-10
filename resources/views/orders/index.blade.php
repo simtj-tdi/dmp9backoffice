@@ -14,12 +14,13 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Ad_type</th>
-                                    <th>data_name</th>
-                                    <th>data_count</th>
-                                    <th>name</th>
-                                    <th>buy_price</th>
-                                    <th>state</th>
+                                    <th>광고주</th>
+                                    <th>플랫폼 유형</th>
+                                    <th>데이터명</th>
+                                    <th>데이터 수</th>
+                                    <th>이름</th>
+                                    <th>데이터가격</th>
+                                    <th>상태</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -27,21 +28,23 @@
                                 @foreach($orders as $order)
                                     <tr>
                                         <td>{{ $order->id }}</td>
-                                        <td>{{ $order->types }}</td>
-                                        <td>{{ $order->data_count }}</td>
+                                        <td>{{ $order->advertiser }}</td>
+                                        <td>{{ $order->data_types }}</td>
                                         <td>{{ $order->data_name }}</td>
+                                        <td>{{ $order->data_count }}</td>
                                         <td>{{ $order->user->name }}</td>
                                         <td>{{ $order->buy_price }}</td>
                                         <td>
-
                                             @if ($order->state === 1)
-                                                결제 대기중
+                                                요청중
                                             @elseif ($order->state === 2)
-                                                결제 대기중
+                                                추출중
                                             @elseif ($order->state === 3)
-                                                결제 완료
+                                                승인요청
                                             @elseif ($order->state === 4)
-                                                유효 기간완료
+                                                결제대기
+                                            @elseif ($order->state === 5)
+                                                결제완료
                                             @endif
                                         </td>
                                         <td>

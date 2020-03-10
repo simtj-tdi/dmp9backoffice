@@ -9,11 +9,11 @@
                     <div class="card-header">
                         <i class="fa fa-align-justify"></i> No. {{ $faq['faq_id'] }} </div>
                     <div class="card-body">
-                        <h4>Name:</h4>
+                        <h5>작성자:</h5>
                         <p> {{ $faq['name'] }}</p>
-                        <h4>Title:</h4>
+                        <h5>제목:</h5>
                         <p> {{ $faq['title'] }}</p>
-                        <h4>Content:</h4>
+                        <h5>내용:</h5>
                         <p> {{ $faq['content'] }}</p>
                         <a href="{{ route('faqs.index') }}" class="btn btn-block btn-primary">Return</a>
                     </div>

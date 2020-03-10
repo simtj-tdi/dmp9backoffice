@@ -17,9 +17,9 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>title</th>
-                                    <th>name</th>
-                                    <th>Created</th>
+                                    <th>제목</th>
+                                    <th>작성자</th>
+                                    <th>작성일</th>
                                     <th></th>
                                     <th></th>
                                     <th></th>

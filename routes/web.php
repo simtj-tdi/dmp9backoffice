@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    if (auth()->user()) {
+        return redirect()->route('backoffice');
+    } else {
+        return redirect()->route('login');
+    }
 });
 
 // 권한 예외 처리
@@ -28,7 +32,7 @@ Auth::routes();
 Route::middleware(['auth', 'role'])->group( function () {
     Route::get('/backoffice', function () {
         return view('backoffice');
-    });
+    })->name('backoffice');
 
     Route::resources(['users' => 'UserController']);
     Route::resources(['faqs' => 'FaqController']);

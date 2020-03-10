@@ -3,7 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="e70303c1-1788-4b07-b368-b43ec7853421" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/OrderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/OrderRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faqs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faqs/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orders/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/questions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/questions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/questions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/questions/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +178,11 @@
       <workItem from="1583288367000" duration="4523000" />
       <workItem from="1583386493029" duration="1075000" />
       <workItem from="1583393531083" duration="2124000" />
-      <workItem from="1583485218581" duration="160000" />
+      <workItem from="1583485218581" duration="387000" />
+      <workItem from="1583715283723" duration="20000" />
+      <workItem from="1583748319157" duration="3081000" />
+      <workItem from="1583757162083" duration="19000" />
+      <workItem from="1583806345413" duration="5220000" />
     </task>
     <servers />
   </component>
@@ -175,10 +194,10 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="1950" y="361" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1582705820859" />
-    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser" timestamp="1583289258818">
+    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser" timestamp="1583831209717">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583289258818" />
+    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583831209717" />
     <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583289525702">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
@@ -191,13 +210,13 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="2064" y="482" key="NewPhpFileDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583288967952" />
-    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1582710560186">
+    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1583715285238">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1582710560186" />
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1583485301729">
+    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583715285238" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1583831217013">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583485301729" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583831217013" />
   </component>
 </project>

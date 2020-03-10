@@ -14,10 +14,10 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Name</th>
+                                    <th>이름</th>
                                     <th>Email</th>
-                                    <th>Approved</th>
-                                    <th>Created</th>
+                                    <th>승인여부</th>
+                                    <th>가입일자</th>
                                     <th></th>
                                     <th></th>
                                     <th></th>

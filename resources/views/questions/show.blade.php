@@ -9,15 +9,15 @@
                     <div class="card-header">
                         <i class="fa fa-align-justify"></i> No. {{ $question['question_id'] }} </div>
                     <div class="card-body">
-                        <h4>Name:</h4>
+                        <h5>작성자:</h5>
                         <p> {{ $question['name'] }}</p>
-                        <h4>Title:</h4>
+                        <h5>제목:</h5>
                         <p> {{ $question['title'] }}</p>
-                        <h4>Content:</h4>
+                        <h5>내용:</h5>
                         <p> {{ $question['content'] }}</p>
 
                         @if ($question['answers']->count() >0)
-                            <h4>Answers:</h4>
+                            <h5>답변:</h5>
                             <p> {{ $question['answers'][0]['content'] }}</p>
                         @endif
                         <a href="{{ route('questions.index') }}" class="btn btn-block btn-primary">Return</a>
