@@ -38,6 +38,7 @@ Route::middleware(['auth', 'role'])->group( function () {
     Route::resources(['faqs' => 'FaqController']);
     Route::resources(['questions' => 'QuestionController']);
     Route::resources(['orders' => 'OrderController']);
+    Route::resources(['goods' => 'GoodsController']);
 });
 
 

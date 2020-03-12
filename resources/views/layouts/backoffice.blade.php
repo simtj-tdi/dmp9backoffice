@@ -74,19 +74,11 @@
             <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>데이터요청관리</a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="/orders"><span class="c-sidebar-nav-icon"></span>데이터요청리스트</a>
+                    <a class="c-sidebar-nav-link" href="/goods"><span class="c-sidebar-nav-icon"></span>데이터요청리스트</a>
                 </li>
             </ul>
         </li>
 
-        <!--
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="http://coreui.test/charts">
-                <i class="cil-chart-pie c-sidebar-nav-icon"></i>
-                Charts
-            </a>
-        </li>
-        -->
     </ul>
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
 </div>

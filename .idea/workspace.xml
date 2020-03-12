@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e70303c1-1788-4b07-b368-b43ec7853421" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dmp9_backoffice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dmp9_backoffice.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/orders/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoriesServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoriesServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,6 +174,8 @@
       <workItem from="1583757162083" duration="19000" />
       <workItem from="1583806345413" duration="5220000" />
       <workItem from="1583833756546" duration="5162000" />
+      <workItem from="1583887323747" duration="11000" />
+      <workItem from="1583980098140" duration="11235000" />
     </task>
     <servers />
   </component>
@@ -187,29 +187,29 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="1950" y="361" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1582705820859" />
-    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser" timestamp="1583831209717">
+    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser" timestamp="1583999248319">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583831209717" />
-    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583289525702">
+    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583999248319" />
+    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583995906595">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583289525702" />
-    <state x="2430" y="375" key="NewPhpClassDialog" timestamp="1583242666178">
+    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583995906595" />
+    <state x="2430" y="375" key="NewPhpClassDialog" timestamp="1583998310342">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="2430" y="375" key="NewPhpClassDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583242666178" />
+    <state x="2430" y="375" key="NewPhpClassDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583998310342" />
     <state x="2064" y="482" key="NewPhpFileDialog" timestamp="1583288967952">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="2064" y="482" key="NewPhpFileDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583288967952" />
-    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1583715285238">
+    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1583887324605">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583715285238" />
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1583831217013">
+    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583887324605" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1583991053572">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583831217013" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583991053572" />
   </component>
 </project>

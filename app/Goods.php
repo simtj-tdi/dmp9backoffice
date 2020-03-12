@@ -3,34 +3,27 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Parsedown;
 
-class Order extends Model
+class Goods extends Model
 {
-    CONST STATE_1 = 1;      // 요청중
-    CONST STATE_2 = 2;      // 추출중
-    CONST STATE_3 = 3;      // 승인요청
-    CONST STATE_4 = 4;      // 결제완료
-
     protected $guarded = ['*','id'];
 
     public function format()
     {
         return [
-            'advertiser'=> $this->advertiser,
-            'order_id' => $this->id,
-            'user_id' => $this->user_id,
-            'payment_id' => $this->payment_id,
-            'order_no' => $this->order_no,
-            'state' => $this->state,
+            'goods_id' => $this->id,
+            'advertiser' => $this->advertiser,
             'data_types' => $this->data_types,
+            'data_target' => $this->data_target,
+            'data_name' => $this->data_name,
             'data_category' => $this->data_category,
             'data_content' => $this->data_content,
-            'data_name' => $this->data_name,
             'data_count' => $this->data_count,
             'buy_price' => $this->buy_price,
-            'buy_date' => $this->buy_date,
             'expiration_date' => $this->expiration_date,
+            'cart' => $this->cart,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
         ];
     }
 
@@ -39,9 +32,9 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getContentHtmlAttribute()
+    public function cart()
     {
-        return Parsedown::instance()->text($this->data_content);
+        return $this->belongsTo(Cart::class, 'id');
     }
 
     public function getMarkPriceAttribute()
