@@ -14,7 +14,6 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>광고주</th>
-                                        <th>플랫폼 유형</th>
                                         <th>데이터명</th>
                                         <th>데이터 수</th>
                                         <th>이름</th>
@@ -28,7 +27,6 @@
                                         <tr>
                                             <td>{{ $good->id }}</td>
                                             <td>{{ $good->advertiser }}</td>
-                                            <td>{{ $good->data_types }}</td>
                                             <td>{{ $good->data_name }}</td>
                                             <td>{{ $good->data_count }}</td>
                                             <td>{{ $good->user->name }}</td>

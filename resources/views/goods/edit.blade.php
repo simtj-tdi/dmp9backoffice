@@ -31,8 +31,6 @@
                             <div class="card-body">
                                 <h5>광고주:</h5>
                                 <p> {{ $goods['advertiser'] }}</p>
-                                <h5>플랫폼 유형:</h5>
-                                <p> {{ $goods['data_types'] }}</p>
                                 <h5>데이터명:</h5>
                                 <p> {{ $goods['data_name'] }}</p>
                                 <h5>데이터항목:</h5>
