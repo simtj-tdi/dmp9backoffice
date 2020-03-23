@@ -8,9 +8,9 @@ class Option extends Model
 {
     protected $guarded = [];
 
-    CONST STATE_1 = 1;      // 요청중
-    CONST STATE_2 = 2;      // 업로드중
-    CONST STATE_3 = 3;      // 업로드완료
+    CONST STATE_1 = 1;      // 업로드 요청
+    CONST STATE_2 = 2;      // 업로드 요청
+    CONST STATE_3 = 3;      // 업로드 완료
 
     public function format()
     {

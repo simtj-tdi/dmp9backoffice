@@ -33,13 +33,11 @@
                                             <td>{{ $good->mark_price }} 원</td>
                                             <td>
                                                 @if ($good->cart->state === 1)
-                                                    요청중
+                                                    결제대기중
                                                 @elseif ($good->cart->state === 2)
-                                                    추출중
-                                                @elseif ($good->cart->state === 3)
-                                                    승인요청
-                                                @elseif ($good->cart->state === 4)
                                                     결제완료
+                                                @elseif ($good->cart->state === 3)
+                                                    데이터 추출완료
                                                 @endif
                                             </td>
                                             <td>

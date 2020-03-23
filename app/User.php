@@ -72,4 +72,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Answer::class)->orderBy('id','desc');
     }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

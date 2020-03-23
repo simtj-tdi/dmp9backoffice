@@ -27,17 +27,17 @@
                 <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i> No. {{ $goods['goods_id'] }}
+                            <i class="fa fa-align-justify"></i> No. {{ $carts['goods_id']['id'] }}
                             <div class="card-body">
                                 <h5>광고주:</h5>
-                                <p> {{ $goods['advertiser'] }}</p>
+                                <p> {{ $carts['goods_id']['advertiser'] }}</p>
                                 <h5>데이터명:</h5>
-                                <p> {{ $goods['data_name'] }}</p>
+                                <p> {{ $carts['goods_id']['data_name'] }}</p>
                                 <h5>데이터항목:</h5>
-                                <p> {{ $goods['data_category'] }}</p>
+                                <p> {{ $carts['goods_id']['data_category'] }}</p>
                                 <h5>설명:</h5>
-                                <p> {!! nl2br(e($goods['data_content'] )) !!} </p>
-                                <form method="POST" action="{{ route('goods.update', $goods['goods_id']) }}">
+                                <p> {!! nl2br(($carts['goods_id']['data_content'] )) !!} </p>
+                                <form method="POST" action="{{ route('cart.update', $carts['goods_id']['id']) }}">
                                     @csrf
                                     @method('PUT')
 
@@ -45,9 +45,10 @@
                                         <div class="col">
                                             <label>상태</label>
                                             <select class="form-control" name="state">
-                                                <option value="1" {{ $goods['cart']->state == '1' ? 'selected' : '' }} >결제대기중</option>
-                                                <option value="2" {{ $goods['cart']->state == '2' ? 'selected' : '' }} >결제완료</option>
-                                                <option value="3" {{ $goods['cart']->state == '3' ? 'selected' : '' }} >데이터추출완료</option>
+                                                <option value="1" {{ $carts['state'] == '1' ? 'selected' : '' }} >결제대기중</option>
+                                                <option value="2" {{ $carts['state'] == '2' ? 'selected' : '' }} >결제완료</option>
+                                                <option value="3" {{ $carts['state'] == '3' ? 'selected' : '' }} >데이터추출중</option>
+                                                <option value="4" {{ $carts['state'] == '4' ? 'selected' : '' }} >데이터추출완료</option>
                                             </select>
                                         </div>
                                     </div>
@@ -55,20 +56,20 @@
                                     <div class="form-group row">
                                         <div class="col">
                                             <label>데이터 수</label>
-                                            <input class="form-control" type="text" placeholder="data_count" name="data_count" value="{{ $goods['data_count'] }}"  autofocus>
+                                            <input class="form-control" type="text" placeholder="data_count" name="data_count" value="{{ $carts['goods_id']['data_count'] }}"  autofocus>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col">
                                             <label>데이터 가격</label>
-                                            <input class="form-control" type="text" placeholder="buy_price" name="buy_price" value="{{ $goods['buy_price'] }}"  autofocus>
+                                            <input class="form-control" type="text" placeholder="buy_price" name="buy_price" value="{{ $carts['goods_id']['buy_price'] }}"  autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col">
                                             <label>유효기간</label>
-                                            <input class="form-control" type="text" placeholder="expiration_date" id="expiration_date" name="expiration_date"  value="{{ $goods['expiration_date'] }}"  autofocus>
+                                            <input class="form-control" type="text" placeholder="expiration_date" id="expiration_date" name="expiration_date"  value="{{ $carts['goods_id']['expiration_date'] }}"  autofocus>
                                         </div>
                                     </div>
 

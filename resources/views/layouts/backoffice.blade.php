@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>DMP9</title>
 
     <meta name="theme-color" content="#ffffff">
 
@@ -38,8 +38,7 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
 
     <div class="c-sidebar-brand">
-        <img class="c-sidebar-brand-full" src="http://coreui.test/assets/brand/coreui-base-white.svg" width="118" height="46" alt="CoreUI Logo">
-        <img class="c-sidebar-brand-minimized" src="assets/brand/coreui-signet-white.svg" width="118" height="46" alt="CoreUI Logo">
+
     </div>
     <ul class="c-sidebar-nav">
 
@@ -71,17 +70,44 @@
         <li class="c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>관리</a>
             <ul class="c-sidebar-nav-dropdown-items">
+
+                <li class="c-sidebar-nav-item ">
+                    <a class="c-sidebar-nav-link" href="/cart"><span class="c-sidebar-nav-icon"></span>전체</a>
+                </li>
+
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="/goods"><span class="c-sidebar-nav-icon"></span>결제요청리스트</a>
+                    <a class="c-sidebar-nav-link" href="/cart_state_1"><span class="c-sidebar-nav-icon"></span>결제대기중</a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="/option"><span class="c-sidebar-nav-icon"></span>데이터요청리스트</a>
+                    <a class="c-sidebar-nav-link" href="/cart_state_2"><span class="c-sidebar-nav-icon"></span>결제완료</a>
                 </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/cart_state_3"><span class="c-sidebar-nav-icon"></span>데이터추출중</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/cart_state_4"><span class="c-sidebar-nav-icon"></span>데이터추출완료</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/option_state_1"><span class="c-sidebar-nav-icon"></span>업로드대기</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/option_state_2"><span class="c-sidebar-nav-icon"></span>업로드요청</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/option_state_3"><span class="c-sidebar-nav-icon"></span>업로드완료</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="c-sidebar-nav-dropdown">
+            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>계산서관리</a>
+            <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
                     <a class="c-sidebar-nav-link" href="/orders"><span class="c-sidebar-nav-icon"></span>계산서요청리스트</a>
                 </li>
             </ul>
         </li>
+
     </ul>
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
 </div>
@@ -106,10 +132,7 @@
             </li>
         </ul>
         <div class="c-subheader px-3">
-            <ol class="breadcrumb border-0 m-0">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active"></li>
-            </ol>
+
         </div>
     </header>
     <div class="c-body">
@@ -118,8 +141,7 @@
         </main>
     </div>
     <footer class="c-footer">
-        <div><a href="https://coreui.io">CoreUI</a> &copy; 2019 creativeLabs.</div>
-        <div class="ml-auto">Powered by&nbsp;<a href="https://coreui.io/">CoreUI</a></div>
+
     </footer>
 </div>
 
