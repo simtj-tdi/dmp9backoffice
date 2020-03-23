@@ -10,7 +10,7 @@ class UserRepository implements UserRepositoryInterface
     public function all()
     {
         $users = user::orderBy('id','desc')
-            ->where('role', '=', 'user')
+            ->where('role', '!=', 'admin')
             ->paginate(5);
 
         $users->getCollection()->map->format();;

@@ -47,6 +47,7 @@ class User extends Authenticatable
             'email' => $this->email,
             'created_at' => $this->created_at,
             'approved' => $this->approved,
+            'tax' => $this->taxes,
             'approved_at' => $this->approved_at,
             'last_update' => $this->updated_at->diffForHumans()
         ];
@@ -55,6 +56,11 @@ class User extends Authenticatable
     public function faqs()
     {
         return $this->hasMany(Faq::class);
+    }
+
+    public function taxes()
+    {
+        return $this->hasMany(Tax::class);
     }
 
     public function questions()

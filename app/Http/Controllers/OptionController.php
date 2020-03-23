@@ -1,30 +1,32 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
-use App\Repositories\OrderRepositoryInterface;
+
+use App\Repositories\OptionRepositoryInterface;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class OptionController extends Controller
 {
-    private $orderRepository;
+    private $optionRepository;
 
-    public function __construct(OrderRepositoryInterface $orderRepository)
+    public function __construct(OptionRepositoryInterface $optionRepository)
     {
-        $this->orderRepository = $orderRepository;
+        $this->optionRepository = $optionRepository;
     }
 
     public function index()
     {
-        $orders = $this->orderRepository->all();
+       $options = $this->optionRepository->all();
 
-        return view('orders.index', compact('orders'));
+       return view('option.index', compact('options'));
     }
 
-    public function taxstateChange(Request $request)
+    public function stateChange(Request $request)
     {
         $request_data = json_decode($request->data);
-        $return_result = $this->orderRepository->taxstateChange($request_data);
+        $return_result = $this->optionRepository->stateChange($request_data);
 
         if (!$return_result) {
             $result['result'] = "error";
@@ -36,7 +38,6 @@ class OrderController extends Controller
         }
 
         return $response;
-
     }
 
 }

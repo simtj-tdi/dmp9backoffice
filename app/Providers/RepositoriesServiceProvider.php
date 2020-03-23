@@ -8,6 +8,8 @@ use App\Repositories\FaqRepository;
 use App\Repositories\FaqRepositoryInterface;
 use App\Repositories\GoodsRepository;
 use App\Repositories\GoodsRepositoryInterface;
+use App\Repositories\OptionRepository;
+use App\Repositories\OptionRepositoryInterface;
 use App\Repositories\OrderRepository;
 use App\Repositories\OrderRepositoryInterface;
 use App\Repositories\QuestionRepository;
@@ -41,5 +43,6 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
         $this->app->bind(GoodsRepositoryInterface::class, GoodsRepository::class);
         $this->app->bind(CartRepositoryInterface::class, CartRepository::class);
+        $this->app->bind(OptionRepositoryInterface::class, OptionRepository::class);
     }
 }

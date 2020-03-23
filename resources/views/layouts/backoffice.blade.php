@@ -30,9 +30,8 @@
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
     <script>
-        @stack('scripts')
+    @stack('scripts')
     </script>
-
 </head>
 
 <body class="c-app">
@@ -54,7 +53,6 @@
                 <li class="c-sidebar-nav-item">
                     <a class="c-sidebar-nav-link" href="/users"><span class="c-sidebar-nav-icon"></span>회원리스트</a>
                 </li>
-
             </ul>
         </li>
 
@@ -71,14 +69,19 @@
         </li>
 
         <li class="c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>데이터요청관리</a>
+            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>관리</a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="/goods"><span class="c-sidebar-nav-icon"></span>데이터요청리스트</a>
+                    <a class="c-sidebar-nav-link" href="/goods"><span class="c-sidebar-nav-icon"></span>결제요청리스트</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/option"><span class="c-sidebar-nav-icon"></span>데이터요청리스트</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/orders"><span class="c-sidebar-nav-icon"></span>계산서요청리스트</a>
                 </li>
             </ul>
         </li>
-
     </ul>
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
 </div>

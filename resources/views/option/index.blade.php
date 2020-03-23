@@ -3,16 +3,16 @@
 @prepend('scripts')
     <script>
         $(function() {
-            $("select[name=tax_state]").change(function() {
+            $("select[name=state]").change(function() {
 
                 var data = new Object();
-                data.order_id = $(this).data("order_id");
-                data.tax_state = $(this).val();
+                data.option_id = $(this).data("option_id");
+                data.states = $(this).val();
                 var jsonData = JSON.stringify(data);
 
                 $.ajax({
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    url: "{{ route('orders_taxstateChange') }}",
+                    url: "{{ route('options_statechange') }}",
                     method: "POST",
                     dataType: "json",
                     data: {'data': jsonData},
@@ -48,36 +48,41 @@
                                     <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>주문번호</th>
-                                        <th>구매내역</th>
-                                        <th>구매날짜</th>
-                                        <th>구매가격</th>
-                                        <th>결제방식</th>
-                                        <th>계산서 발행여부</th>
+                                        <th>user_id</th>
+                                        <th>데이터명</th>
+                                        <th>플랫폼</th>
+                                        <th>플랫폼 URL</th>
+                                        <th>아이디</th>
+                                        <th>패스워드</th>
+                                        <th>진행상태</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($orders as $order)
+                                    @foreach($options as $option)
                                         <tr>
-                                            <td>{{ $order->id }}</td>
-                                            <td>{{ $order->order_no }}</td>
-                                            <td>{{ $order->order_name }}</td>
-                                            <td>{{ $order->updated_at }}</td>
-                                            <td>{{ $order->total_price }}</td>
-                                            <td>신용카드</td>
+                                            <td>{{ $option['option_id'] }}</td>
+                                            <td>{{ $option['user']->user_id }}</td>
                                             <td>
-                                                <select name="tax_state" data-order_id="{{ $order->id }}">
-                                                    <option value="1" {{ $order->tax_state == '1' ? 'selected' : '' }}>계산서신청하기</option>
-                                                    <option value="2" {{ $order->tax_state == '2' ? 'selected' : '' }}>확인중</option>
-                                                    <option value="3" {{ $order->tax_state == '3' ? 'selected' : '' }}>계산서발급완료</option>
+                                                {{ $option['cart']->data_name }}
+                                            </td>
+                                            <td>{{ $option['platform']->name }}</td>
+                                            <td>{{ $option['platform']->url }}</td>
+                                            <td>{{ $option['sns_id'] }}</td>
+                                            <td>{{ $option['sns_password'] }}</td>
+                                            <td>
+                                                <select name="state" data-option_id="{{ $option['option_id'] }}">
+                                                    <option value="1" {{ $option['state'] == '1' ? 'selected' : '' }}>요청중</option>
+                                                    <option value="2" {{ $option['state'] == '2' ? 'selected' : '' }}>업로드중</option>
+                                                    <option value="3" {{ $option['state'] == '3' ? 'selected' : '' }}>업로드완료</option>
                                                 </select>
                                             </td>
-
+                                            <td></td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
-                                {{ $orders->links() }}
+
                             </div>
                         </div>
                     </div>

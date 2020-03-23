@@ -16,27 +16,10 @@ class OrderRepository implements OrderRepositoryInterface
         return $orders;
     }
 
-    public function findById($id)
+    public function taxstateChange($request)
     {
-        return order::where('id', $id)
-            ->firstOrFail()
-            ->format();
+        return order::where('id', $request->order_id)->update(['tax_state'=>$request->tax_state]);
     }
 
-    public function create($request)
-    {
-        auth()->user()->faqs()->create($request);
-    }
-
-    public function update($request, $id)
-    {
-        $order = order::where('id', $id)->firstOrFail();
-        $order->update($request->only('state', 'data_count', 'buy_price', 'expiration_date'));
-    }
-
-    public function destory($id)
-    {
-        order::where('id', $id)->delete();
-    }
 
 }

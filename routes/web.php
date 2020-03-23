@@ -39,6 +39,11 @@ Route::middleware(['auth', 'role'])->group( function () {
     Route::resources(['questions' => 'QuestionController']);
     Route::resources(['orders' => 'OrderController']);
     Route::resources(['goods' => 'GoodsController']);
+    Route::resources(['option' => 'OptionController']);
+
+    Route::get('/ajaxOptionStateChange', 'OptionController@stateChange')->name('options_statechange');
+
+    Route::get('/ajaxTaxStateChange', 'OrderController@taxstateChange')->name('orders_taxstateChange');
 });
 
 

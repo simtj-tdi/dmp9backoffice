@@ -3,8 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="e70303c1-1788-4b07-b368-b43ec7853421" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/goods/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/goods/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/goods/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/goods/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoriesServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoriesServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/OrderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/OrderRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/OrderRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/OrderRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +144,9 @@
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/questions" />
       <recent name="$PROJECT_DIR$/resources/views/faqs" />
@@ -176,6 +191,16 @@
       <workItem from="1584362733442" duration="1398000" />
       <workItem from="1584406746589" duration="177000" />
       <workItem from="1584419650389" duration="2129000" />
+      <workItem from="1584493341349" duration="13000" />
+      <workItem from="1584523491081" duration="223000" />
+      <workItem from="1584541976135" duration="1079000" />
+      <workItem from="1584595977573" duration="10872000" />
+      <workItem from="1584612051740" duration="2973000" />
+      <workItem from="1584619108467" duration="4856000" />
+      <workItem from="1584665978694" duration="239000" />
+      <workItem from="1584679108534" duration="712000" />
+      <workItem from="1584687119170" duration="4740000" />
+      <workItem from="1584925563589" duration="230000" />
     </task>
     <servers />
   </component>
@@ -187,29 +212,29 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="1950" y="361" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1582705820859" />
-    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser" timestamp="1583999248319">
+    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser" timestamp="1584623769699">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583999248319" />
-    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583995906595">
+    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1584623769699" />
+    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1584598980266">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583995906595" />
-    <state x="2430" y="375" key="NewPhpClassDialog" timestamp="1583998310342">
+    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1584598980266" />
+    <state x="2430" y="375" key="NewPhpClassDialog" timestamp="1584688436541">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="2430" y="375" key="NewPhpClassDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583998310342" />
+    <state x="2430" y="375" key="NewPhpClassDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1584688436541" />
     <state x="2064" y="482" key="NewPhpFileDialog" timestamp="1583288967952">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="2064" y="482" key="NewPhpFileDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583288967952" />
-    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1584406747861">
+    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1584925564297">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1584406747861" />
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1583991053572">
+    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1584925564297" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1584623764217">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583991053572" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1584623764217" />
   </component>
 </project>
