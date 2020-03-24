@@ -2,33 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e70303c1-1788-4b07-b368-b43ec7853421" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Question.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CartRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CartRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/OrderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/OrderRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/carts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/carts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/faqs/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/faqs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FaqController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FaqController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/faqs/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/goods/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/goods/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/goods/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/goods/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/option/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/option/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/orders/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/questions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/questions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/questions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/questions/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +131,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/questions" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
@@ -219,6 +198,7 @@
       <workItem from="1585014629776" duration="267000" />
       <workItem from="1585017831677" duration="1874000" />
       <workItem from="1585041329416" duration="9496000" />
+      <workItem from="1585065355345" duration="3474000" />
     </task>
     <servers />
   </component>
@@ -254,9 +234,10 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="1920" y="308" width="639" height="486" key="find.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585047631994" />
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1585024499233">
-      <screen x="1280" y="23" width="1920" height="1057" />
+    <state x="625" y="244" width="670" height="635" key="search.everywhere.popup" timestamp="1585067324666">
+      <screen x="0" y="23" width="1920" height="992" />
     </state>
+    <state x="625" y="244" width="670" height="635" key="search.everywhere.popup/-2560.23.2560.1417/0.23.1920.992@0.23.1920.992" timestamp="1585067324666" />
     <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585024499233" />
   </component>
 </project>

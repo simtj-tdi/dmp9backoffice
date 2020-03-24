@@ -67,4 +67,18 @@ class FaqController extends Controller
 
         return redirect()->route('faqs.index');
     }
+
+    public function find_id(Request $request)
+    {
+        $request_data = json_decode($request->data);
+        $faq_info = $this->faqRepository->findById($request_data->faq_id);
+
+        $result['result'] = "success";
+        $result['faq_info'] = $faq_info;
+
+
+        $response = response()->json($result, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+        return $response;
+    }
 }

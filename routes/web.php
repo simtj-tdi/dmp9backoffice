@@ -35,9 +35,11 @@ Route::middleware(['auth', 'role'])->group( function () {
     })->name('backoffice');
 
     Route::resources(['users' => 'UserController']);
-    Route::get('/find_id', 'UserController@find_id')->name('find_id');
+    Route::get('/user_find_id', 'UserController@find_id')->name('users.find.id');
 
     Route::resources(['faqs' => 'FaqController']);
+    Route::get('/faq_find_id', 'FaqController@find_id')->name('faqs.find.id');
+
     Route::resources(['questions' => 'QuestionController']);
     Route::resources(['orders' => 'OrderController']);
     Route::resources(['goods' => 'GoodsController']);

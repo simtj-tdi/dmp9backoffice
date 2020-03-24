@@ -10,7 +10,7 @@
                 var jsonData = JSON.stringify(data);
                 $.ajax({
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    url: "{{ route('find_id') }}",
+                    url: "{{ route('users.find.id') }}",
                     method: "POST",
                     dataType: "json",
                     data: {'data': jsonData},
@@ -101,10 +101,10 @@
                                     <td>
                                         {{ Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}
                                     </td>
-                                    <td>
-                                        <button class="btn btn-block btn-success" type="button" name="btn" data-user_id="{{ $user->id }}" >수정</button>
+                                    <td style="width: 100px">
+                                        <button class="btn btn-block btn-success" type="button" name="btn" data-user_id="{{ $user->id }}"  >수정</button>
                                     </td>
-                                    <td>
+                                    <td style="width: 100px">
                                         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -124,27 +124,26 @@
         </div>
     </div>
 
-        <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <form method="POST" name="frm" action=" ">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
-
                                 <input type="hidden" name="id" value="">
 
                                 <div class="form-group row">
                                     <div class="col">
                                         <label>ID</label>
-                                        <input class="form-control" type="text" placeholder="Name" name="user_id" value="" required autofocus>
+                                        <input class="form-control" type="text" placeholder="Name" name="user_id" value="" disabled required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col">
                                         <label>이름</label>
-                                        <input class="form-control" type="text" placeholder="Name" name="name" value="" required autofocus>
+                                        <input class="form-control" type="text" placeholder="Name" name="name" value="" disabled required autofocus>
                                     </div>
                                 </div>
 
@@ -180,8 +179,8 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" type="submit">수정</button>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
+                            <button class="btn btn-success" type="submit">수정</button>
                         </div>
                     </form>
                 </div>

@@ -10,7 +10,7 @@
                         <div class="card-header">
                             <i class="fa fa-align-justify"></i></div>
                         <div class="card-body">
-                            <div class="row">
+                            <div class="float-right" >
                                 <a href="{{ route('questions.create') }}" class="btn btn-primary m-2">작성</a>
                             </div>
                             <table class="table table-responsive-sm table-striped">
@@ -41,10 +41,10 @@
                                     <td>
                                         {{ Carbon\Carbon::parse($question->created_at)->format('Y-m-d') }}
                                     </td>
-                                    <td>
+                                    <td style="width: 100px">
                                         <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-block btn-success">수정</a>
                                     </td>
-                                    <td>
+                                    <td style="width: 100px">
                                         <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
