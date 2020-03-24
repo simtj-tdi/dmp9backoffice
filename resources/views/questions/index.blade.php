@@ -11,7 +11,7 @@
                             <i class="fa fa-align-justify"></i>Notes</div>
                         <div class="card-body">
                             <div class="row">
-                                <a href="{{ route('questions.create') }}" class="btn btn-primary m-2">Add Note</a>
+                                <a href="{{ route('questions.create') }}" class="btn btn-primary m-2">글쓰기</a>
                             </div>
                             <table class="table table-responsive-sm table-striped">
                                 <thead>
@@ -21,7 +21,6 @@
                                     <th>작성자</th>
                                     <th>답변여부</th>
                                     <th>작성일</th>
-                                    <th></th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -43,16 +42,13 @@
                                         {{ Carbon\Carbon::parse($question->created_at)->format('Y-m-d') }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('questions.show', $question->id) }}" class="btn btn-block btn-primary">View</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-block btn-primary">Edit</a>
+                                        <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-block btn-primary">수정</a>
                                     </td>
                                     <td>
                                         <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-block btn-danger">Delete</button>
+                                            <button class="btn btn-block btn-danger">삭제</button>
                                         </form>
                                     </td>
                                 </tr>

@@ -31,7 +31,6 @@
                 });
             });
         });
-
 @endprepend
 
 @section('content')
@@ -61,7 +60,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($carts as $cart)
+                                    @forelse($carts as $cart)
                                         <tr>
                                             <td>{{ $cart->goods->id }}</td>
                                             <td>{{ $cart->goods->advertiser }}</td>
@@ -83,7 +82,7 @@
                                                 @endif
                                             </td>
                                             <th>
-                                            <a href="{{ route('cart.edit', $cart->goods->id) }}" class="btn btn-block btn-primary">Edit</a>
+                                            <a href="{{ route('cart.edit', $cart->goods->id) }}" class="btn btn-block btn-primary">수정</a>
                                             </th>
                                         </tr>
                                         @if (!$cart->options->isEmpty())
@@ -125,11 +124,15 @@
                                                 </td>
                                             </tr>
                                         @endif
-                                    @endforeach
+                                    @empty
+                                       <tr>
+                                           <td class="text-center" colspan="10">등록 데이터가 없습니다.</td>
+                                       </tr>
+                                    @endforelse
                                     </tbody>
                                 </table>
 
-                                <div class="col-sm-4">
+                                <div class="col-sm-4 " style="margin: auto">
                                     <form class="form-horizontal" action="{{ route($route_name) }}" method="get" name="frm">
                                         <div class="form-group row">
                                             <div class="col-md-12">
@@ -141,14 +144,9 @@
                                         </div>
                                     </form>
                                 </div>
-
                                 {{ $carts->links() }}
 
-
-
                             </div>
-
-
 
                         </div>
                     </div>

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
 use App\Repositories\CartRepositoryInterface;
 use App\Repositories\GoodsRepositoryInterface;
 use App\Repositories\PlatformRepositoryInterface;
@@ -24,9 +23,6 @@ class CartController extends Controller
         $this->platformRepository = $platformRepository;
         $this->goodsRepository = $goodsRepository;
 
-//        $route = Route::current();
-//        $name = Route::currentRouteName();
-//        $action = Route::currentRouteAction();
         $this->route_name = Route::currentRouteName();
     }
     public function index(Request $request)

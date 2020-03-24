@@ -3,16 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="e70303c1-1788-4b07-b368-b43ec7853421" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Option.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Option.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoriesServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoriesServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/CartRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CartRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/CartRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CartRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/goods/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/goods/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/goods/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/goods/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/carts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faqs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/questions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/questions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -199,6 +203,8 @@
       <workItem from="1584687119170" duration="4740000" />
       <workItem from="1584925563589" duration="230000" />
       <workItem from="1584930334914" duration="29750000" />
+      <workItem from="1585011301383" duration="2591000" />
+      <workItem from="1585014629776" duration="267000" />
     </task>
     <servers />
   </component>
@@ -226,10 +232,10 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="2064" y="482" key="NewPhpFileDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583288967952" />
-    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1584925564297">
+    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1585011303192">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1584925564297" />
+    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585011303192" />
     <state x="1920" y="308" width="639" height="486" key="find.popup" timestamp="1584933621860">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>

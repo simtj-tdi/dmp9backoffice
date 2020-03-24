@@ -29,8 +29,8 @@
                                     </div>
                                 </div>
 
-                                <button class="btn btn-block btn-success" type="submit">Save</button>
-                                <a href="{{ route('faqs.index') }}" class="btn btn-block btn-primary">Return</a>
+                                <button class="btn btn-block btn-success" type="submit">저장</button>
+                                <a href="{{ route('faqs.index') }}" class="btn btn-block btn-primary">뒤로가기</a>
                             </form>
                         </div>
                     </div>

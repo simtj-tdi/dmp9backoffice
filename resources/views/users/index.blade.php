@@ -7,7 +7,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i>Notes</div>
+
                         <div class="card-body">
 
                             <table class="table table-responsive-sm table-striped">
@@ -18,7 +18,6 @@
                                     <th>Email</th>
                                     <th>승인여부</th>
                                     <th>가입일자</th>
-                                    <th></th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -44,16 +43,13 @@
                                         {{ Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-block btn-primary">View</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-block btn-primary">Edit</a>
+                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-block btn-primary">수정</a>
                                     </td>
                                     <td>
                                         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-block btn-danger">Delete</button>
+                                            <button class="btn btn-block btn-danger">삭제</button>
                                         </form>
                                     </td>
                                 </tr>

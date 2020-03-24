@@ -26,12 +26,11 @@ class cartrepository implements cartrepositoryinterface
     {
         $cart_state = cart::STATE_1;
 
-        $carts = cart::
-        when($cart_state,
-            function ($q) use ($cart_state) {
-                return $q->where('state', $cart_state);
-            }
-        )
+        $carts = cart::when($cart_state,
+                function ($q) use ($cart_state) {
+                    return $q->where('state', $cart_state);
+                }
+            )
             ->wherehas('goods', function ($query) use ($request) {
                 $query->where('data_name','LIKE','%'.$request->sch.'%');
             })
@@ -47,12 +46,11 @@ class cartrepository implements cartrepositoryinterface
     {
         $cart_state = cart::STATE_2;
 
-        $carts = cart::
-        when($cart_state,
-            function ($q) use ($cart_state) {
-                return $q->where('state', $cart_state);
-            }
-        )
+        $carts = cart::when($cart_state,
+                function ($q) use ($cart_state) {
+                    return $q->where('state', $cart_state);
+                }
+            )
             ->wherehas('goods', function ($query) use ($request) {
                 $query->where('data_name','LIKE','%'.$request->sch.'%');
             })
@@ -68,12 +66,11 @@ class cartrepository implements cartrepositoryinterface
     {
         $cart_state = cart::STATE_3;
 
-        $carts = cart::
-        when($cart_state,
-            function ($q) use ($cart_state) {
-                return $q->where('state', $cart_state);
-            }
-        )
+        $carts = cart::when($cart_state,
+                function ($q) use ($cart_state) {
+                    return $q->where('state', $cart_state);
+                }
+            )
             ->wherehas('goods', function ($query) use ($request) {
                 $query->where('data_name','LIKE','%'.$request->sch.'%');
             })
@@ -89,12 +86,11 @@ class cartrepository implements cartrepositoryinterface
     {
         $cart_state = cart::STATE_4;
 
-        $carts = cart::
-        when($cart_state,
-            function ($q) use ($cart_state) {
-                return $q->where('state', $cart_state);
-            }
-        )
+        $carts = cart::when($cart_state,
+                function ($q) use ($cart_state) {
+                    return $q->where('state', $cart_state);
+                }
+            )
             ->wherehas('goods', function ($query) use ($request) {
                 $query->where('data_name','LIKE','%'.$request->sch.'%');
             })
@@ -111,8 +107,7 @@ class cartrepository implements cartrepositoryinterface
     {
         $option_state = option::STATE_1;
 
-        $carts = cart::
-            wherehas('options', function ($query) use ($option_state) {
+        $carts = cart::wherehas('options', function ($query) use ($option_state) {
                 $query->where('state', $option_state);
             })
             ->wherehas('goods', function ($query) use ($request) {
@@ -130,8 +125,7 @@ class cartrepository implements cartrepositoryinterface
     {
         $option_state = option::STATE_2;
 
-        $carts = cart::
-            wherehas('options', function ($query) use ($option_state) {
+        $carts = cart::wherehas('options', function ($query) use ($option_state) {
                 $query->where('state', $option_state);
             })
             ->wherehas('goods', function ($query) use ($request) {
@@ -150,45 +144,12 @@ class cartrepository implements cartrepositoryinterface
 
         $option_state = option::STATE_3;
 
-        $carts = cart::
-            wherehas('options', function ($query) use ($option_state) {
+        $carts = cart::wherehas('options', function ($query) use ($option_state) {
                 $query->where('state', $option_state);
             })
             ->wherehas('goods', function ($query) use ($request) {
                 $query->where('data_name','LIKE','%'.$request->sch.'%');
             })
-            ->orderby('id','desc')
-            ->paginate(5);
-
-
-        $carts->getcollection()->map->format();
-
-        return $carts;
-    }
-
-
-    public function where($request)
-    {
-        $carts = cart::
-            when($request['state'],
-                function ($q) use ($request) {
-                    return $q->where('state', $request->state);
-                }
-            )
-
-        ->wherehas('options', function ($query) use ($request) {
-            $query->where('state', $request['option']);
-        })
-
-//            with(['options' => function($q) use ($request) {
-//                $q->where('state', $request['option']);
-//            }])
-//            ->when($request['state'],
-//                function ($q) use ($request) {
-//                    return $q->where('state', $request->state);
-//                }
-//            )
-
             ->orderby('id','desc')
             ->paginate(5);
 
@@ -201,12 +162,10 @@ class cartrepository implements cartrepositoryinterface
     {
         cart::where('goods_id', $id)->update($request->only('state'));
     }
-
     public function findbyid($id)
     {
         return cart::where('id', $id)
             ->firstorfail()
             ->format();
     }
-
 }

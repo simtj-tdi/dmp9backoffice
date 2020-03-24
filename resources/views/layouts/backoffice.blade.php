@@ -121,7 +121,7 @@
                 <a class="c-header-nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="#">{{ Auth::user()->name }}</a>
                 <div class="dropdown-menu dropdown-menu-right pt-0">
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Lock Account</a>
+
                     <a class="dropdown-item" href="#">
                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
                             @csrf

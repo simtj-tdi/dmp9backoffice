@@ -51,8 +51,6 @@ Route::middleware(['auth', 'role'])->group( function () {
     Route::get('/option_state_2', 'CartController@option_state_2')->name('option_state_2'); //업로드요청
     Route::get('/option_state_3', 'CartController@option_state_3')->name('option_state_3'); //업로드완료
 
-
-
     Route::get('/ajaxOptionStateChange', 'OptionController@stateChange')->name('options_statechange');
 
     Route::get('/ajaxTaxStateChange', 'OrderController@taxstateChange')->name('orders_taxstateChange');

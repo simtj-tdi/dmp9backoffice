@@ -23,6 +23,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/';
     public const BACKOFFICE = 'backoffice';
+    public const USER = '/users';
     /**
      * Define your route model bindings, pattern filters, etc.
      *
