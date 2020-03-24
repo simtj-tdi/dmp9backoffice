@@ -15,9 +15,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password','approved', 'approved_at'
-    ];
+//    protected $fillable = [
+//        'name', 'email', 'password','approved', 'approved_at'
+//    ];
+
+    protected $guarded = ['*','id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,14 +42,15 @@ class User extends Authenticatable
     public function format()
     {
         return [
-            'user_id' => $this->id,
+            'id' => $this->id,
+            'user_id' => $this->user_id,
             'name' => $this->name,
-            'title' => $this->title,
-            'content' => $this->content,
+            'phone' => $this->phone,
             'email' => $this->email,
+            'title' => $this->title,
+            'company_name' => $this->company_name,
             'created_at' => $this->created_at,
             'approved' => $this->approved,
-            'tax' => $this->taxes,
             'approved_at' => $this->approved_at,
             'last_update' => $this->updated_at->diffForHumans()
         ];

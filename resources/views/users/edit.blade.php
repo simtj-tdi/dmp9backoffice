@@ -8,7 +8,7 @@
                 <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i> Edit: {{ $users['user_id'] }}</div>
+                            <i class="fa fa-align-justify"></i> </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('users.update', $users['user_id']) }}">
                                 @csrf

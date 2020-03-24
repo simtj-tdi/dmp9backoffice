@@ -13,7 +13,9 @@ class cartrepository implements cartrepositoryinterface
     {
         $carts = cart::orderby('id','desc')
             ->wherehas('goods', function ($query) use ($request) {
-                $query->where('data_name','LIKE','%'.$request->sch.'%');
+                if ($request->sch_key) {
+                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
             })
             ->paginate(10);
 
@@ -32,7 +34,9 @@ class cartrepository implements cartrepositoryinterface
                 }
             )
             ->wherehas('goods', function ($query) use ($request) {
-                $query->where('data_name','LIKE','%'.$request->sch.'%');
+                if ($request->sch_key) {
+                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
             })
             ->orderby('id','desc')
             ->paginate(5);
@@ -52,7 +56,9 @@ class cartrepository implements cartrepositoryinterface
                 }
             )
             ->wherehas('goods', function ($query) use ($request) {
-                $query->where('data_name','LIKE','%'.$request->sch.'%');
+                if ($request->sch_key) {
+                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
             })
             ->orderby('id','desc')
             ->paginate(5);
@@ -72,7 +78,9 @@ class cartrepository implements cartrepositoryinterface
                 }
             )
             ->wherehas('goods', function ($query) use ($request) {
-                $query->where('data_name','LIKE','%'.$request->sch.'%');
+                if ($request->sch_key) {
+                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
             })
             ->orderby('id','desc')
             ->paginate(5);
@@ -92,7 +100,9 @@ class cartrepository implements cartrepositoryinterface
                 }
             )
             ->wherehas('goods', function ($query) use ($request) {
-                $query->where('data_name','LIKE','%'.$request->sch.'%');
+                if ($request->sch_key) {
+                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
             })
             ->doesnthave('options')
             ->orderby('id','desc')
@@ -111,7 +121,9 @@ class cartrepository implements cartrepositoryinterface
                 $query->where('state', $option_state);
             })
             ->wherehas('goods', function ($query) use ($request) {
-                $query->where('data_name','LIKE','%'.$request->sch.'%');
+                if ($request->sch_key) {
+                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
             })
             ->orderby('id','desc')
             ->paginate(5);
@@ -129,7 +141,9 @@ class cartrepository implements cartrepositoryinterface
                 $query->where('state', $option_state);
             })
             ->wherehas('goods', function ($query) use ($request) {
-                $query->where('data_name','LIKE','%'.$request->sch.'%');
+                if ($request->sch_key) {
+                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
             })
             ->orderby('id','desc')
             ->paginate(5);
@@ -148,7 +162,9 @@ class cartrepository implements cartrepositoryinterface
                 $query->where('state', $option_state);
             })
             ->wherehas('goods', function ($query) use ($request) {
-                $query->where('data_name','LIKE','%'.$request->sch.'%');
+                if ($request->sch_key) {
+                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
             })
             ->orderby('id','desc')
             ->paginate(5);

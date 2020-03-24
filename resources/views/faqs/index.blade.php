@@ -8,10 +8,10 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i>Notes</div>
+                            <i class="fa fa-align-justify"></i></div>
                         <div class="card-body">
                             <div class="row">
-                                <a href="{{ route('faqs.create') }}" class="btn btn-primary m-2">글쓰기</a>
+                                <a href="{{ route('faqs.create') }}" class="btn btn-primary m-2">작성</a>
                             </div>
                             <table class="table table-responsive-sm table-striped">
                                 <thead>
@@ -34,7 +34,7 @@
                                         {{ Carbon\Carbon::parse($faq->created_at)->format('Y-m-d') }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('faqs.edit', $faq->id) }}" class="btn btn-block btn-primary">수정</a>
+                                        <a href="{{ route('faqs.edit', $faq->id) }}" class="btn btn-block btn-success">수정</a>
                                     </td>
                                     <td>
                                         <form action="{{ route('faqs.destroy', $faq->id) }}" method="POST">

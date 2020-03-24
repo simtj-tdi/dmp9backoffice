@@ -27,7 +27,7 @@
                 <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i> No. {{ $carts['goods_id']['id'] }}
+                            <i class="fa fa-align-justify"></i>
                             <div class="card-body">
                                 <h5>광고주:</h5>
                                 <p> {{ $carts['goods_id']['advertiser'] }}</p>

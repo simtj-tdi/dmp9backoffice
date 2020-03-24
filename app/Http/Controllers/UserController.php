@@ -48,4 +48,16 @@ class UserController extends Controller
 
         return redirect()->route('users.index');
     }
+
+    public function find_id(Request $request)
+    {
+        $request_data = json_decode($request->data);
+        $user_info = $this->userRepository->findById($request_data->user_id);
+
+        $result['result'] = "success";
+        $result['user_info'] = $user_info;
+        $response = response()->json($result, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+        return $response;
+    }
 }

@@ -8,12 +8,11 @@
                 <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i> Edit: {{ $faq['faq_id'] }}</div>
+                            <i class="fa fa-align-justify"></i></div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('faqs.update', $faq['faq_id']) }}">
                                 @csrf
                                 @method('PUT')
-
 
                                 <div class="form-group row">
                                     <div class="col">

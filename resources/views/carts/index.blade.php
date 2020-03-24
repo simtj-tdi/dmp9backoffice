@@ -65,8 +65,8 @@
                                             <td>{{ $cart->goods->id }}</td>
                                             <td>{{ $cart->goods->advertiser }}</td>
                                             <td>{{ $cart->goods->data_name }}</td>
-                                            <td>{{ $cart->goods->data_count }}</td>
-                                            <td>{{ $cart->goods->buy_price }}</td>
+                                            <td>{{ number_format($cart->goods->data_count) }}</td>
+                                            <td>{{ number_format($cart->goods->buy_price) }}</td>
                                             <td>{{ $cart->buy_date }}</td>
                                             <td>{{ $cart->goods->expiration_date }}</td>
                                             <td>{{ $cart->goods->data_request }}</td>
@@ -82,7 +82,7 @@
                                                 @endif
                                             </td>
                                             <th>
-                                            <a href="{{ route('cart.edit', $cart->goods->id) }}" class="btn btn-block btn-primary">수정</a>
+                                            <a href="{{ route('cart.edit', $cart->goods->id) }}" class="btn btn-block btn-success">수정</a>
                                             </th>
                                         </tr>
                                         @if (!$cart->options->isEmpty())
@@ -137,6 +137,10 @@
                                         <div class="form-group row">
                                             <div class="col-md-12">
                                                 <div class="input-group">
+                                                    <select name="sch_key">
+                                                        <option value="advertiser"  >광고주</option>
+                                                        <option value="data_name" >데이터명</option>
+                                                    </select>&nbsp;
                                                     <input class="form-control" id="input2-group2" type="text" name="sch" value="{{ $sch }}" placeholder="데이터명" autocomplete="sch"><span class="input-group-append">
                                                     <button class="btn btn-primary" type="submit">검색</button></span>
                                                 </div>

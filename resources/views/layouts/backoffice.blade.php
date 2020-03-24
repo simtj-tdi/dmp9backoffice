@@ -22,16 +22,16 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pace.min.css') }}" rel="stylesheet">
 
-    // jQuery UI CSS파일
+
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
-    // jQuery 기본 js파일
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    // jQuery UI 라이브러리 js파일
+
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
-    <script>
+
     @stack('scripts')
-    </script>
+
 </head>
 
 <body class="c-app">
@@ -41,10 +41,6 @@
 
     </div>
     <ul class="c-sidebar-nav">
-
-        <li class="c-sidebar-nav-title">
-            회원
-        </li>
 
         <li class="c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>회원관리</a>
@@ -68,7 +64,7 @@
         </li>
 
         <li class="c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>관리</a>
+            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>주문서 관리</a>
             <ul class="c-sidebar-nav-dropdown-items">
 
                 <li class="c-sidebar-nav-item ">
@@ -76,25 +72,25 @@
                 </li>
 
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="/cart_state_1"><span class="c-sidebar-nav-icon"></span>결제대기중</a>
+                    <a class="c-sidebar-nav-link" href="/payment_waiting"><span class="c-sidebar-nav-icon"></span>결제대기중</a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="/cart_state_2"><span class="c-sidebar-nav-icon"></span>결제완료</a>
+                    <a class="c-sidebar-nav-link" href="/payment_completed"><span class="c-sidebar-nav-icon"></span>결제완료</a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="/cart_state_3"><span class="c-sidebar-nav-icon"></span>데이터추출중</a>
+                    <a class="c-sidebar-nav-link" href="/data_extraction"><span class="c-sidebar-nav-icon"></span>데이터추출중</a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="/cart_state_4"><span class="c-sidebar-nav-icon"></span>데이터추출완료</a>
+                    <a class="c-sidebar-nav-link" href="/data_completed"><span class="c-sidebar-nav-icon"></span>데이터추출완료</a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="/option_state_1"><span class="c-sidebar-nav-icon"></span>업로드대기</a>
+                    <a class="c-sidebar-nav-link" href="/upload_waiting"><span class="c-sidebar-nav-icon"></span>업로드대기</a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="/option_state_2"><span class="c-sidebar-nav-icon"></span>업로드요청</a>
+                    <a class="c-sidebar-nav-link" href="/upload_request"><span class="c-sidebar-nav-icon"></span>업로드요청</a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="/option_state_3"><span class="c-sidebar-nav-icon"></span>업로드완료</a>
+                    <a class="c-sidebar-nav-link" href="/upload_completed"><span class="c-sidebar-nav-icon"></span>업로드완료</a>
                 </li>
             </ul>
         </li>

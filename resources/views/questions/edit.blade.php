@@ -8,7 +8,7 @@
                 <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i> Edit: {{ $question['question_id'] }}</div>
+                            <i class="fa fa-align-justify"></i></div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('questions.update', $question['question_id']) }}">
                                 @csrf
@@ -21,6 +21,10 @@
                                 <p> {{ $question['title'] }}</p>
                                 <h5>내용:</h5>
                                 <p> {{ $question['content'] }}</p>
+                                <h5>연락처:</h5>
+                                <p> {{ $question['phone'] }}</p>
+                                <h5>email:</h5>
+                                <p> {{ $question['email'] }}</p>
                                 <h5>답변:</h5>
                                 <p>
                                     <textarea class="form-control" type="text" placeholder="answers" name="content"  required autofocus>

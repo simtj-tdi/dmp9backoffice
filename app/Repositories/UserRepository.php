@@ -33,7 +33,7 @@ class UserRepository implements UserRepositoryInterface
             $request['approved_at'] = now();
         }
 
-        $user->update($request->only( 'name', 'email', 'password','approved', 'approved_at'));
+        $user->update($request->toArray());
     }
 
     public function destory($id)

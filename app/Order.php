@@ -10,10 +10,9 @@ class Order extends Model
     CONST STATE_1 = 0;      // 결제전
     CONST STATE_2 = 1;      // 결제완료
 
-    CONST TAX_STATE_1 = 1;  // 계산서 요청가능
-    CONST TAX_STATE_2 = 2;  // 계산서 요청신청
-    CONST TAX_STATE_3 = 3;  // 계산서 신청완료
-
+    CONST TAX_STATE_1 = 1;  // 계산서 요청가능 (미발행)
+    CONST TAX_STATE_2 = 2;  // 계산서 요청신청 (확인중)
+    CONST TAX_STATE_3 = 3;  // 계산서 신청완료 (발행)
 
     protected $guarded = ['*','id'];
 
@@ -30,6 +29,7 @@ class Order extends Model
             'tax_state' => $this->tax_state,
             'total_count' => $this->total_count,
             'total_price' => $this->total_price,
+            'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];
     }

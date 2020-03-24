@@ -7,7 +7,7 @@
             <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-align-justify"></i> No. {{ $users['user_id'] }} </div>
+                        <i class="fa fa-align-justify"></i> </div>
                             <div class="card-body">
                                 <h5>이름:</h5>
                                 <p> {{ $users['name'] }}</p>

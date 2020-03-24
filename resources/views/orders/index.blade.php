@@ -62,8 +62,8 @@
                                             <td>{{ $order->id }}</td>
                                             <td>{{ $order->order_no }}</td>
                                             <td>{{ $order->order_name }}</td>
-                                            <td>{{ $order->updated_at }}</td>
-                                            <td>{{ $order->total_price }}</td>
+                                            <td>{{ $order->created_at }}</td>
+                                            <td>{{ number_format($order->total_price) }}</td>
                                             <td>신용카드</td>
                                             <td>
                                                 <select name="tax_state" data-order_id="{{ $order->id }}">

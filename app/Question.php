@@ -16,10 +16,11 @@ class Question extends Model
     {
         return [
             'question_id' => $this->id,
-            'name' => $this->user->name,
+            'name' => $this->name,
             'title' => $this->title,
             'content' => $this->content,
-            'email' => $this->user->email,
+            'phone' => $this->phone,
+            'email' => $this->email,
             'last_update' => $this->updated_at->diffForHumans(),
             'answers' => $this->answers,
         ];

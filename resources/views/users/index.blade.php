@@ -1,5 +1,50 @@
 @extends('layouts.backoffice')
 
+@prepend('scripts')
+    <script>
+        $(function() {
+            $("button[name='btn']").click(function() {
+
+                var data = new Object();
+                data.user_id = $(this).data("user_id");
+                var jsonData = JSON.stringify(data);
+                $.ajax({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url: "{{ route('find_id') }}",
+                    method: "POST",
+                    dataType: "json",
+                    data: {'data': jsonData},
+                    success: function (data) {
+                        var JSONArray = JSON.parse(JSON.stringify(data));
+
+                        if (JSONArray['result'] == "success") {
+                            $("input[name='id']").val(JSONArray['user_info']['id']);
+                            $("input[name='user_id']").val(JSONArray['user_info']['user_id']);
+                            $("input[name='name']").val(JSONArray['user_info']['name']);
+                            $("input[name='company_name']").val(JSONArray['user_info']['company_name']);
+                            $("input[name='phone']").val(JSONArray['user_info']['phone']);
+                            $("input[name='email']").val(JSONArray['user_info']['email']);
+                            $("select[name='approved']").val(JSONArray['user_info']['approved']).attr("selected", "selected");
+
+
+                            $("form[name='frm']").attr("action", "users/"+JSONArray['user_info']['id']);
+
+
+                            $('#largeModal').modal('show');
+                        } else if (JSONArray['result'] == "error") {
+                            alert(JSONArray['error_message']);
+                        };
+                    },
+                    error: function () {
+                        alert("Error while getting results");
+                    }
+                });
+                //$('#largeModal').modal('show')
+            });
+        });
+    </script>
+@endprepend
+
 @section('content')
     <div class="container-fluid">
         <div class="animated fadeIn">
@@ -14,8 +59,12 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
+                                    <th>ID</th>
                                     <th>이름</th>
+                                    <th>회사명</th>
+                                    <th>연락처</th>
                                     <th>Email</th>
+                                    <th>가입구분</th>
                                     <th>승인여부</th>
                                     <th>가입일자</th>
                                     <th></th>
@@ -26,8 +75,18 @@
                                 @foreach($users as $user)
                                     <tr>
                                     <td>{{ $user->id }}</td>
-                                    <td><strong>{{ $user->name }}</strong></td>
+                                    <td><strong>{{ $user->user_id }}</strong></td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->company_name }}</td>
+                                    <td>{{ $user->phone }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>
+                                        @if ($user->role == "personal")
+                                            개인회원
+                                        @elseif ( $user->role == "company")
+                                            기업회원
+                                        @endif
+                                    </td>
                                     <td>
                                         @if ( $user->approved)
                                             <span class="badge badge-pill badge-warning">
@@ -43,7 +102,7 @@
                                         {{ Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-block btn-primary">수정</a>
+                                        <button class="btn btn-block btn-success" type="button" name="btn" data-user_id="{{ $user->id }}" >수정</button>
                                     </td>
                                     <td>
                                         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
@@ -64,4 +123,71 @@
             </div>
         </div>
     </div>
+
+        <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form method="POST" name="frm" action=" ">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+
+                                <input type="hidden" name="id" value="">
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>ID</label>
+                                        <input class="form-control" type="text" placeholder="Name" name="user_id" value="" required autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>이름</label>
+                                        <input class="form-control" type="text" placeholder="Name" name="name" value="" required autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>회사명</label>
+                                        <input class="form-control" type="text" placeholder="company_name" name="company_name" value="" required autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>연락처</label>
+                                        <input class="form-control" type="text" placeholder="Phone" name="phone" value="" required autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>Email</label>
+                                        <input class="form-control" type="text" placeholder="Email" name="email" value="" required autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>승인여부</label>
+                                        <select class="form-control" name="approved">
+                                            <option value="0">비승인</option>
+                                            <option value="1">승인</option>
+                                        </select>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit">수정</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content-->
+            </div>
+            <!-- /.modal-dialog-->
+        </div>
+
 @endsection

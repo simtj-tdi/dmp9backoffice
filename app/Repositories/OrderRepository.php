@@ -8,7 +8,8 @@ class OrderRepository implements OrderRepositoryInterface
 {
     public function all()
     {
-        $orders = order::orderBy('id', 'desc')
+        $orders = order::where('state', 1)
+            ->orderBy('id', 'desc')
             ->paginate(5);
 
         $orders->getCollection()->map->format();;
