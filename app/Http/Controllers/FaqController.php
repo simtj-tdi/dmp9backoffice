@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\FaqRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class FaqController extends Controller
 {
@@ -13,13 +14,19 @@ class FaqController extends Controller
     public function __construct(FaqRepositoryInterface $faqRepository)
     {
         $this->faqRepository = $faqRepository;
+
+        $this->route_name = Route::currentRouteName();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $faqs = $this->faqRepository->all();
+        $route_name = $this->route_name;
 
-        return view('faqs.index', compact('faqs'));
+        $faqs = $this->faqRepository->all($request);
+
+        $sch = $request->sch;
+
+        return view('faqs.index', compact('faqs','sch', 'route_name'));
     }
 
     public function create()
@@ -29,7 +36,6 @@ class FaqController extends Controller
 
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'required',

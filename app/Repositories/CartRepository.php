@@ -39,7 +39,7 @@ class cartrepository implements cartrepositoryinterface
                 }
             })
             ->orderby('id','desc')
-            ->paginate(5);
+            ->paginate(10);
 
         $carts->getcollection()->map->format();
 
@@ -61,7 +61,7 @@ class cartrepository implements cartrepositoryinterface
                 }
             })
             ->orderby('id','desc')
-            ->paginate(5);
+            ->paginate(10);
 
         $carts->getcollection()->map->format();
 
@@ -83,7 +83,7 @@ class cartrepository implements cartrepositoryinterface
                 }
             })
             ->orderby('id','desc')
-            ->paginate(5);
+            ->paginate(10);
 
         $carts->getcollection()->map->format();
 
@@ -106,7 +106,7 @@ class cartrepository implements cartrepositoryinterface
             })
             ->doesnthave('options')
             ->orderby('id','desc')
-            ->paginate(5);
+            ->paginate(10);
 
         $carts->getcollection()->map->format();
 
@@ -117,17 +117,29 @@ class cartrepository implements cartrepositoryinterface
     {
         $option_state = option::STATE_1;
 
-        $carts = cart::wherehas('options', function ($query) use ($option_state) {
-                $query->where('state', $option_state);
-            })
-            ->wherehas('goods', function ($query) use ($request) {
-                if ($request->sch_key) {
-                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
-                }
+//        $carts = cart::wherehas('options', function ($query) use ($option_state) {
+//                $query->where('state', $option_state);
+//            })
+//            ->wherehas('goods', function ($query) use ($request) {
+//                if ($request->sch_key) {
+//                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+//                }
+//            })
+//            ->orderby('id','desc')
+//            ->paginate(10);
+//
+//        $carts->getcollection()->map->format();
+
+        $carts = option::where('state', $option_state)
+            ->wherehas('cart', function ($query) use ($request) {
+                $query->wherehas('goods', function ($query) use ($request) {
+                    if ($request->sch_key) {
+                        $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                    }
+                });
             })
             ->orderby('id','desc')
-            ->paginate(5);
-
+            ->paginate(10);
         $carts->getcollection()->map->format();
 
         return $carts;
@@ -137,17 +149,29 @@ class cartrepository implements cartrepositoryinterface
     {
         $option_state = option::STATE_2;
 
-        $carts = cart::wherehas('options', function ($query) use ($option_state) {
-                $query->where('state', $option_state);
-            })
-            ->wherehas('goods', function ($query) use ($request) {
-                if ($request->sch_key) {
-                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
-                }
+//        $carts = cart::wherehas('options', function ($query) use ($option_state) {
+//                $query->where('state', $option_state);
+//            })
+//            ->wherehas('goods', function ($query) use ($request) {
+//                if ($request->sch_key) {
+//                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+//                }
+//            })
+//            ->orderby('id','desc')
+//            ->paginate(10);
+//
+//        $carts->getcollection()->map->format();
+
+        $carts = option::where('state', $option_state)
+            ->wherehas('cart', function ($query) use ($request) {
+                $query->wherehas('goods', function ($query) use ($request) {
+                    if ($request->sch_key) {
+                        $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                    }
+                });
             })
             ->orderby('id','desc')
-            ->paginate(5);
-
+            ->paginate(10);
         $carts->getcollection()->map->format();
 
         return $carts;
@@ -155,20 +179,29 @@ class cartrepository implements cartrepositoryinterface
 
     public function option_state_3($request)
     {
-
         $option_state = option::STATE_3;
 
-        $carts = cart::wherehas('options', function ($query) use ($option_state) {
-                $query->where('state', $option_state);
-            })
-            ->wherehas('goods', function ($query) use ($request) {
-                if ($request->sch_key) {
-                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
-                }
+//        $carts = cart::wherehas('options', function ($query) use ($option_state) {
+//                $query->where('state', $option_state);
+//            })
+//            ->wherehas('goods', function ($query) use ($request) {
+//                if ($request->sch_key) {
+//                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+//                }
+//            })
+//            ->orderby('id','desc')
+//            ->paginate(10);
+
+        $carts = option::where('state', $option_state)
+            ->wherehas('cart', function ($query) use ($request) {
+                $query->wherehas('goods', function ($query) use ($request) {
+                    if ($request->sch_key) {
+                        $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                    }
+                });
             })
             ->orderby('id','desc')
-            ->paginate(5);
-
+            ->paginate(10);
         $carts->getcollection()->map->format();
 
         return $carts;
@@ -178,10 +211,10 @@ class cartrepository implements cartrepositoryinterface
     {
         cart::where('goods_id', $id)->update($request->only('state'));
     }
+
     public function findbyid($id)
     {
         return cart::where('id', $id)
-            ->firstorfail()
-            ->format();
+            ->get()->map->format();
     }
 }

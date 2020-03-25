@@ -6,7 +6,7 @@ namespace App\Repositories;
 
 interface QuestionRepositoryInterface
 {
-    public function all();
+    public function all($request);
 
     public function findById($id);
 

@@ -41,10 +41,14 @@ Route::middleware(['auth', 'role'])->group( function () {
     Route::get('/faq_find_id', 'FaqController@find_id')->name('faqs.find.id');
 
     Route::resources(['questions' => 'QuestionController']);
+    Route::get('/question_find_id', 'QuestionController@find_id')->name('question.find.id');
+
+
     Route::resources(['orders' => 'OrderController']);
     Route::resources(['goods' => 'GoodsController']);
     Route::resources(['option' => 'OptionController']);
     Route::resources(['cart' => 'CartController']);
+    Route::get('/cart_find_id', 'CartController@find_id')->name('cart.find.id');
 
     Route::get('/payment_waiting', 'CartController@cart_state_1')->name('cart_state_1'); //결제대기중
     Route::get('/payment_completed', 'CartController@cart_state_2')->name('cart_state_2'); //결제완료

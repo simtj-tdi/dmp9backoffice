@@ -7,10 +7,15 @@ use App\User;
 
 class UserRepository implements UserRepositoryInterface
 {
-    public function all()
+    public function all($request)
     {
         $users = user::orderBy('id','desc')
             ->where('role', '!=', 'admin')
+            ->when($request->sch_key,
+                function ($q) use ($request) {
+                    return $q->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
+            )
             ->paginate(5);
 
         $users->getCollection()->map->format();;

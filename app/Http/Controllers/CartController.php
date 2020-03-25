@@ -52,6 +52,18 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 
+    public function find_id(Request $request)
+    {
+        $request_data = json_decode($request->data);
+        $cart_info = $this->cartRepository->findById($request_data->cart_id);
+
+        $result['result'] = "success";
+        $result['casrt_info'] = $cart_info;
+        $response = response()->json($result, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+        return $response;
+    }
+
     //결제대기중
     public function cart_state_1(Request $request)
     {
@@ -114,7 +126,7 @@ class CartController extends Controller
 
         $sch = $request->sch;
 
-        return view('carts.index', compact('carts', 'platforms', 'sch', 'route_name'));
+        return view('carts.uploade', compact('carts', 'platforms', 'sch', 'route_name'));
     }
 
     //업로드요청
@@ -127,7 +139,7 @@ class CartController extends Controller
 
         $sch = $request->sch;
 
-        return view('carts.index', compact('carts', 'platforms', 'sch', 'route_name'));
+        return view('carts.uploade', compact('carts', 'platforms', 'sch', 'route_name'));
     }
 
     //업로드완료
@@ -140,7 +152,7 @@ class CartController extends Controller
 
         $sch = $request->sch;
 
-        return view('carts.index', compact('carts', 'platforms', 'sch', 'route_name'));
+        return view('carts.uploade', compact('carts', 'platforms', 'sch', 'route_name'));
     }
 
 

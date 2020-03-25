@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class UserController extends Controller
 {
@@ -12,13 +13,18 @@ class UserController extends Controller
     public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
+
+        $this->route_name = Route::currentRouteName();
     }
 
     public function index(Request $request)
     {
-        $users = $this->userRepository->all();
+        $route_name = $this->route_name;
 
-        return view('users.index', compact('users'));
+        $users = $this->userRepository->all($request);
+        $sch = $request->sch;
+
+        return view('users.index', compact('users', 'route_name', 'sch'));
     }
 
     public function show($id)

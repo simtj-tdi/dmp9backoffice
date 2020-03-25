@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e70303c1-1788-4b07-b368-b43ec7853421" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FaqController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FaqController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Question.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/CartRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CartRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/FaqRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/FaqRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/FaqRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/FaqRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/QuestionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/QuestionRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/QuestionRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/QuestionRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/UserRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/carts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/carts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/questions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
@@ -199,6 +212,7 @@
       <workItem from="1585017831677" duration="1874000" />
       <workItem from="1585041329416" duration="9496000" />
       <workItem from="1585065355345" duration="3474000" />
+      <workItem from="1585097476563" duration="14675000" />
     </task>
     <servers />
   </component>
@@ -214,10 +228,10 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1584967267631" />
-    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1584963992418">
+    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1585116144190">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1584963992418" />
+    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585116144190" />
     <state x="2430" y="375" key="NewPhpClassDialog" timestamp="1584941606962">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
@@ -226,18 +240,18 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="2064" y="482" key="NewPhpFileDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1583288967952" />
-    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1585011303192">
+    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1585097477525">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585011303192" />
+    <state x="1933" y="384" key="com.intellij.ide.util.TipDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585097477525" />
     <state x="1920" y="308" width="639" height="486" key="find.popup" timestamp="1585047631994">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="1920" y="308" width="639" height="486" key="find.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585047631994" />
-    <state x="625" y="244" width="670" height="635" key="search.everywhere.popup" timestamp="1585067324666">
-      <screen x="0" y="23" width="1920" height="992" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1585116185696">
+      <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="625" y="244" width="670" height="635" key="search.everywhere.popup/-2560.23.2560.1417/0.23.1920.992@0.23.1920.992" timestamp="1585067324666" />
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585024499233" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585116185696" />
   </component>
 </project>

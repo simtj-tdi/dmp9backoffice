@@ -1,5 +1,58 @@
 @extends('layouts.backoffice')
 
+@prepend('scripts')
+    <script>
+        $(function() {
+            $("button[name='btn']").click(function() {
+
+                var data = new Object();
+                data.question_id = $(this).data("question_id");
+                var jsonData = JSON.stringify(data);
+                $.ajax({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url: "{{ route('question.find.id') }}",
+                    method: "POST",
+                    dataType: "json",
+                    data: {'data': jsonData},
+                    success: function (data) {
+                        var JSONArray = JSON.parse(JSON.stringify(data));
+
+                        if (JSONArray['result'] == "success") {
+                            //console.log(JSONArray['question_info']['question_id']);
+                            $("input[name='id']").val(JSONArray['question_info']['id']);
+                            $("input[name='user_id']").val(JSONArray['question_info']['user_id']);
+                            $("input[name='question_id']").val(JSONArray['question_info']['question_id']);
+                            $("input[name='name']").val(JSONArray['question_info']['name']);
+                            $("input[name='phone']").val(JSONArray['question_info']['phone']);
+                            $("input[name='email']").val(JSONArray['question_info']['email']);
+
+                            $("input[name='title']").val(JSONArray['question_info']['title']);
+                            $("textarea[name='questions_content']").val(JSONArray['question_info']['content']);
+
+                            if (typeof(JSONArray['question_info']['answers'][0]) != 'undefined') {
+                                $("textarea[name='content']").val(JSONArray['question_info']['answers'][0]['content']);
+                            } else {
+                                $("textarea[name='content']").val();
+                            }
+
+                            $("form[name='frm']").attr("action", "questions/"+JSONArray['question_info']['question_id']);
+
+
+                            $('#largeModal').modal('show');
+                        } else if (JSONArray['result'] == "error") {
+                            alert(JSONArray['error_message']);
+                        };
+                    },
+                    error: function () {
+                        alert("Error while getting results");
+                    }
+                });
+                //$('#largeModal').modal('show')
+            });
+        });
+    </script>
+@endprepend
+
 @section('content')
 
     <div class="container-fluid">
@@ -10,9 +63,9 @@
                         <div class="card-header">
                             <i class="fa fa-align-justify"></i></div>
                         <div class="card-body">
-                            <div class="float-right" >
-                                <a href="{{ route('questions.create') }}" class="btn btn-primary m-2">작성</a>
-                            </div>
+{{--                            <div class="float-right" >--}}
+{{--                                <a href="{{ route('questions.create') }}" class="btn btn-primary m-2">작성</a>--}}
+{{--                            </div>--}}
                             <table class="table table-responsive-sm table-striped">
                                 <thead>
                                 <tr>
@@ -32,7 +85,7 @@
                                     <td><strong>{{ $question->title }}</strong></td>
                                     <td>{{ $question->user->name }}</td>
                                     <td>
-                                        @if ($question->answers->count() >0)
+                                        @if (!$question->answers->isEmpty())
                                             답변완료
                                         @else
                                             답변대기
@@ -42,7 +95,8 @@
                                         {{ Carbon\Carbon::parse($question->created_at)->format('Y-m-d') }}
                                     </td>
                                     <td style="width: 100px">
-                                        <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-block btn-success">수정</a>
+{{--                                        <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-block btn-success">수정</a>--}}
+                                        <button class="btn btn-block btn-success" type="button" name="btn" data-question_id="{{ $question->id }}"  >수정</button>
                                     </td>
                                     <td style="width: 100px">
                                         <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
@@ -53,14 +107,102 @@
                                     </td>
                                 </tr>
                                 @endforeach
-
                                 </tbody>
                             </table>
+                            <div class="col-sm-4 " style="margin: auto">
+                                <form class="form-horizontal" action="{{ route($route_name) }}" method="get" name="frm">
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <select name="sch_key">
+                                                    <option value="title">제목</option>
+                                                    <option value="content">내용</option>
+                                                </select>&nbsp;
+                                                <input class="form-control" id="input2-group2" type="text" name="sch" value="{{ $sch }}" placeholder="검색어" autocomplete="sch"><span class="input-group-append">
+                                                    <button class="btn btn-primary" type="submit">검색</button></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             {{ $questions->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form method="POST" name="frm" action="">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="question_id" value="">
+
+                    <div class="modal-body">
+                        <input type="hidden" name="id" value="">
+
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>ID</label>
+                                <input class="form-control" type="text" placeholder="id" name="id" value="" disabled required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>이름</label>
+                                <input class="form-control" type="text" placeholder="Name" name="name" value="" disabled required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>연락처</label>
+                                <input class="form-control" type="text" placeholder="Phone" name="phone" value="" disabled required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>Email</label>
+                                <input class="form-control" type="text" placeholder="Email" name="email" value="" disabled required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>제목</label>
+                                <input class="form-control" type="text" placeholder="title" name="title" value="" disabled required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>내용</label>
+                                <textarea class="form-control" style="height: 150px" placeholder="content" name="questions_content" disabled required autofocus></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>답변</label>
+                                <textarea class="form-control" style="height: 150px" placeholder="답변" name="content"  required autofocus></textarea>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
+                        <button class="btn btn-success" type="submit" name="submit" >수정</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content-->
+        </div>
+        <!-- /.modal-dialog-->
     </div>
 @endsection

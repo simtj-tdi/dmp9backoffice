@@ -1,6 +1,7 @@
 @extends('layouts.backoffice')
 
 @prepend('scripts')
+    <script>
     $(function() {
         $("#expiration_date").datepicker({
             dateFormat: 'yy-mm-dd' //Input Display Format 변경
@@ -18,6 +19,7 @@
             ,minDate: new Date() //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
         });
     });
+    </script>
 @endprepend
 
 @section('content')

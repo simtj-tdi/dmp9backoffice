@@ -128,7 +128,47 @@
             </li>
         </ul>
         <div class="c-subheader px-3">
+            <ol class="breadcrumb border-0 m-0">
 
+                <li class="breadcrumb-item"><a href="/users">Home</a></li>
+                @if (class_basename(Route::current()->controller) === "UserController")
+                    <li class="breadcrumb-item ">회원관리</li>
+                    <li class="breadcrumb-item active">회원리스트</li>
+                @elseif (class_basename(Route::current()->controller) === "FaqController")
+                    <li class="breadcrumb-item ">계시판관리</li>
+                    <li class="breadcrumb-item active">자주 묻는 질문</li>
+                @elseif (class_basename(Route::current()->controller) === "QuestionController")
+                    <li class="breadcrumb-item ">계시판관리</li>
+                    <li class="breadcrumb-item active">문의 및 답변</li>
+                @elseif (class_basename(Route::current()->controller) === "CartController")
+
+                    <li class="breadcrumb-item ">주문서 관리</li>
+                    @if (Route::current()->getActionMethod() === "index")
+                        <li class="breadcrumb-item active">전체</li>
+                    @elseif (Route::current()->getActionMethod() === "cart_state_1")
+                        <li class="breadcrumb-item active">결제대기중</li>
+                    @elseif (Route::current()->getActionMethod() === "cart_state_2")
+                        <li class="breadcrumb-item active">결제완료</li>
+                    @elseif (Route::current()->getActionMethod() === "cart_state_3")
+                        <li class="breadcrumb-item active">데이터추출중</li>
+                    @elseif (Route::current()->getActionMethod() === "cart_state_4")
+                        <li class="breadcrumb-item active">데이터추출완료</li>
+                    @elseif (Route::current()->getActionMethod() === "option_state_1")
+                        <li class="breadcrumb-item active">업로드대기</li>
+                    @elseif (Route::current()->getActionMethod() === "option_state_2")
+                        <li class="breadcrumb-item active">업로드요청</li>
+                    @elseif (Route::current()->getActionMethod() === "option_state_3")
+                        <li class="breadcrumb-item active">업로드완료</li>
+                    @endif
+
+                @elseif (class_basename(Route::current()->controller) === "OrderController")
+                    <li class="breadcrumb-item ">계산서 관리</li>
+                    <li class="breadcrumb-item active">계산서요청리스트</li>
+                @endif
+
+
+
+            </ol>
         </div>
     </header>
     <div class="c-body">

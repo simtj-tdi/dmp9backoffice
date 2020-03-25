@@ -6,9 +6,14 @@ use App\Faq;
 
 class FaqRepository implements FaqRepositoryInterface
 {
-    public function all()
+    public function all($request)
     {
         $faqs = faq::orderBy('id','desc')
+            ->when($request->sch_key,
+                function ($q) use ($request) {
+                    return $q->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
+            )
             ->paginate(5);
 
         $faqs->getCollection()->map->format();;

@@ -70,22 +70,6 @@
                     }
                 });
             });
-
-            $("#expiration_date").datepicker({
-                dateFormat: 'yy-mm-dd' //Input Display Format 변경
-                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
-                ,changeYear: true //콤보박스에서 년 선택 가능
-                ,changeMonth: true //콤보박스에서 월 선택 가능
-                ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
-                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트
-                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
-                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
-                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
-                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
-                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
-                ,minDate: new Date() //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-            });
         });
     </script>
 @endprepend
@@ -103,89 +87,47 @@
                             <div class="card-body">
                                 <table class="table table-responsive-sm table-striped">
                                     <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>광고주</th>
-                                        <th>데이터명</th>
-                                        <th>데이터<br/>추출수</th>
-                                        <th>구매가격</th>
-                                        <th>구매일</th>
-                                        <th>유효기간</th>
-                                        <th>요청횟수</th>
-                                        <th>상태</th>
-                                        <th></th>
-                                    </tr>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>광고주</th>
+                                            <th>데이터명</th>
+                                            <th>데이터<br/>추출수</th>
+                                            <th>구매가격</th>
+                                            <th>대상플랫폼</th>
+                                            <th>대상플랫폼 URL</th>
+                                            <th>아이디</th>
+                                            <th>비밀번호</th>
+                                            <th>상태</th>
+                                            <th></th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @forelse($carts as $cart)
-                                        <tr>
-                                            <td>{{ $cart->goods->id }}</td>
-                                            <td>{{ $cart->goods->advertiser }}</td>
-                                            <td>{{ $cart->goods->data_name }}</td>
-                                            <td>{{ number_format($cart->goods->data_count) }}</td>
-                                            <td>{{ number_format($cart->goods->buy_price) }}</td>
-                                            <td>{{ $cart->buy_date }}</td>
-                                            <td>{{ $cart->goods->expiration_date }}</td>
-                                            <td>{{ $cart->goods->data_request }}</td>
-                                            <td>
-                                                @if ($cart->state === 1)
-                                                    결제대기중
-                                                @elseif ($cart->state === 2)
-                                                    결제완료
-                                                @elseif ($cart->state === 3)
-                                                    데이터추출중
-                                                @elseif ($cart->state === 4)
-                                                    데이터추출완료
-                                                @endif
-                                            </td>
-                                            <th>
-{{--                                            <a href="{{ route('cart.edit', $cart->goods->id) }}" class="btn btn-block btn-success">수정</a>--}}
-                                                <button class="btn btn-block btn-success" type="button" name="btn" data-cart_id="{{ $cart->goods->id }}"  >수정</button>
-                                            </th>
-                                        </tr>
-                                        @if (!$cart->options->isEmpty())
                                             <tr>
-                                                <td colspan="11">
-                                                    <table class="table table-responsive-sm table-striped">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>대상플랫폼</th>
-                                                            <th>대상플랫폼 URL</th>
-                                                            <th>아이디</th>
-                                                            <th>비밀번호</th>
-                                                            <th>상태</th>
-                                                            <th></th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach($cart->options as $option)
-
-                                                            <tr>
-                                                                <td>{{$option->platform['name']}}</td>
-                                                                <td>{{$option->platform['url']}}</td>
-                                                                <td>{{$option->sns_id}}</td>
-                                                                <td>{{$option->sns_password}}</td>
-                                                                <td>
-
-                                                                    <select name="option_state" data-option_id="{{ $option->id }}">
-                                                                        <option value="1" {{ $option->state == '1' ? 'selected' : '' }}>대기</option>
-                                                                        <option value="2" {{ $option->state == '2' ? 'selected' : '' }}>업로드요청</option>
-                                                                        <option value="3" {{ $option->state == '3' ? 'selected' : '' }}>업로드완료</option>
-                                                                    </select>
-
-                                                                </td>
-                                                                <td></td>
-                                                            </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
+                                                <td>{{ $cart->id }}</td>
+                                                <td>{{ $cart->cart->goods->advertiser }}</td>
+                                                <td>{{ $cart->cart->goods->data_name }}</td>
+                                                <td>{{ $cart->cart->goods->data_count }}</td>
+                                                <td>{{ $cart->cart->goods->buy_price }}</td>
+                                                <td>{{ $cart->platform->name }}</td>
+                                                <td>{{ $cart->platform->url }}</td>
+                                                <td>{{ $cart->sns_id }}</td>
+                                                <td>{{ $cart->sns_password }}</td>
+                                                <td>
+                                                    <select name="option_state" data-option_id="{{ $cart->id }}">
+                                                        <option value="1" {{ $cart->state == '1' ? 'selected' : '' }}>대기</option>
+                                                        <option value="2" {{ $cart->state == '2' ? 'selected' : '' }}>업로드요청</option>
+                                                        <option value="3" {{ $cart->state == '3' ? 'selected' : '' }}>업로드완료</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-block btn-success" type="button" name="btn" data-cart_id="{{ $cart->cart->goods->id }}"  >수정</button>
                                                 </td>
                                             </tr>
-                                        @endif
                                     @empty
-                                       <tr>
-                                           <td class="text-center" colspan="10">등록 데이터가 없습니다.</td>
-                                       </tr>
+                                        <tr>
+                                            <td class="text-center" colspan="11">등록 데이터가 없습니다.</td>
+                                        </tr>
                                     @endforelse
                                     </tbody>
                                 </table>
@@ -199,7 +141,7 @@
                                                         <option value="advertiser"  >광고주</option>
                                                         <option value="data_name" >데이터명</option>
                                                     </select>&nbsp;
-                                                    <input class="form-control" id="input2-group2" type="text" name="sch" value="{{ $sch }}" placeholder="검색어" autocomplete="sch"><span class="input-group-append">
+                                                    <input class="form-control" id="input2-group2" type="text" name="sch" value="{{ $sch }}" placeholder="데이터명" autocomplete="sch"><span class="input-group-append">
                                                     <button class="btn btn-primary" type="submit">검색</button></span>
                                                 </div>
                                             </div>
@@ -207,8 +149,8 @@
                                     </form>
                                 </div>
                                 {{ $carts->links() }}
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>

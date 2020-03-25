@@ -116,6 +116,25 @@
 
                                 </tbody>
                             </table>
+
+                            <div class="col-sm-4 " style="margin: auto">
+                                <form class="form-horizontal" action="{{ route($route_name) }}" method="get" name="frm">
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <select name="sch_key">
+                                                    <option value="user_id">ID</option>
+                                                    <option value="name">이름</option>
+                                                    <option value="company_name">회사명</option>
+                                                </select>&nbsp;
+                                                <input class="form-control" id="input2-group2" type="text" name="sch" value="{{ $sch }}" placeholder="검색어" autocomplete="sch"><span class="input-group-append">
+                                                    <button class="btn btn-primary" type="submit">검색</button></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
                             {{ $users->links() }}
                         </div>
                     </div>

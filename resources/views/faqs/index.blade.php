@@ -3,8 +3,20 @@
 @prepend('scripts')
     <script>
         $(function() {
-            $("button[name='btn']").click(function() {
+            $("button[name='btn_create']").click(function() {
+                $("input[name='id']").val("{{ auth::user()->name }}");
 
+                $("[name='submit']").removeClass("btn-success");
+                $("[name='submit']").addClass("btn-primary");
+
+                $("[name='submit']").text("작성");
+                $("input[name='_method']").val("POST");
+                $("form[name='frm']").attr("action", "{{ route('faqs.store') }}" );
+
+                $('#largeModal').modal('show');
+            });
+
+            $("button[name='btn']").click(function() {
                 var data = new Object();
                 data.faq_id = $(this).data("faq_id");
                 var jsonData = JSON.stringify(data);
@@ -33,14 +45,12 @@
                         alert("Error while getting results");
                     }
                 });
-                //$('#largeModal').modal('show')
             });
         });
     </script>
 @endprepend
 
 @section('content')
-
     <div class="container-fluid">
         <div class="animated fadeIn">
             <div class="row">
@@ -50,7 +60,8 @@
                             <i class="fa fa-align-justify"></i></div>
                         <div class="card-body">
                             <div class="float-right">
-                                <a href="{{ route('faqs.create') }}" class="btn btn-primary m-2">작성</a>
+{{--                                <a href="{{ route('faqs.create') }}" class="btn btn-primary m-2" name="">작성</a>--}}
+                                    <button class="btn btn-primary m-2" type="button" name="btn_create" >작성</button>
                             </div>
                             <table class="table table-responsive-sm table-striped">
                                 <thead>
@@ -88,6 +99,22 @@
 
                                 </tbody>
                             </table>
+                            <div class="col-sm-4 " style="margin: auto">
+                                <form class="form-horizontal" action="{{ route($route_name) }}" method="get" name="frm">
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <select name="sch_key">
+                                                    <option value="title">제목</option>
+                                                    <option value="content">내용</option>
+                                                </select>&nbsp;
+                                                <input class="form-control" id="input2-group2" type="text" name="sch" value="{{ $sch }}" placeholder="검색어" autocomplete="sch"><span class="input-group-append">
+                                                    <button class="btn btn-primary" type="submit">검색</button></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             {{ $faqs->links() }}
                         </div>
                     </div>
@@ -99,7 +126,7 @@
     <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form method="POST" name="frm" action=" ">
+                <form method="POST" name="frm" action="">
                     @csrf
                     @method('PUT')
                     <div class="modal-body">
@@ -129,7 +156,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
-                        <button class="btn btn-success" type="submit">수정</button>
+                        <button class="btn btn-success" type="submit" name="submit" >수정</button>
                     </div>
                 </form>
             </div>

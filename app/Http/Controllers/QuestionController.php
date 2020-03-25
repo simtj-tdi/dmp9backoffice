@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\QuestionRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class QuestionController extends Controller
 {
@@ -12,13 +13,20 @@ class QuestionController extends Controller
     public function __construct(QuestionRepositoryInterface $questionRepository)
     {
         $this->questionRepository = $questionRepository;
+
+        $this->route_name = Route::currentRouteName();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $questions = $this->questionRepository->all();
 
-        return view('questions.index', compact('questions'));
+        $route_name = $this->route_name;
+
+        $questions = $this->questionRepository->all($request);
+
+        $sch = $request->sch;
+
+        return view('questions.index', compact('questions','sch', 'route_name'));
     }
 
     public function create()
@@ -63,5 +71,17 @@ class QuestionController extends Controller
         $this->questionRepository->destory($id);
 
         return redirect()->route('questions.index');
+    }
+
+    public function find_id(Request $request)
+    {
+        $request_data = json_decode($request->data);
+        $question_info = $this->questionRepository->findById($request_data->question_id);
+
+        $result['result'] = "success";
+        $result['question_info'] = $question_info;
+        $response = response()->json($result, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+        return $response;
     }
 }

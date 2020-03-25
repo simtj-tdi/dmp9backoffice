@@ -7,9 +7,14 @@ use App\Answer;
 
 class QuestionRepository implements QuestionRepositoryInterface
 {
-    public function all()
+    public function all($request)
     {
         $questions = question::orderBy('id', 'desc')
+            ->when($request->sch_key,
+                function ($q) use ($request) {
+                    return $q->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
+            )
             ->paginate(5);
 
         $questions->getCollection()->map->format();;

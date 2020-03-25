@@ -16,6 +16,7 @@ class Question extends Model
     {
         return [
             'question_id' => $this->id,
+            'id' => $this->user->user_id,
             'name' => $this->name,
             'title' => $this->title,
             'content' => $this->content,
