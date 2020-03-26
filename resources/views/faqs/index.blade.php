@@ -34,7 +34,8 @@
                             $("input[name='id']").val(JSONArray['faq_info']['name']);
                             $("input[name='title']").val(JSONArray['faq_info']['title']);
                             $("textarea[name='content']").val(JSONArray['faq_info']['content']);
-                            $("form[name='frm']").attr("action", "faqs/"+JSONArray['faq_info']['faq_id']);
+
+                            $("#modelForm").attr("action", "faqs/"+JSONArray['faq_info']['faq_id']);
 
                             $('#largeModal').modal('show');
                         } else if (JSONArray['result'] == "error") {
@@ -57,11 +58,13 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i></div>
+                            <i class="fa fa-align-justify"></i>
+                            자주 묻는 질문
+                        </div>
                         <div class="card-body">
                             <div class="float-right">
 {{--                                <a href="{{ route('faqs.create') }}" class="btn btn-primary m-2" name="">작성</a>--}}
-                                    <button class="btn btn-primary m-2" type="button" name="btn_create" >작성</button>
+                                    <button class="btn btn-primary m-2 btn-sm" type="button" name="btn_create" >작성</button>
                             </div>
                             <table class="table table-responsive-sm table-striped">
                                 <thead>
@@ -83,15 +86,15 @@
                                     <td>
                                         {{ Carbon\Carbon::parse($faq->created_at)->format('Y-m-d') }}
                                     </td>
-                                    <td style="width: 100px">
+                                    <td style="width: 70px">
 {{--                                        <a href="{{ route('faqs.edit', $faq->id) }}" class="btn btn-block btn-success">수정</a>--}}
-                                        <button class="btn btn-block btn-success" type="button" name="btn" data-faq_id="{{ $faq->id }}"  >수정</button>
+                                        <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-faq_id="{{ $faq->id }}"  >수정</button>
                                     </td>
-                                    <td style="width: 100px">
+                                    <td style="width: 70px">
                                         <form action="{{ route('faqs.destroy', $faq->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-block btn-danger">삭제</button>
+                                            <button class="btn btn-block btn-danger btn-sm">삭제</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -100,7 +103,7 @@
                                 </tbody>
                             </table>
                             <div class="col-sm-4 " style="margin: auto">
-                                <form class="form-horizontal" action="{{ route($route_name) }}" method="get" name="frm">
+                                <form class="form-horizontal" action="{{ route($route_name) }}" method="GET">
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <div class="input-group">
@@ -109,7 +112,7 @@
                                                     <option value="content">내용</option>
                                                 </select>&nbsp;
                                                 <input class="form-control" id="input2-group2" type="text" name="sch" value="{{ $sch }}" placeholder="검색어" autocomplete="sch"><span class="input-group-append">
-                                                    <button class="btn btn-primary" type="submit">검색</button></span>
+                                                    <button class="btn btn-primary btn-sm" type="submit">검색</button></span>
                                             </div>
                                         </div>
                                     </div>
@@ -126,9 +129,13 @@
     <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form method="POST" name="frm" action="">
+                <form id="modalForm">
                     @csrf
                     @method('PUT')
+                    <div class="modal-header">
+                        <h4 class="modal-title">자주 묻는 질문</h4>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
                     <div class="modal-body">
                         <input type="hidden" name="id" value="">
 
@@ -155,8 +162,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
-                        <button class="btn btn-success" type="submit" name="submit" >수정</button>
+                        <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">닫기</button>
+                        <button class="btn btn-success btn-sm" type="submit" name="submit" >저장</button>
                     </div>
                 </form>
             </div>

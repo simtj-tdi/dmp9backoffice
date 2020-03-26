@@ -34,13 +34,13 @@ Route::middleware(['auth', 'role'])->group( function () {
         return view('backoffice');
     })->name('backoffice');
 
-    Route::resources(['users' => 'UserController']);
+    Route::resource('users' , 'UserController');
     Route::get('/user_find_id', 'UserController@find_id')->name('users.find.id');
 
-    Route::resources(['faqs' => 'FaqController']);
+    Route::resource('faqs' , 'FaqController');
     Route::get('/faq_find_id', 'FaqController@find_id')->name('faqs.find.id');
 
-    Route::resources(['questions' => 'QuestionController']);
+    Route::resource('questions','QuestionController')->only('index','destroy');
     Route::get('/question_find_id', 'QuestionController@find_id')->name('question.find.id');
 
 

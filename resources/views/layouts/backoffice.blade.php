@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>DMP9</title>
+    <title>DMP9 BACKOFFICE</title>
 
     <meta name="theme-color" content="#ffffff">
 
@@ -22,16 +22,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pace.min.css') }}" rel="stylesheet">
 
-
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-
-    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
-
-    @stack('scripts')
-
 </head>
 
 <body class="c-app">
@@ -135,7 +126,7 @@
                     <li class="breadcrumb-item ">회원관리</li>
                     <li class="breadcrumb-item active">회원리스트</li>
                 @elseif (class_basename(Route::current()->controller) === "FaqController")
-                    <li class="breadcrumb-item ">계시판관리</li>
+                    <li class="breadcrumb-item ">게시판관리</li>
                     <li class="breadcrumb-item active">자주 묻는 질문</li>
                 @elseif (class_basename(Route::current()->controller) === "QuestionController")
                     <li class="breadcrumb-item ">계시판관리</li>
@@ -181,9 +172,13 @@
     </footer>
 </div>
 
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <!-- CoreUI and necessary plugins-->
-<script src="{{ asset('js/pace.min.js') }}"></script>
 <script src="{{ asset('js/coreui.bundle.min.js') }}"></script>
+
+@stack('scripts')
 
 </body>
 

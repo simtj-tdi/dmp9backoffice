@@ -3,20 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e70303c1-1788-4b07-b368-b43ec7853421" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FaqController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FaqController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Question.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CartRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CartRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/FaqRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/FaqRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/FaqRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/FaqRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/QuestionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/QuestionRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/QuestionRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/QuestionRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/UserRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/carts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/carts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/carts/uploade.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/uploade.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/questions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/index.blade.php" afterDir="false" />
@@ -212,7 +200,9 @@
       <workItem from="1585017831677" duration="1874000" />
       <workItem from="1585041329416" duration="9496000" />
       <workItem from="1585065355345" duration="3474000" />
-      <workItem from="1585097476563" duration="14675000" />
+      <workItem from="1585097476563" duration="14783000" />
+      <workItem from="1585127908022" duration="1155000" />
+      <workItem from="1585191350609" duration="6181000" />
     </task>
     <servers />
   </component>
@@ -244,14 +234,15 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="1933" y="384" key="com.intellij.ide.util.TipDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585097477525" />
-    <state x="1920" y="308" width="639" height="486" key="find.popup" timestamp="1585047631994">
-      <screen x="1280" y="23" width="1920" height="1057" />
+    <state x="427" y="219" width="670" height="486" key="find.popup" timestamp="1585191373712">
+      <screen x="0" y="23" width="1280" height="726" />
     </state>
+    <state x="427" y="219" width="670" height="486" key="find.popup/0.23.1280.726/1280.23.1920.1057@0.23.1280.726" timestamp="1585191373712" />
     <state x="1920" y="308" width="639" height="486" key="find.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585047631994" />
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1585116185696">
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1585206436296">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="625" y="244" width="670" height="635" key="search.everywhere.popup/-2560.23.2560.1417/0.23.1920.992@0.23.1920.992" timestamp="1585067324666" />
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585116185696" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1585206436296" />
   </component>
 </project>

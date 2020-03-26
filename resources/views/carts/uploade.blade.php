@@ -29,7 +29,8 @@
                             $("input[name='data_count']").val(JSONArray['casrt_info'][0]['goods_id']['data_count']);
                             $("input[name='buy_price']").val(JSONArray['casrt_info'][0]['goods_id']['buy_price']);
                             $("input[name='expiration_date']").val(JSONArray['casrt_info'][0]['goods_id']['expiration_date']);
-                            $("form[name='frm']").attr("action", "cart/"+JSONArray['casrt_info'][0]['goods_id']['id']);
+
+                            $("#modelForm").attr("action", "cart/"+JSONArray['casrt_info'][0]['goods_id']['id']);
 
                             $('#largeModal').modal('show');
                         } else if (JSONArray['result'] == "error") {
@@ -121,7 +122,7 @@
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-block btn-success" type="button" name="btn" data-cart_id="{{ $cart->cart->goods->id }}"  >수정</button>
+                                                    <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-cart_id="{{ $cart->cart->goods->id }}"  >수정</button>
                                                 </td>
                                             </tr>
                                     @empty
@@ -161,10 +162,13 @@
     <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form method="POST" name="frm" action="">
+                <form id="modalForm">
                     @csrf
                     @method('PUT')
-
+                    <div class="modal-header">
+                        <h4 class="modal-title">전체</h4>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
                     <div class="modal-body">
                         <div class="form-group row">
                             <div class="col">
@@ -235,8 +239,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
-                        <button class="btn btn-success" type="submit" name="submit" >수정</button>
+                        <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">닫기</button>
+                        <button class="btn btn-success btn-sm" type="submit" name="submit" >수정</button>
                     </div>
                 </form>
             </div>

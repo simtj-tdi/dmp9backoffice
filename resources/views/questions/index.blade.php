@@ -35,7 +35,7 @@
                                 $("textarea[name='content']").val();
                             }
 
-                            $("form[name='frm']").attr("action", "questions/"+JSONArray['question_info']['question_id']);
+                            $("#modelForm").attr("action", "questions/"+JSONArray['question_info']['question_id']);
 
 
                             $('#largeModal').modal('show');
@@ -54,14 +54,14 @@
 @endprepend
 
 @section('content')
-
     <div class="container-fluid">
         <div class="animated fadeIn">
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i></div>
+                            <i class="fa fa-align-justify"></i>문의 및 답변
+                        </div>
                         <div class="card-body">
 {{--                            <div class="float-right" >--}}
 {{--                                <a href="{{ route('questions.create') }}" class="btn btn-primary m-2">작성</a>--}}
@@ -94,15 +94,14 @@
                                     <td>
                                         {{ Carbon\Carbon::parse($question->created_at)->format('Y-m-d') }}
                                     </td>
-                                    <td style="width: 100px">
-{{--                                        <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-block btn-success">수정</a>--}}
-                                        <button class="btn btn-block btn-success" type="button" name="btn" data-question_id="{{ $question->id }}"  >수정</button>
+                                    <td style="width: 70px">
+                                        <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-question_id="{{ $question->id }}"  >답변</button>
                                     </td>
-                                    <td style="width: 100px">
+                                    <td style="width: 70px">
                                         <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-block btn-danger">삭제</button>
+                                            <button class="btn btn-block btn-danger btn-sm">삭제</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -110,7 +109,7 @@
                                 </tbody>
                             </table>
                             <div class="col-sm-4 " style="margin: auto">
-                                <form class="form-horizontal" action="{{ route($route_name) }}" method="get" name="frm">
+                                <form class="form-horizontal" action="{{ route($route_name) }}" method="GET">
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <div class="input-group">
@@ -136,11 +135,12 @@
     <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form method="POST" name="frm" action="">
-                    @csrf
-                    @method('PUT')
+                <form id="modalForm">
                     <input type="hidden" name="question_id" value="">
-
+                    <div class="modal-header">
+                        <h4 class="modal-title">문의 및 답변</h4>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
                     <div class="modal-body">
                         <input type="hidden" name="id" value="">
 
@@ -197,7 +197,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
-                        <button class="btn btn-success" type="submit" name="submit" >수정</button>
+                        <button class="btn btn-success" type="submit" name="submit" >저장</button>
                     </div>
                 </form>
             </div>

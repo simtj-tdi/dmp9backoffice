@@ -27,7 +27,7 @@
                             $("select[name='approved']").val(JSONArray['user_info']['approved']).attr("selected", "selected");
 
 
-                            $("form[name='frm']").attr("action", "users/"+JSONArray['user_info']['id']);
+                            $("#modelForm").attr("action", "users/"+JSONArray['user_info']['id']);
 
 
                             $('#largeModal').modal('show');
@@ -101,14 +101,14 @@
                                     <td>
                                         {{ Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}
                                     </td>
-                                    <td style="width: 100px">
-                                        <button class="btn btn-block btn-success" type="button" name="btn" data-user_id="{{ $user->id }}"  >수정</button>
+                                    <td style="width: 70px">
+                                        <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-user_id="{{ $user->id }}"  >수정</button>
                                     </td>
-                                    <td style="width: 100px">
+                                    <td style="width: 70px">
                                         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-block btn-danger">삭제</button>
+                                            <button class="btn btn-block btn-danger btn-sm">삭제</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -118,7 +118,7 @@
                             </table>
 
                             <div class="col-sm-4 " style="margin: auto">
-                                <form class="form-horizontal" action="{{ route($route_name) }}" method="get" name="frm">
+                                <form class="form-horizontal" action="{{ route($route_name) }}" method="GET">
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <div class="input-group">
@@ -128,7 +128,7 @@
                                                     <option value="company_name">회사명</option>
                                                 </select>&nbsp;
                                                 <input class="form-control" id="input2-group2" type="text" name="sch" value="{{ $sch }}" placeholder="검색어" autocomplete="sch"><span class="input-group-append">
-                                                    <button class="btn btn-primary" type="submit">검색</button></span>
+                                                    <button class="btn btn-primary btn-sm" type="submit">검색</button></span>
                                             </div>
                                         </div>
                                     </div>
@@ -146,47 +146,45 @@
     <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <form method="POST" name="frm" action=" ">
+                    <form id="modalForm">
                         @csrf
                         @method('PUT')
+                        <div class="modal-header">
+                            <h4 class="modal-title">회원관리</h4>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        </div>
                         <div class="modal-body">
                                 <input type="hidden" name="id" value="">
-
                                 <div class="form-group row">
                                     <div class="col">
                                         <label>ID</label>
                                         <input class="form-control" type="text" placeholder="Name" name="user_id" value="" disabled required autofocus>
                                     </div>
                                 </div>
-
                                 <div class="form-group row">
                                     <div class="col">
                                         <label>이름</label>
                                         <input class="form-control" type="text" placeholder="Name" name="name" value="" disabled required autofocus>
                                     </div>
                                 </div>
-
                                 <div class="form-group row">
                                     <div class="col">
                                         <label>회사명</label>
                                         <input class="form-control" type="text" placeholder="company_name" name="company_name" value="" required autofocus>
                                     </div>
                                 </div>
-
                                 <div class="form-group row">
                                     <div class="col">
                                         <label>연락처</label>
                                         <input class="form-control" type="text" placeholder="Phone" name="phone" value="" required autofocus>
                                     </div>
                                 </div>
-
                                 <div class="form-group row">
                                     <div class="col">
                                         <label>Email</label>
                                         <input class="form-control" type="text" placeholder="Email" name="email" value="" required autofocus>
                                     </div>
                                 </div>
-
                                 <div class="form-group row">
                                     <div class="col">
                                         <label>승인여부</label>
@@ -198,8 +196,8 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
-                            <button class="btn btn-success" type="submit">수정</button>
+                            <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">닫기</button>
+                            <button class="btn btn-success btn-sm" type="submit">저장</button>
                         </div>
                     </form>
                 </div>
