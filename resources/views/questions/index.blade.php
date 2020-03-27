@@ -63,9 +63,9 @@
                             <i class="fa fa-align-justify"></i>문의 및 답변
                         </div>
                         <div class="card-body">
-{{--                            <div class="float-right" >--}}
-{{--                                <a href="{{ route('questions.create') }}" class="btn btn-primary m-2">작성</a>--}}
-{{--                            </div>--}}
+                            <div class="float-right" >
+                                &nbsp;
+                            </div>
                             <table class="table table-responsive-sm table-striped">
                                 <thead>
                                 <tr>

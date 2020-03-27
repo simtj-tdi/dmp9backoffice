@@ -43,6 +43,8 @@ Route::middleware(['auth', 'role'])->group( function () {
     Route::resource('questions','QuestionController')->only('index','destroy');
     Route::get('/question_find_id', 'QuestionController@find_id')->name('question.find.id');
 
+    Route::resource('contactsus','ContactsusController')->only('index','destroy');
+    Route::get('/contactsus_find_id', 'ContactsusController@find_id')->name('contactsu.find.id');
 
     Route::resources(['orders' => 'OrderController']);
     Route::resources(['goods' => 'GoodsController']);

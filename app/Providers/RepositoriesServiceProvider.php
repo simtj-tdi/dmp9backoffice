@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\CartRepository;
 use App\Repositories\CartRepositoryInterface;
+use App\Repositories\ContactsusRepository;
+use App\Repositories\ContactsusRepositoryInterface;
 use App\Repositories\FaqRepository;
 use App\Repositories\FaqRepositoryInterface;
 use App\Repositories\GoodsRepository;
@@ -47,5 +49,6 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(CartRepositoryInterface::class, CartRepository::class);
         $this->app->bind(OptionRepositoryInterface::class, OptionRepository::class);
         $this->app->bind(PlatformRepositoryInterface::class, PlatformRepository::class);
+        $this->app->bind(ContactsusRepositoryInterface::class, ContactsusRepository::class);
     }
 }

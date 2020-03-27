@@ -51,6 +51,9 @@
                 <li class="c-sidebar-nav-item">
                     <a class="c-sidebar-nav-link" href="/questions"><span class="c-sidebar-nav-icon"></span>문의 및 답변</a>
                 </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/contactsus"><span class="c-sidebar-nav-icon"></span>Contacts Us</a>
+                </li>
             </ul>
         </li>
 
@@ -61,7 +64,6 @@
                 <li class="c-sidebar-nav-item ">
                     <a class="c-sidebar-nav-link" href="/cart"><span class="c-sidebar-nav-icon"></span>전체</a>
                 </li>
-
                 <li class="c-sidebar-nav-item">
                     <a class="c-sidebar-nav-link" href="/payment_waiting"><span class="c-sidebar-nav-icon"></span>결제대기중</a>
                 </li>
@@ -120,7 +122,6 @@
         </ul>
         <div class="c-subheader px-3">
             <ol class="breadcrumb border-0 m-0">
-
                 <li class="breadcrumb-item"><a href="/users">Home</a></li>
                 @if (class_basename(Route::current()->controller) === "UserController")
                     <li class="breadcrumb-item ">회원관리</li>
@@ -129,8 +130,11 @@
                     <li class="breadcrumb-item ">게시판관리</li>
                     <li class="breadcrumb-item active">자주 묻는 질문</li>
                 @elseif (class_basename(Route::current()->controller) === "QuestionController")
-                    <li class="breadcrumb-item ">계시판관리</li>
+                    <li class="breadcrumb-item ">게시판관리</li>
                     <li class="breadcrumb-item active">문의 및 답변</li>
+                @elseif (class_basename(Route::current()->controller) === "ContactsusController")
+                    <li class="breadcrumb-item ">게시판관리</li>
+                    <li class="breadcrumb-item active">Contacts Us</li>
                 @elseif (class_basename(Route::current()->controller) === "CartController")
 
                     <li class="breadcrumb-item ">주문서 관리</li>
@@ -151,14 +155,10 @@
                     @elseif (Route::current()->getActionMethod() === "option_state_3")
                         <li class="breadcrumb-item active">업로드완료</li>
                     @endif
-
                 @elseif (class_basename(Route::current()->controller) === "OrderController")
                     <li class="breadcrumb-item ">계산서 관리</li>
                     <li class="breadcrumb-item active">계산서요청리스트</li>
                 @endif
-
-
-
             </ol>
         </div>
     </header>
