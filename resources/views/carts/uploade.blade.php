@@ -30,8 +30,8 @@
                             $("input[name='buy_price']").val(JSONArray['casrt_info'][0]['goods_id']['buy_price']);
                             $("input[name='expiration_date']").val(JSONArray['casrt_info'][0]['goods_id']['expiration_date']);
 
-                            $("#modelForm").attr("action", "cart/"+JSONArray['casrt_info'][0]['goods_id']['id']);
-
+                            //$("#modelForm").attr("action", "cart/"+JSONArray['casrt_info'][0]['goods_id']['id']);
+                            $("form[name='frm']").attr("action", "cart/"+JSONArray['casrt_info'][0]['goods_id']['id']);
                             $('#largeModal').modal('show');
                         } else if (JSONArray['result'] == "error") {
                             alert(JSONArray['error_message']);
@@ -162,7 +162,7 @@
     <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form id="modalForm">
+                <form method="POST" name="frm" action="">
                     @csrf
                     @method('PUT')
                     <div class="modal-header">
