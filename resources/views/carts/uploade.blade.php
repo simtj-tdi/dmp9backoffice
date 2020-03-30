@@ -30,6 +30,13 @@
                             $("input[name='buy_price']").val(JSONArray['casrt_info'][0]['goods_id']['buy_price']);
                             $("input[name='expiration_date']").val(JSONArray['casrt_info'][0]['goods_id']['expiration_date']);
 
+                            if (JSONArray['casrt_info'][0]['goods_id']['data_files']) {
+                                $("#file_name_row").css("display", "block");
+                                $("#file_name").text(JSONArray['casrt_info'][0]['goods_id']['data_files']);
+                            } else {
+                                $("#file_name_row").css("display", "none");
+                            }
+
                             //$("#modelForm").attr("action", "cart/"+JSONArray['casrt_info'][0]['goods_id']['id']);
                             $("form[name='frm']").attr("action", "cart/"+JSONArray['casrt_info'][0]['goods_id']['id']);
                             $('#largeModal').modal('show');
@@ -108,8 +115,8 @@
                                                 <td>{{ $cart->id }}</td>
                                                 <td>{{ $cart->cart->goods->advertiser }}</td>
                                                 <td>{{ $cart->cart->goods->data_name }}</td>
-                                                <td>{{ $cart->cart->goods->data_count }}</td>
-                                                <td>{{ $cart->cart->goods->buy_price }}</td>
+                                                <td>{{ number_format($cart->cart->goods->data_count) }}</td>
+                                                <td>{{ number_format($cart->cart->goods->buy_price) }}</td>
                                                 <td>{{ $cart->platform->name }}</td>
                                                 <td>{{ $cart->platform->url }}</td>
                                                 <td>{{ $cart->sns_id }}</td>
@@ -237,6 +244,14 @@
                                 <input class="form-control" type="text" placeholder="expiration_date" id="expiration_date" name="expiration_date"  value=""  autofocus>
                             </div>
                         </div>
+
+                        <div class="form-group row" id="file_name_row" style="display: none;">
+                            <div class="col">
+                                <label>업로드 파일 : </label>
+                                <span id="file_name"></span>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">닫기</button>

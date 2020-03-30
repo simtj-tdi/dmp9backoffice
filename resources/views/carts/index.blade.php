@@ -36,6 +36,8 @@
                             if (JSONArray['casrt_info'][0]['goods_id']['data_files']) {
                                 $("#file_name_row").css("display", "block");
                                 $("#file_name").text(JSONArray['casrt_info'][0]['goods_id']['data_files']);
+                            } else {
+                                $("#file_name_row").css("display", "none");
                             }
 
                             //$("#modelForm").attr("action", "cart/"+JSONArray['casrt_info'][0]['goods_id']['id']);
