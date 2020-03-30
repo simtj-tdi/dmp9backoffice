@@ -23,9 +23,12 @@ class ContactsusController extends Controller
 
         $contactsus = $this->contactsusRepository->all($request);
 
+        $sch_key = $request->sch_key;
         $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
 
-        return view('contactsus.index', compact('contactsus', 'sch', 'route_name'));
+        return view('contactsus.index', compact('contactsus', 'sch_key','sch','sch1','sch2', 'route_name'));
     }
 
     public function destroy($id)

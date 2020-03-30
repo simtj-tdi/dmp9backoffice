@@ -22,6 +22,7 @@ class Cart extends Model
             'order_id' => $this->order_id,
             'state' => $this->state,
             'buy_date' => $this->buy_date,
+            'memo' => $this->memo,
             'options_id' => $this->options,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at

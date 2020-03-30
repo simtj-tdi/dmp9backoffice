@@ -4,21 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Repositories\OrderRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class OrderController extends Controller
 {
     private $orderRepository;
+    private $route_name;
 
     public function __construct(OrderRepositoryInterface $orderRepository)
     {
         $this->orderRepository = $orderRepository;
+
+        $this->route_name = Route::currentRouteName();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $orders = $this->orderRepository->all();
+        $route_name = $this->route_name;
 
-        return view('orders.index', compact('orders'));
+        $orders = $this->orderRepository->all($request);
+
+        $sch_key = $request->sch_key;
+        $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
+
+        return view('orders.index', compact('orders', 'sch_key','sch','sch1','sch2', 'route_name'));
     }
 
     public function taxstateChange(Request $request)

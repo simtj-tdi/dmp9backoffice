@@ -32,9 +32,12 @@ class CartController extends Controller
         $carts = $this->cartRepository->all($request);
         $platforms = $this->platformRepository->all();
 
+        $sch_key = $request->sch_key;
         $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
 
-        return view('carts.index', compact('carts', 'platforms', 'sch', 'route_name'));
+        return view('carts.index', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name'));
     }
 
     public function edit($id)
@@ -54,9 +57,9 @@ class CartController extends Controller
         }
 
         $this->goodsRepository->update($request, $id);
-        $this->cartRepository->updateState($request, $id);
+        $this->cartRepository->update($request, $id);
 
-        return redirect()->route('cart.index');
+        return redirect()->route($request->route_name);
     }
 
     public function find_id(Request $request)
@@ -79,9 +82,12 @@ class CartController extends Controller
         $carts = $this->cartRepository->cart_state_1($request);
         $platforms = $this->platformRepository->all();
 
+        $sch_key = $request->sch_key;
         $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
 
-        return view('carts.index', compact('carts', 'platforms', 'sch', 'route_name'));
+        return view('carts.index', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name'));
     }
 
     //결제완료
@@ -92,9 +98,12 @@ class CartController extends Controller
         $carts = $this->cartRepository->cart_state_2($request);
         $platforms = $this->platformRepository->all();
 
+        $sch_key = $request->sch_key;
         $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
 
-        return view('carts.index', compact('carts', 'platforms', 'sch', 'route_name'));
+        return view('carts.index', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name'));
     }
 
     //데이터추출중
@@ -105,9 +114,12 @@ class CartController extends Controller
         $carts = $this->cartRepository->cart_state_3($request);
         $platforms = $this->platformRepository->all();
 
+        $sch_key = $request->sch_key;
         $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
 
-        return view('carts.index', compact('carts', 'platforms', 'sch', 'route_name'));
+        return view('carts.index', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name'));
     }
 
     //데이터추출완료
@@ -118,9 +130,12 @@ class CartController extends Controller
         $carts = $this->cartRepository->cart_state_4($request);
         $platforms = $this->platformRepository->all();
 
+        $sch_key = $request->sch_key;
         $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
 
-        return view('carts.index', compact('carts', 'platforms', 'sch', 'route_name'));
+        return view('carts.index', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name'));
     }
 
     //업로드대기
@@ -131,9 +146,12 @@ class CartController extends Controller
         $carts = $this->cartRepository->option_state_1($request);
         $platforms = $this->platformRepository->all();
 
+        $sch_key = $request->sch_key;
         $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
 
-        return view('carts.uploade', compact('carts', 'platforms', 'sch', 'route_name'));
+        return view('carts.uploade', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name'));
     }
 
     //업로드요청
@@ -144,9 +162,12 @@ class CartController extends Controller
         $carts = $this->cartRepository->option_state_2($request);
         $platforms = $this->platformRepository->all();
 
+        $sch_key = $request->sch_key;
         $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
 
-        return view('carts.uploade', compact('carts', 'platforms', 'sch', 'route_name'));
+        return view('carts.uploade', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name'));
     }
 
     //업로드완료
@@ -157,9 +178,12 @@ class CartController extends Controller
         $carts = $this->cartRepository->option_state_3($request);
         $platforms = $this->platformRepository->all();
 
+        $sch_key = $request->sch_key;
         $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
 
-        return view('carts.uploade', compact('carts', 'platforms', 'sch', 'route_name'));
+        return view('carts.uploade', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name'));
     }
 
 

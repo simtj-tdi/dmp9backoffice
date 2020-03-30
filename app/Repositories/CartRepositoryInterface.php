@@ -22,7 +22,7 @@ interface CartRepositoryInterface
 
     public function option_state_3($request);
 
-    public function updateState($request, $id);
+    public function update($request, $id);
 
     public function findById($id);
 }

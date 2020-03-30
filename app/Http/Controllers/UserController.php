@@ -22,9 +22,12 @@ class UserController extends Controller
         $route_name = $this->route_name;
 
         $users = $this->userRepository->all($request);
-        $sch = $request->sch;
 
-        return view('users.index', compact('users', 'route_name', 'sch'));
+        $sch_key = $request->sch_key;
+        $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
+        return view('users.index', compact('users', 'sch_key','sch','sch1','sch2', 'route_name'));
     }
 
     public function show($id)

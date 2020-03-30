@@ -13,7 +13,11 @@ class UserRepository implements UserRepositoryInterface
             ->where('role', '!=', 'admin')
             ->when($request->sch_key,
                 function ($q) use ($request) {
-                    return $q->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                    if ($request->sch) {
+                        return $q->where($request->sch_key, 'LIKE', '%' . $request->sch . '%');
+                    } else if ($request->sch1) {
+                        return $q->where($request->sch_key, '>=', $request->sch1." 00:00:00")->where($request->sch_key, '<=', $request->sch2." 23:59:59");
+                    }
                 }
             )
             ->paginate(5);

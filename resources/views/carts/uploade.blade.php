@@ -3,6 +3,35 @@
 @prepend('scripts')
     <script>
         $(function() {
+            $(".sch1, .sch2").datepicker({
+                dateFormat: 'yy-mm-dd' //Input Display Format 변경
+                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+                ,changeYear: true //콤보박스에서 년 선택 가능
+                ,changeMonth: true //콤보박스에서 월 선택 가능
+                ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트
+                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+            });
+
+            $("select[name=sch_key]").change(function() {
+                console.log($(this).val());
+                if ($(this).val() == "buy_date") {
+                    $("#input").css("display", "none");
+                    $("#input1-group1").css("display", "block");
+                    $("#input_span").css("display", "block");
+                    $("#input2-group2").css("display", "block");
+                } else {
+                    $("#input").css("display", "block");
+                    $("#input1-group1").css("display", "none");
+                    $("#input_span").css("display", "none");
+                    $("#input2-group2").css("display", "none");
+                }
+            });
 
             $("button[name='btn']").click(function() {
 
@@ -29,6 +58,7 @@
                             $("input[name='data_count']").val(JSONArray['casrt_info'][0]['goods_id']['data_count']);
                             $("input[name='buy_price']").val(JSONArray['casrt_info'][0]['goods_id']['buy_price']);
                             $("input[name='expiration_date']").val(JSONArray['casrt_info'][0]['goods_id']['expiration_date']);
+                            $("[name='memo']").val(JSONArray['casrt_info'][0]['memo']);
 
                             if (JSONArray['casrt_info'][0]['goods_id']['data_files']) {
                                 $("#file_name_row").css("display", "block");
@@ -101,6 +131,7 @@
                                             <th>데이터명</th>
                                             <th>데이터<br/>추출수</th>
                                             <th>구매가격</th>
+                                            <th>구매일</th>
                                             <th>대상플랫폼</th>
                                             <th>대상플랫폼 URL</th>
                                             <th>아이디</th>
@@ -117,6 +148,7 @@
                                                 <td>{{ $cart->cart->goods->data_name }}</td>
                                                 <td>{{ number_format($cart->cart->goods->data_count) }}</td>
                                                 <td>{{ number_format($cart->cart->goods->buy_price) }}</td>
+                                                <td>{{ $cart->cart->buy_date }}</td>
                                                 <td>{{ $cart->platform->name }}</td>
                                                 <td>{{ $cart->platform->url }}</td>
                                                 <td>{{ $cart->sns_id }}</td>
@@ -146,11 +178,17 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <select name="sch_key">
-                                                        <option value="advertiser"  >광고주</option>
-                                                        <option value="data_name" >데이터명</option>
+                                                        <option value="advertiser" {{ ($sch_key=="advertiser") ? "selected" : ""  }}  >광고주</option>
+                                                        <option value="data_name" {{ ($sch_key=="data_name") ? "selected" : ""  }} >데이터명</option>
+                                                        <option value="buy_date" {{ ($sch_key=="buy_date") ? "selected" : ""  }} >구매일</option>
                                                     </select>&nbsp;
-                                                    <input class="form-control" id="input2-group2" type="text" name="sch" value="{{ $sch }}" placeholder="데이터명" autocomplete="sch"><span class="input-group-append">
-                                                    <button class="btn btn-primary" type="submit">검색</button></span>
+                                                    <input class="form-control" id="input" type="text" name="sch" value="{{ $sch }}" placeholder="검색어" autocomplete="sch" style="display: {{ ($sch_key=="buy_date") ? "none;" : "block;"  }}"  >
+                                                    <input class="form-control sch1" id="input1-group1" type="text" name="sch1" value="{{ $sch1 }}" placeholder="검색어" autocomplete="sch" style="display: {{ ($sch_key=="buy_date") ? "block;" : "none;"  }}" >
+                                                    &nbsp;<span id="input_span" style="display: {{ ($sch_key=="buy_date") ? "block;" : "none;"  }}">~</span>&nbsp;
+                                                    <input class="form-control sch2" id="input2-group2" type="text" name="sch2" value="{{ $sch2 }}" placeholder="검색어" autocomplete="sch" style="display: {{ ($sch_key=="buy_date") ? "block;" : "none;"  }}" >
+                                                    <span class="input-group-append">
+                                                    <button class="btn btn-primary" type="submit">검색</button>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -170,6 +208,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <form method="POST" name="frm" action="">
+                    <input type="hidden" name="route_name" value="{{ $route_name }}">
                     @csrf
                     @method('PUT')
                     <div class="modal-header">
@@ -242,6 +281,13 @@
                             <div class="col">
                                 <label>유효기간</label>
                                 <input class="form-control" type="text" placeholder="expiration_date" id="expiration_date" name="expiration_date"  value=""  autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>메모</label>
+                                <textarea class="form-control" style="height: 150px" placeholder="설명" name="memo"   autofocus></textarea>
                             </div>
                         </div>
 

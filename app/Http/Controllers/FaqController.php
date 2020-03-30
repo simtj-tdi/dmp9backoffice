@@ -24,9 +24,12 @@ class FaqController extends Controller
 
         $faqs = $this->faqRepository->all($request);
 
+        $sch_key = $request->sch_key;
         $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
 
-        return view('faqs.index', compact('faqs','sch', 'route_name'));
+        return view('faqs.index', compact('faqs','sch_key','sch','sch1','sch2', 'route_name'));
     }
 
     public function create()

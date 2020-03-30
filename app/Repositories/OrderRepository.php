@@ -6,10 +6,20 @@ use App\Order;
 
 class OrderRepository implements OrderRepositoryInterface
 {
-    public function all()
+    public function all($request)
     {
+
         $orders = order::where('state', 1)
             ->orderBy('id', 'desc')
+            ->when($request->sch_key,
+                function ($q) use ($request) {
+                    if ($request->sch) {
+                        return $q->where($request->sch_key, 'LIKE', '%' . $request->sch . '%');
+                    } else if ($request->sch1) {
+                        return $q->where($request->sch_key, '>=', $request->sch1." 00:00:00")->where($request->sch_key, '<=', $request->sch2." 23:59:59");
+                    }
+                }
+            )
             ->paginate(5);
 
         $orders->getCollection()->map->format();;
@@ -21,6 +31,5 @@ class OrderRepository implements OrderRepositoryInterface
     {
         return order::where('id', $request->order_id)->update(['tax_state'=>$request->tax_state]);
     }
-
 
 }
