@@ -20,7 +20,7 @@
                                         </svg>
                                       </span>
                                     </div>
-                                    <input class="form-control" type="text" placeholder="{{ __('E-Mail Address') }}" name="user_id" value="{{ old('email') }}" required autofocus>
+                                    <input class="form-control" type="text" placeholder="{{ __('UserID') }}" name="user_id" value="{{ old('user_id') }}" required autofocus>
                                 </div>
                                 <div class="input-group mb-4">
                                     <div class="input-group-prepend">
@@ -37,9 +37,9 @@
                                         <button class="btn btn-primary px-4" type="submit">{{ __('Login') }}</button>
                                     </div>
                             </form>
-                            <div class="col-6 text-right">
-                                <a href="{{ route('password.request') }}" class="btn btn-link px-0">{{ __('Forgot Your Password?') }}</a>
-                            </div>
+{{--                            <div class="col-6 text-right">--}}
+{{--                                <a href="{{ route('password.request') }}" class="btn btn-link px-0">{{ __('Forgot Your Password?') }}</a>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>
