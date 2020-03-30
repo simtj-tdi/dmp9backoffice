@@ -35,7 +35,8 @@
                             $("input[name='title']").val(JSONArray['faq_info']['title']);
                             $("textarea[name='content']").val(JSONArray['faq_info']['content']);
 
-                            $("#modelForm").attr("action", "faqs/"+JSONArray['faq_info']['faq_id']);
+                            //$("#modelForm").attr("action", "faqs/"+JSONArray['faq_info']['faq_id']);
+                            $("form[name='frms']").attr("action", "faqs/"+JSONArray['faq_info']['faq_id']);
 
                             $('#largeModal').modal('show');
                         } else if (JSONArray['result'] == "error") {
@@ -129,7 +130,7 @@
     <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form id="modalForm">
+                <form method="POST" name="frms" action="">
                     @csrf
                     @method('PUT')
                     <div class="modal-header">

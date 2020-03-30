@@ -35,7 +35,7 @@
                                 $("textarea[name='content']").val();
                             }
 
-                            $("#modelForm").attr("action", "questions/"+JSONArray['question_info']['question_id']);
+                            $("form[name='frms']").attr("action", "questions/"+JSONArray['question_info']['question_id']);
 
 
                             $('#largeModal').modal('show');
@@ -135,7 +135,9 @@
     <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form id="modalForm">
+                <form method="POST" name="frms" action="">
+                    @csrf
+                    @method('PUT')
                     <input type="hidden" name="question_id" value="">
                     <div class="modal-header">
                         <h4 class="modal-title">문의 및 답변</h4>
@@ -196,8 +198,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
-                        <button class="btn btn-success" type="submit" name="submit" >저장</button>
+                        <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">닫기</button>
+                        <button class="btn btn-success btn-sm" type="submit" name="submit" >저장</button>
                     </div>
                 </form>
             </div>

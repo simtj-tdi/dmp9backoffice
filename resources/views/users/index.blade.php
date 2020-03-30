@@ -27,8 +27,8 @@
                             $("select[name='approved']").val(JSONArray['user_info']['approved']).attr("selected", "selected");
 
 
-                            $("#modelForm").attr("action", "users/"+JSONArray['user_info']['id']);
-
+                            //$("#modalForm").attr("action", "users/"+JSONArray['user_info']['id']);
+                            $("form[name='frms']").attr("action", "users/"+JSONArray['user_info']['id']);
 
                             $('#largeModal').modal('show');
                         } else if (JSONArray['result'] == "error") {
@@ -146,7 +146,7 @@
     <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <form id="modalForm">
+                    <form method="POST" name="frms" action="">
                         @csrf
                         @method('PUT')
                         <div class="modal-header">

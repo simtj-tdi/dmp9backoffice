@@ -40,7 +40,7 @@ Route::middleware(['auth', 'role'])->group( function () {
     Route::resource('faqs' , 'FaqController');
     Route::get('/faq_find_id', 'FaqController@find_id')->name('faqs.find.id');
 
-    Route::resource('questions','QuestionController')->only('index','destroy');
+    Route::resource('questions','QuestionController');
     Route::get('/question_find_id', 'QuestionController@find_id')->name('question.find.id');
 
     Route::resource('contactsus','ContactsusController')->only('index','destroy');
