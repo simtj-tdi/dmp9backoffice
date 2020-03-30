@@ -27,9 +27,15 @@ class GoodsRepository implements GoodsRepositoryInterface
 
     public function update($request, $id)
     {
+
+        $request_data['data_count'] = $request->data_count;
+        $request_data['buy_price'] = $request->buy_price;
+        $request_data['expiration_date'] = $request->expiration_date;
+        $request_data['data_files'] = $request->data_filess;
+
         $goods = goods::where('id', $id)
-            ->firstOrFail();
-        $goods->update($request->only('data_count', 'buy_price', 'expiration_date'));
+            ->update($request_data);
+        return $goods;
     }
 
 }

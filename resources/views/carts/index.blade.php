@@ -30,6 +30,14 @@
                             $("input[name='buy_price']").val(JSONArray['casrt_info'][0]['goods_id']['buy_price']);
                             $("input[name='expiration_date']").val(JSONArray['casrt_info'][0]['goods_id']['expiration_date']);
 
+                            if (JSONArray['casrt_info'][0]['state'] == "3") {
+                                $("#file_row").css("display", "block");
+                            }
+                            if (JSONArray['casrt_info'][0]['goods_id']['data_files']) {
+                                $("#file_name_row").css("display", "block");
+                                $("#file_name").text(JSONArray['casrt_info'][0]['goods_id']['data_files']);
+                            }
+
                             //$("#modelForm").attr("action", "cart/"+JSONArray['casrt_info'][0]['goods_id']['id']);
                             $("form[name='frm']").attr("action", "cart/"+JSONArray['casrt_info'][0]['goods_id']['id']);
                             $('#largeModal').modal('show');
@@ -239,7 +247,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
 
-                    <form method="POST" name="frm" action="">
+                    <form method="POST" name="frm" action="" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-header">
@@ -314,6 +322,21 @@
                                 <input class="form-control" type="text" placeholder="expiration_date" id="expiration_date" name="expiration_date"  value=""  autofocus>
                             </div>
                         </div>
+
+                        <div class="form-group row" id="file_row" style="display: none;">
+                            <div class="col">
+                                <label>파일 업로드</label>
+                                <input class="form-control" type="file"  id="data_files" name="data_files"  value=""  autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" id="file_name_row" style="display: none;">
+                            <div class="col">
+                                <label>업로드 파일 : </label>
+                                <span id="file_name"></span>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">닫기</button>

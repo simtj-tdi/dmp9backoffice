@@ -46,6 +46,13 @@ class CartController extends Controller
 
     public function update(Request $request, $id)
     {
+        if ($request->data_files) {
+            $path = explode('/', $request->data_files->store('files'));
+
+            $request['state'] = 4;
+            $request['data_filess'] = $path[1];
+        }
+
         $this->goodsRepository->update($request, $id);
         $this->cartRepository->updateState($request, $id);
 
