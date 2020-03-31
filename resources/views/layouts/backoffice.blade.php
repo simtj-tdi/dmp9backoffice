@@ -65,6 +65,9 @@
                     <a class="c-sidebar-nav-link" href="/cart"><span class="c-sidebar-nav-icon"></span>전체</a>
                 </li>
                 <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="/checking"><span class="c-sidebar-nav-icon"></span>확인중</a>
+                </li>
+                <li class="c-sidebar-nav-item">
                     <a class="c-sidebar-nav-link" href="/payment_waiting"><span class="c-sidebar-nav-icon"></span>결제대기중</a>
                 </li>
                 <li class="c-sidebar-nav-item">

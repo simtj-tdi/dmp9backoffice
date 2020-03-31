@@ -52,7 +52,7 @@
                             $("input[name='advertiser']").val(JSONArray['casrt_info'][0]['goods_id']['advertiser']);
                             $("input[name='data_name']").val(JSONArray['casrt_info'][0]['goods_id']['data_name']);
                             $("input[name='data_request']").val(JSONArray['casrt_info'][0]['goods_id']['data_request']);
-                            $("input[name='data_category']").val(JSONArray['casrt_info'][0]['goods_id']['data_category']);
+                            // $("input[name='data_category']").val(JSONArray['casrt_info'][0]['goods_id']['data_category']);
                             $("[name='data_content']").val(JSONArray['casrt_info'][0]['goods_id']['data_content']);
                             $("select[name='state']").val(JSONArray['casrt_info'][0]['state']).attr("selected", "selected");
                             $("input[name='data_count']").val(JSONArray['casrt_info'][0]['goods_id']['data_count']);
@@ -237,12 +237,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col">
-                                <label>데이터항목</label>
-                                <input class="form-control" type="text" placeholder="데이터항목" name="data_category" value="" disabled required autofocus>
-                            </div>
-                        </div>
+{{--                        <div class="form-group row">--}}
+{{--                            <div class="col">--}}
+{{--                                <label>데이터항목</label>--}}
+{{--                                <input class="form-control" type="text" placeholder="데이터항목" name="data_category" value="" disabled required autofocus>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="form-group row">
                             <div class="col">
@@ -255,10 +255,11 @@
                             <div class="col">
                                 <label>상태</label>
                                 <select class="form-control" name="state">
-                                    <option value="1"  >결제대기중</option>
-                                    <option value="2"  >결제완료</option>
-                                    <option value="3"  >데이터추출중</option>
-                                    <option value="4"  >데이터추출완료</option>
+                                    <option value="1"  >확인중</option>
+                                    <option value="2"  >결제대기중</option>
+                                    <option value="3"  >결제완료</option>
+                                    <option value="4"  >데이터추출중</option>
+                                    <option value="5"  >데이터추출완료</option>
                                 </select>
                             </div>
                         </div>

@@ -52,10 +52,11 @@ Route::middleware(['auth', 'role'])->group( function () {
     Route::resources(['cart' => 'CartController']);
     Route::get('/cart_find_id', 'CartController@find_id')->name('cart.find.id');
 
-    Route::get('/payment_waiting', 'CartController@cart_state_1')->name('cart_state_1'); //결제대기중
-    Route::get('/payment_completed', 'CartController@cart_state_2')->name('cart_state_2'); //결제완료
-    Route::get('/data_extraction', 'CartController@cart_state_3')->name('cart_state_3'); //데이터추출중
-    Route::get('/data_completed', 'CartController@cart_state_4')->name('cart_state_4'); //데이터추출완료
+    Route::get('/checking', 'CartController@cart_state_1')->name('cart_state_1'); //확인중
+    Route::get('/payment_waiting', 'CartController@cart_state_2')->name('cart_state_2'); //결제대기중
+    Route::get('/payment_completed', 'CartController@cart_state_3')->name('cart_state_3'); //결제완료
+    Route::get('/data_extraction', 'CartController@cart_state_4')->name('cart_state_4'); //데이터추출중
+    Route::get('/data_completed', 'CartController@cart_state_5')->name('cart_state_5'); //데이터추출완료
 
     Route::get('/upload_waiting', 'CartController@option_state_1')->name('option_state_1'); //업로드대기
     Route::get('/upload_request', 'CartController@option_state_2')->name('option_state_2'); //업로드요청

@@ -137,6 +137,33 @@ class cartrepository implements cartrepositoryinterface
         return $carts;
     }
 
+    public function cart_state_5($request)
+    {
+        $cart_state = cart::STATE_5;
+
+        $carts = cart::when($cart_state,
+            function ($q) use ($cart_state, $request) {
+                if ($request->sch1) {
+                    return $q->where('state', $cart_state)->where($request->sch_key, '>=', $request->sch1." 00:00:00")->where($request->sch_key, '<=', $request->sch2." 23:59:59");
+                } else {
+                    return $q->where('state', $cart_state);
+                }
+            }
+        )
+            ->wherehas('goods', function ($query) use ($request) {
+                if ($request->sch_key) {
+                    $query->where($request->sch_key,'LIKE','%'.$request->sch.'%');
+                }
+            })
+            ->doesnthave('options')
+            ->orderby('id','desc')
+            ->paginate(10);
+
+        $carts->getcollection()->map->format();
+
+        return $carts;
+    }
+
     public function option_state_1($request)
     {
         $option_state = option::STATE_1;

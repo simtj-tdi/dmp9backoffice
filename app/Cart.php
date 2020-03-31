@@ -8,10 +8,11 @@ class Cart extends Model
 {
     protected $guarded = ['*','id'];
 
-    CONST STATE_1 = 1;      // 결제 대기중
-    CONST STATE_2 = 2;      // 결제 완료
-    CONST STATE_3 = 3;      // 데이터 추출중
-    CONST STATE_4 = 4;      // 데이터 완료
+    CONST STATE_1 = 1;      // 확인중
+    CONST STATE_2 = 2;      // 결제 대기중
+    CONST STATE_3 = 3;      // 결제 완료
+    CONST STATE_4 = 4;      // 데이터 추출중
+    CONST STATE_5 = 5;      // 데이터 완료
 
     public function format()
     {

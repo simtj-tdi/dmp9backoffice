@@ -16,6 +16,8 @@ interface CartRepositoryInterface
 
     public function cart_state_4($request);
 
+    public function cart_state_5($request);
+
     public function option_state_1($request);
 
     public function option_state_2($request);
