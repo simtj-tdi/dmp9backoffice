@@ -166,7 +166,7 @@
                                             </tr>
                                     @empty
                                         <tr>
-                                            <td class="text-center" colspan="11">등록 데이터가 없습니다.</td>
+                                            <td class="text-center" colspan="12">등록 데이터가 없습니다.</td>
                                         </tr>
                                     @endforelse
                                     </tbody>

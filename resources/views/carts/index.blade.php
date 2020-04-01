@@ -60,12 +60,12 @@
                             $("input[name='expiration_date']").val(JSONArray['casrt_info'][0]['goods_id']['expiration_date']);
                             $("[name='memo']").val(JSONArray['casrt_info'][0]['memo']);
 
-                            if (JSONArray['casrt_info'][0]['state'] == "3") {
+                            if (JSONArray['casrt_info'][0]['state'] == "4") {
                                 $("#file_row").css("display", "block");
                             }
                             if (JSONArray['casrt_info'][0]['goods_id']['data_files']) {
                                 $("#file_name_row").css("display", "block");
-                                $("#file_name").text(JSONArray['casrt_info'][0]['goods_id']['data_files']);
+                                $("#file_name").text(JSONArray['casrt_info'][0]['goods_id']['org_files']);
                             } else {
                                 $("#file_name_row").css("display", "none");
                             }
@@ -171,6 +171,7 @@
                                         <th>구매일</th>
                                         <th>유효기간</th>
                                         <th>요청횟수</th>
+                                        <th>업로드<br/>파일</th>
                                         <th>상태</th>
                                         <th></th>
                                     </tr>
@@ -187,6 +188,11 @@
                                             <td>{{ $cart->goods->expiration_date }}</td>
                                             <td>{{ $cart->goods->data_request }}</td>
                                             <td>
+                                                @if ($cart->goods->org_files)
+                                                    <a class="btn btn-secondary btn-sm" href="{{ route('file_download', [$cart->goods->data_files,$cart->goods->org_files]) }}">다운로드</a>
+                                                @endif
+                                            </td>
+                                            <td>
                                                 @if ($cart->state === 1)
                                                     확인중
                                                 @elseif ($cart->state === 2)
@@ -200,7 +206,6 @@
                                                 @endif
                                             </td>
                                             <td style="width: 70px">
-{{--                                            <a href="{{ route('cart.edit', $cart->goods->id) }}" class="btn btn-block btn-success">수정</a>--}}
                                                 <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-cart_id="{{ $cart->goods->id }}"  >수정</button>
                                             </td>
                                         </tr>
@@ -245,7 +250,7 @@
                                         @endif
                                     @empty
                                        <tr>
-                                           <td class="text-center" colspan="10">등록 데이터가 없습니다.</td>
+                                           <td class="text-center" colspan="11">등록 데이터가 없습니다.</td>
                                        </tr>
                                     @endforelse
                                     </tbody>

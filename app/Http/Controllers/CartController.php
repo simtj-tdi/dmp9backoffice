@@ -50,10 +50,12 @@ class CartController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->data_files) {
+
             $path = explode('/', $request->data_files->store('files'));
 
             $request['state'] = 4;
             $request['data_filess'] = $path[1];
+            $request['org_files'] = $request->data_files->getClientOriginalName();
         }
 
         $this->goodsRepository->update($request, $id);
@@ -203,5 +205,11 @@ class CartController extends Controller
         return view('carts.uploade', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name'));
     }
 
+    public function file_download($data_files, $org_files)
+    {
+        $path = storage_path(). "/app/files/".$data_files;
+
+        return response()->download($path, $org_files);
+    }
 
 }

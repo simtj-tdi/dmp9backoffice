@@ -50,6 +50,7 @@ Route::middleware(['auth', 'role'])->group( function () {
     Route::resources(['goods' => 'GoodsController']);
     Route::resources(['option' => 'OptionController']);
     Route::resources(['cart' => 'CartController']);
+
     Route::get('/cart_find_id', 'CartController@find_id')->name('cart.find.id');
 
     Route::get('/checking', 'CartController@cart_state_1')->name('cart_state_1'); //확인중
@@ -61,6 +62,10 @@ Route::middleware(['auth', 'role'])->group( function () {
     Route::get('/upload_waiting', 'CartController@option_state_1')->name('option_state_1'); //업로드대기
     Route::get('/upload_request', 'CartController@option_state_2')->name('option_state_2'); //업로드요청
     Route::get('/upload_completed', 'CartController@option_state_3')->name('option_state_3'); //업로드완료
+
+
+    Route::get('/file_download/{data_files}/{org_files}', 'CartController@file_download')->name('file_download');
+
 
     Route::get('/ajaxOptionStateChange', 'OptionController@stateChange')->name('options_statechange');
 
