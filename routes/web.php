@@ -61,7 +61,8 @@ Route::middleware(['auth', 'role'])->group( function () {
     Route::get('/upload_request', 'CartController@option_state_2')->name('option_state_2'); //업로드요청
     Route::get('/upload_completed', 'CartController@option_state_3')->name('option_state_3'); //업로드완료
 
-    Route::get('/ajaxCartstate1_update', 'CartController@state1_update')->name('state1_update');  // 상태변경
+    Route::get('/ajaxCartstate1update', 'CartController@state1update')->name('state1_update');  // 상태변경
+    Route::post('/ajaxCartstate4fileupdate', 'CartController@state4fileupdate')->name('state4_fileupdate');  // 상태변경
 
     Route::get('/ajaxCartStateChange', 'CartController@stateChange')->name('carts_statechange');  // 상태변경
     Route::get('/ajaxOptionStateChange', 'OptionController@stateChange')->name('options_statechange');  // 상태변경

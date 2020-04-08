@@ -172,7 +172,7 @@
                     $.ajax({
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         url: "{{ route('state1_update') }}",
-                        method: "GET",
+                        method: "get",
                         dataType: "json",
                         data: {'data': jsonData},
                         success: function (data) {
@@ -194,10 +194,70 @@
                 else if(con_test == false){
                     alert("취소 되었습니다.");
                 }
-
-
             });
 
+
+            $("button[name='btn_file_update']").click(function() {
+                // var data = new Object();
+                // data.cart_id = ;
+                // data.goods_id = ;
+                // data.states = "5";
+                // var jsonData = JSON.stringify(data);
+
+                if ($("#data_files1").val() == "") {
+                    alert('파일을 업로드 하세요.');
+                    return false;
+                }
+                var formData = new FormData();
+                formData.append('uploadFile', $("#data_files1")[0].files[0]);
+                formData.append('cart_id', $(this).data("cart_id"));
+                formData.append('goods_id', $(this).data("goods_id"));
+                formData.append('states', '5');
+
+                $.ajax({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    type : 'post',
+                    url : "{{ route('state4_fileupdate') }}",
+                    data : formData,
+                    dataType : 'json',
+                    processData : false,
+                    contentType : false,
+                    success: function (data) {
+                        var JSONArray = JSON.parse(JSON.stringify(data));
+
+                        if (JSONArray['result'] == "success") {
+                            alert('수정 되었습니다.');
+                            location.reload();
+                        } else if (JSONArray['result'] == "error") {
+                            alert(JSONArray['error_message']);
+                        };
+                    },
+                    error: function () {
+                        alert("Error while getting results");
+                    }
+                });
+
+                {{--$.ajax({--}}
+                {{--    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},--}}
+                {{--    url: "{{ route('state1_update') }}",--}}
+                {{--    method: "get",--}}
+                {{--    dataType: "json",--}}
+                {{--    data: {'data': jsonData},--}}
+                {{--    success: function (data) {--}}
+                {{--        var JSONArray = JSON.parse(JSON.stringify(data));--}}
+
+                {{--        if (JSONArray['result'] == "success") {--}}
+                {{--            alert('수정 되었습니다.');--}}
+                {{--            location.reload();--}}
+                {{--        } else if (JSONArray['result'] == "error") {--}}
+                {{--            alert(JSONArray['error_message']);--}}
+                {{--        };--}}
+                {{--    },--}}
+                {{--    error: function () {--}}
+                {{--        alert("Error while getting results");--}}
+                {{--    }--}}
+                {{--});--}}
+            });
 
 
             $("#expiration_date, #expiration_date1").datepicker({
@@ -257,7 +317,6 @@
                                         <col width="130px">
                                         <col width="130px">
                                         <col width="120px">
-
                                         <col width="90px">
                                         <col width="90px">
                                         <col width="90px">
@@ -314,9 +373,14 @@
 
                                             <td>{{ $cart->goods->data_request }}</td>
                                             <td>
-                                                @if ($cart->goods->org_files)
-                                                    <a class="btn btn-secondary btn-sm" href="{{ route('file_download', [$cart->goods->data_files,$cart->goods->org_files]) }}">다운로드</a>
+                                                @if ($cart->state =='4')
+                                                    <input class="" type="file"  id="data_files1" name="data_files"  value="" style="width: 90px"  autofocus>
+                                                @elseif ($cart->goods->org_files)
+{{--                                                    <a class="btn btn-secondary btn-sm" href="{{ route('file_download', [$cart->goods->data_files,$cart->goods->org_files]) }}">다운로드</a>--}}
+                                                    <a class="btn btn-secondary btn-sm" target="_blank" href="https://dmp9storage1.blob.core.windows.net/images/files/{{$cart->goods->data_files}}">다운로드</a>
+
                                                 @endif
+
                                             </td>
                                             <td>
                                                 @if ($cart->memo)
@@ -339,10 +403,12 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($cart->state != '1')
-                                                    <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-cart_id="{{ $cart->goods->id }}"  >수정</button>
-                                                @else
+                                                @if ($cart->state == "4")
+                                                    <button class="btn btn-block btn-success btn-sm" type="button" name="btn_file_update" data-cart_id="{{ $cart->goods->id }}" data-goods_id="{{ $cart->goods->id }}" >수정</button>
+                                                @elseif ($cart->state == '1')
                                                     <button class="btn btn-block btn-success btn-sm" type="button" name="btn_state1" data-cart_id="{{ $cart->id }}"  data-goods_id="{{ $cart->goods->id }}" >수정</button>
+                                                @else
+                                                    <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-cart_id="{{ $cart->goods->id }}" >수정</button>
                                                 @endif
 
                                             </td>
@@ -549,4 +615,10 @@
         <!-- /.modal-dialog-->
     </div>
 
+    <form name="testForm" id="testForm">
+        <input type="hidden" name="cart_id" id="form_cart_id" value="">
+        <input type="hidden" name="goods_id" id="form_goods_id" value="">
+        <input type="hidden" name="states" value="">
+        <input type="file" name="uploadFile" id="uploadFile" />
+    </form>
 @endsection

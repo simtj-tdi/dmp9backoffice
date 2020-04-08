@@ -41,11 +41,19 @@ class GoodsRepository implements GoodsRepositoryInterface
 
     public function update1($request, $id)
     {
-
-
         $request_data['data_count'] = $request->data_count;
         $request_data['buy_price'] = $request->buy_price;
         $request_data['expiration_date'] = $request->expiration_date;
+
+        $goods = goods::where('id', $id)
+            ->update($request_data);
+        return $goods;
+    }
+
+    public function update4($request, $id)
+    {
+        $request_data['data_files'] = $request->data_filess;
+        $request_data['org_files'] = $request->org_files;
 
         $goods = goods::where('id', $id)
             ->update($request_data);

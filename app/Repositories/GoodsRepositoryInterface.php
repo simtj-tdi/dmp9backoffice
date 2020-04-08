@@ -14,4 +14,6 @@ interface GoodsRepositoryInterface
 
     public function update1($request, $id);
 
+    public function update4($request, $id);
+
 }
