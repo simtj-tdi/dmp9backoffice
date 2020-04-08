@@ -34,7 +34,7 @@
     <ul class="c-sidebar-nav">
 
         <li class="c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>회원관리</a>
+            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-address-book c-sidebar-nav-icon"></i>회원관리</a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
                     <a class="c-sidebar-nav-link" href="/users"><span class="c-sidebar-nav-icon"></span>회원리스트</a>
@@ -43,7 +43,7 @@
         </li>
 
         <li class="c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>게시판관리</a>
+            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-file c-sidebar-nav-icon"></i>게시판관리</a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
                     <a class="c-sidebar-nav-link" href="/faqs"><span class="c-sidebar-nav-icon"></span>자주 묻는 질문</a>
@@ -58,7 +58,7 @@
         </li>
 
         <li class="c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>주문서 관리</a>
+            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cart c-sidebar-nav-icon"></i>주문서 관리</a>
             <ul class="c-sidebar-nav-dropdown-items">
 
                 <li class="c-sidebar-nav-item ">
@@ -92,10 +92,19 @@
         </li>
 
         <li class="c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-cursor c-sidebar-nav-icon"></i>계산서관리</a>
+            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-barcode c-sidebar-nav-icon"></i>계산서관리</a>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
                     <a class="c-sidebar-nav-link" href="/orders"><span class="c-sidebar-nav-icon"></span>계산서요청리스트</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="c-sidebar-nav-dropdown">
+            <a class="c-sidebar-nav-dropdown-toggle" href="#"><i class="cil-audio-spectrum c-sidebar-nav-icon"></i>통계</a>
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="{{ route("saleschart") }}"><span class="c-sidebar-nav-icon"></span>매출통계</a>
                 </li>
             </ul>
         </li>
@@ -161,6 +170,9 @@
                 @elseif (class_basename(Route::current()->controller) === "OrderController")
                     <li class="breadcrumb-item ">계산서 관리</li>
                     <li class="breadcrumb-item active">계산서요청리스트</li>
+                @elseif (class_basename(Route::current()->controller) === "StatisticsController")
+                    <li class="breadcrumb-item ">통계</li>
+                    <li class="breadcrumb-item active">매출통계</li>
                 @endif
             </ol>
         </div>

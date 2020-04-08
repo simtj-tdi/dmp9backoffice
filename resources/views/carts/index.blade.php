@@ -1,6 +1,7 @@
 @extends('layouts.backoffice')
 
 @prepend('scripts')
+    <script src="{{ asset('/js/tooltips.js') }}"></script>
     <script>
         $(function() {
             $(".sch1, .sch2").datepicker({
@@ -84,6 +85,34 @@
                 //$('#largeModal').modal('show')
             });
 
+            $("select[name=cart_state]").change(function() {
+                var data = new Object();
+                data.cart_id = $(this).data("cart_id");
+                data.states = $(this).val();
+                var jsonData = JSON.stringify(data);
+
+                $.ajax({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url: "{{ route('carts_statechange') }}",
+                    method: "POST",
+                    dataType: "json",
+                    data: {'data': jsonData},
+                    success: function (data) {
+                        var JSONArray = JSON.parse(JSON.stringify(data));
+
+                        if (JSONArray['result'] == "success") {
+                            alert('수정 되었습니다.');
+                            location.reload();
+                        } else if (JSONArray['result'] == "error") {
+                            alert(JSONArray['error_message']);
+                        };
+                    },
+                    error: function () {
+                        alert("Error while getting results");
+                    }
+                });
+            });
+
             $("select[name=option_state]").change(function() {
                 var data = new Object();
                 data.option_id = $(this).data("option_id");
@@ -160,7 +189,22 @@
                             @endif
                         </div>
                             <div class="card-body">
-                                <table class="table table-responsive-sm table-striped">
+                                <table class="table table-responsive-sm ">
+                                    <colgroup>
+                                        <col width="20px">
+                                        <col width="">
+                                        <col width="">
+                                        <col width="80px">
+                                        <col width="80px">
+                                        <col width="120px">
+                                        <col width="120px">
+                                        <col width="90px">
+                                        <col width="90px">
+                                        <col width="90px">
+                                        <col width="40px">
+                                        <col width="70px">
+                                    </colgroup>
+
                                     <thead>
                                     <tr>
                                         <th>No.</th>
@@ -172,13 +216,14 @@
                                         <th>유효기간</th>
                                         <th>요청횟수</th>
                                         <th>업로드<br/>파일</th>
+                                        <th>메모</th>
                                         <th>상태</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @forelse($carts as $cart)
-                                        <tr>
+                                        <tr style="background:rgba(0, 0, 21, 0.05)">
                                             <td>{{ $cart->goods->id }}</td>
                                             <td>{{ $cart->goods->advertiser }}</td>
                                             <td>{{ $cart->goods->data_name }}</td>
@@ -193,52 +238,61 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($cart->state === 1)
-                                                    확인중
-                                                @elseif ($cart->state === 2)
-                                                    결제대기중
-                                                @elseif ($cart->state === 3)
-                                                    결제완료
-                                                @elseif ($cart->state === 4)
-                                                    데이터추출중
-                                                @elseif ($cart->state === 5)
-                                                    데이터추출완료
+                                                @if ($cart->memo)
+                                                    <button class="btn btn-secondary btn-sm" type="button" data-placement="bottom" data-toggle="tooltip" data-html="true" title="" data-original-title="{{ $cart->memo }}">메모보기</button>
                                                 @endif
                                             </td>
-                                            <td style="width: 70px">
+                                            <td>
+                                                <select name="cart_state" data-cart_id="{{ $cart->goods->id }}">
+                                                    <option value="1" {{ $cart->state == '1' ? 'selected' : '' }}>확인중</option>
+                                                    <option value="2" {{ $cart->state == '2' ? 'selected' : '' }}>결제대기중</option>
+                                                    <option value="3" {{ $cart->state == '3' ? 'selected' : '' }}>결제완료</option>
+                                                    <option value="4" {{ $cart->state == '4' ? 'selected' : '' }}>데이터추출중</option>
+                                                    <option value="5" {{ $cart->state == '5' ? 'selected' : '' }}>데이터추출완료</option>
+                                                </select>
+                                            </td>
+                                            <td>
                                                 <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-cart_id="{{ $cart->goods->id }}"  >수정</button>
                                             </td>
                                         </tr>
                                         @if (!$cart->options->isEmpty())
                                             <tr>
-                                                <td colspan="11">
-                                                    <table class="table table-responsive-sm table-striped">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>대상플랫폼</th>
-                                                            <th>대상플랫폼 URL</th>
-                                                            <th>아이디</th>
-                                                            <th>비밀번호</th>
-                                                            <th>상태</th>
-                                                            <th></th>
-                                                        </tr>
-                                                        </thead>
+                                                <td colspan="12" style="padding: 0">
+                                                    <table class="table table-responsive-sm ">
+                                                        <colgroup>
+                                                            <col width="50px">
+                                                            <col width="">
+                                                            <col width="">
+                                                            <col width="230px">
+                                                            <col width="300px">
+                                                            <col width="138px">
+                                                            <col width="70px">
+                                                        </colgroup>
+{{--                                                        <thead>--}}
+{{--                                                        <tr>--}}
+{{--                                                            <th></th>--}}
+{{--                                                            <th>대상플랫폼</th>--}}
+{{--                                                            <th>대상플랫폼 URL</th>--}}
+{{--                                                            <th>아이디</th>--}}
+{{--                                                            <th>비밀번호</th>--}}
+{{--                                                            <th>상태</th>--}}
+{{--                                                            <th></th>--}}
+{{--                                                        </tr>--}}
+{{--                                                        </thead>--}}
                                                         <tbody>
                                                             @foreach($cart->options as $option)
-
                                                             <tr>
+                                                                <td></td>
                                                                 <td>{{$option->platform['name']}}</td>
                                                                 <td>{{$option->platform['url']}}</td>
-                                                                <td>{{$option->sns_id}}</td>
-                                                                <td>{{$option->sns_password}}</td>
+                                                                <td>ID : {{$option->sns_id}}</td>
+                                                                <td>PASSWORD : {{$option->sns_password}}</td>
                                                                 <td>
-
                                                                     <select name="option_state" data-option_id="{{ $option->id }}">
                                                                         <option value="1" {{ $option->state == '1' ? 'selected' : '' }}>대기</option>
                                                                         <option value="2" {{ $option->state == '2' ? 'selected' : '' }}>업로드요청</option>
                                                                         <option value="3" {{ $option->state == '3' ? 'selected' : '' }}>업로드완료</option>
                                                                     </select>
-
                                                                 </td>
                                                                 <td></td>
                                                             </tr>

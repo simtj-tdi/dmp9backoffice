@@ -1,6 +1,7 @@
 @extends('layouts.backoffice')
 
 @prepend('scripts')
+    <script src="{{ asset('/js/tooltips.js') }}"></script>
     <script>
         $(function() {
             $(".sch1, .sch2").datepicker({
@@ -136,6 +137,7 @@
                                             <th>대상플랫폼 URL</th>
                                             <th>아이디</th>
                                             <th>비밀번호</th>
+                                            <th>메모</th>
                                             <th>상태</th>
                                             <th></th>
                                         </tr>
@@ -153,6 +155,11 @@
                                                 <td>{{ $cart->platform->url }}</td>
                                                 <td>{{ $cart->sns_id }}</td>
                                                 <td>{{ $cart->sns_password }}</td>
+                                                <td>
+                                                    @if ($cart->cart->memo)
+                                                        <button class="btn btn-secondary btn-sm" type="button" data-placement="bottom" data-toggle="tooltip" data-html="true" title="" data-original-title="{{ $cart->cart->memo }}">메모보기</button>
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <select name="option_state" data-option_id="{{ $cart->id }}">
                                                         <option value="1" {{ $cart->state == '1' ? 'selected' : '' }}>대기</option>

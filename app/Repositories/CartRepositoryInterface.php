@@ -24,6 +24,8 @@ interface CartRepositoryInterface
 
     public function option_state_3($request);
 
+    public function stateChange($request);
+
     public function update($request, $id);
 
     public function findById($id);

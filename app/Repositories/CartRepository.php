@@ -233,6 +233,11 @@ class cartrepository implements cartrepositoryinterface
         return $carts;
     }
 
+    public function stateChange($request)
+    {
+        return cart::where('id', $request->cart_id)->update(['state'=> $request->states]);
+    }
+
     public function update($request, $id)
     {
         cart::where('goods_id', $id)->update($request->only('state', 'memo'));

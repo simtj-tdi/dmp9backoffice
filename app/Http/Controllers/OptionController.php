@@ -30,7 +30,7 @@ class OptionController extends Controller
 
         if (!$return_result) {
             $result['result'] = "error";
-            $result['error_message'] = "등록되어 있는 계산서가 없습니다.";
+            $result['error_message'] = "등록되어 있는 데이터가 없습니다.";
             $response = response()->json($result, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
         } else {
             $result['result'] = "success";

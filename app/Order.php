@@ -21,7 +21,7 @@ class Order extends Model
         return [
             'order_id' => $this->id,
             'user_id' => $this->user,
-            'payment_id' => $this->payment_id,
+            'payment_id' => $this->payment_returns,
             'order_no' => $this->order_no,
             'order_name' => $this->order_name,
             'goods_info' => $this->goods_info,
@@ -37,6 +37,11 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function payment_returns()
+    {
+        return $this->belongsTo(Payment_return::class, 'payment_id');
     }
 
     public function getContentHtmlAttribute()

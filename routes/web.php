@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     if (auth()->user()) {
-        return redirect()->route('backoffice');
+        return redirect()->route('users.index');
     } else {
         return redirect()->route('login');
     }
@@ -30,9 +30,7 @@ Auth::routes();
 
 
 Route::middleware(['auth', 'role'])->group( function () {
-    Route::get('/backoffice', function () {
-        return view('backoffice');
-    })->name('backoffice');
+
 
     Route::resource('users' , 'UserController');
     Route::get('/user_find_id', 'UserController@find_id')->name('users.find.id');
@@ -63,13 +61,14 @@ Route::middleware(['auth', 'role'])->group( function () {
     Route::get('/upload_request', 'CartController@option_state_2')->name('option_state_2'); //업로드요청
     Route::get('/upload_completed', 'CartController@option_state_3')->name('option_state_3'); //업로드완료
 
+    Route::get('/ajaxCartStateChange', 'CartController@stateChange')->name('carts_statechange');  // 상태변경
+    Route::get('/ajaxOptionStateChange', 'OptionController@stateChange')->name('options_statechange');  // 상태변경
+    Route::get('/ajaxTaxStateChange', 'OrderController@taxstateChange')->name('orders_taxstateChange');  // 상태변경
 
-    Route::get('/file_download/{data_files}/{org_files}', 'CartController@file_download')->name('file_download');
+    Route::get('/file_download/{data_files}/{org_files}', 'CartController@file_download')->name('file_download'); // 파일 다운로드
 
+    Route::get('/saleschart', 'StatisticsController@SalesChart')->name('saleschart');
 
-    Route::get('/ajaxOptionStateChange', 'OptionController@stateChange')->name('options_statechange');
-
-    Route::get('/ajaxTaxStateChange', 'OrderController@taxstateChange')->name('orders_taxstateChange');
 });
 
 
