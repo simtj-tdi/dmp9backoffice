@@ -12,6 +12,9 @@ class OrderRepository implements OrderRepositoryInterface
         $orders = order::where('state', 1)
             ->whereNotNull('payment_id')
             ->orderBy('id', 'desc')
+            ->wherehas('carts', function ($query) use ($request) {
+                $query->where('state', 5);
+            })
             ->when($request->sch_key,
                 function ($q) use ($request) {
                     if ($request->sch) {

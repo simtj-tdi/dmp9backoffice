@@ -26,6 +26,7 @@ class StatisticsController extends Controller
 
         $orders = $this->orderRepository->all($request);
 
+
         $sch_key = $request->sch_key;
         $sch = $request->sch;
         $sch1 = $request->sch1 ? $request->sch1 : date("Y-m-d", strtotime("-7 days"));
@@ -52,7 +53,7 @@ class StatisticsController extends Controller
             return ['device' => "dev1", 'date'=> $item, 'value'=>$value];
         }, $date_range);
 
-        return view('statistics.sales', compact('data', 'sch_key','sch','sch1','sch2', 'route_name', 'total_price','total_count'));
+        return view('statistics.sales', compact('data', 'sch_key','sch','sch1','sch2', 'route_name', 'total_price','total_count', 'orders'));
     }
 
     public function date_range($first, $last, $step = '+1 day', $output_format = 'd/m/Y' )

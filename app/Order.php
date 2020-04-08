@@ -22,7 +22,7 @@ class Order extends Model
             'order_id' => $this->id,
             'user_id' => $this->user,
             'payment_id' => $this->payment_returns,
-            'order_no' => $this->order_no,
+            'order_no' => $this->carts,
             'order_name' => $this->order_name,
             'goods_info' => $this->goods_info,
             'state' => $this->state,
@@ -42,6 +42,11 @@ class Order extends Model
     public function payment_returns()
     {
         return $this->belongsTo(Payment_return::class, 'payment_id');
+    }
+
+    public function carts()
+    {
+        return $this->belongsTo(Cart::class, 'order_no', 'order_no');
     }
 
     public function getContentHtmlAttribute()

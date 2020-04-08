@@ -163,6 +163,7 @@ class CartController extends Controller
         $route_name = $this->route_name;
 
         $carts = $this->cartRepository->option_state_1($request);
+
         $platforms = $this->platformRepository->all();
 
         $sch_key = $request->sch_key;
@@ -221,6 +222,27 @@ class CartController extends Controller
 
         return $response;
     }
+
+    public function state1_update(Request $request)
+    {
+
+        $request_data = json_decode($request->data);
+
+        $this->cartRepository->stateChange($request_data);
+        $return_result = $this->goodsRepository->update1($request_data, $request_data->goods_id);
+
+
+        if (!$return_result) {
+            $result['result'] = "error";
+            $result['error_message'] = "등록되어 있는 데이터가 없습니다.";
+            $response = response()->json($result, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        } else {
+            $result['result'] = "success";
+            $response = response()->json($result, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        }
+        return $response;
+    }
+
 
     public function file_download($data_files, $org_files)
     {

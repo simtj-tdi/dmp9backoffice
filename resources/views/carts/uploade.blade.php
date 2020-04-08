@@ -137,6 +137,7 @@
                                             <th>대상플랫폼 URL</th>
                                             <th>아이디</th>
                                             <th>비밀번호</th>
+                                            <th>업로드<br/>파일</th>
                                             <th>메모</th>
                                             <th>상태</th>
                                             <th></th>
@@ -155,6 +156,11 @@
                                                 <td>{{ $cart->platform->url }}</td>
                                                 <td>{{ $cart->sns_id }}</td>
                                                 <td>{{ $cart->sns_password }}</td>
+                                                <td>
+                                                    @if ($cart->cart->goods->org_files)
+                                                        <a class="btn btn-secondary btn-sm" href="{{ route('file_download', [$cart->cart->goods->data_files,$cart->cart->goods->org_files]) }}">다운로드</a>
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     @if ($cart->cart->memo)
                                                         <button class="btn btn-secondary btn-sm" type="button" data-placement="bottom" data-toggle="tooltip" data-html="true" title="" data-original-title="{{ $cart->cart->memo }}">메모보기</button>

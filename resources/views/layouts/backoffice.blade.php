@@ -153,12 +153,14 @@
                     @if (Route::current()->getActionMethod() === "index")
                         <li class="breadcrumb-item active">전체</li>
                     @elseif (Route::current()->getActionMethod() === "cart_state_1")
-                        <li class="breadcrumb-item active">결제대기중</li>
+                        <li class="breadcrumb-item active">확인중</li>
                     @elseif (Route::current()->getActionMethod() === "cart_state_2")
-                        <li class="breadcrumb-item active">결제완료</li>
+                        <li class="breadcrumb-item active">결제대기중</li>
                     @elseif (Route::current()->getActionMethod() === "cart_state_3")
-                        <li class="breadcrumb-item active">데이터추출중</li>
+                        <li class="breadcrumb-item active">결제완료</li>
                     @elseif (Route::current()->getActionMethod() === "cart_state_4")
+                        <li class="breadcrumb-item active">데이터추출중</li>
+                    @elseif (Route::current()->getActionMethod() === "cart_state_5")
                         <li class="breadcrumb-item active">데이터추출완료</li>
                     @elseif (Route::current()->getActionMethod() === "option_state_1")
                         <li class="breadcrumb-item active">업로드대기</li>

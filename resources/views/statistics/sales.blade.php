@@ -151,9 +151,49 @@
                                     </tr>
                                 </tbody>
                             </table>
-
                             <div id="chartdiv"></div>
                         </div>
+
+
+                        <div class="card-body">
+                            <table class="table table-responsive-sm table-striped">
+                                <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>주문번호</th>
+                                    <th>구매내역</th>
+                                    <th>구매날짜</th>
+                                    <th>구매가격</th>
+                                    <th>결제방식</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($orders as $order)
+                                    <tr>
+                                        <td>{{ $order->id }}</td>
+                                        <td>{{ $order->order_no }}</td>
+                                        <td>{{ $order->order_name }}</td>
+                                        <td>{{ $order->created_at }}</td>
+                                        <td>{{ number_format($order->total_price) }}</td>
+                                        <td>
+                                            @if ($order->payment_returns->pgcode == "creditcard")
+                                                신용카드
+                                            @else
+                                                가상계좌
+                                            @endif
+
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+
+                            {{ $orders->links() }}
+                        </div>
+
+
                         <div class="card-body">
                             <div class="col-sm-4 " style="margin: auto">
                                 <form class="form-horizontal" action="{{ route($route_name) }}" method="GET">

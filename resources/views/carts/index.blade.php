@@ -141,7 +141,66 @@
                 });
             });
 
-            $("#expiration_date").datepicker({
+
+            $("button[name='btn_state1']").click(function() {
+
+                if ($(this).parent().parent().find("input[name=data_count]").val() == "") {
+                    alert('데이터 추출수를 입력 하세요.');
+                    return false;
+                }
+
+                if ($(this).parent().parent().find("input[name=buy_price]").val() == "") {
+                    alert('구매가격을 입력 하세요.');
+                    return false;
+                }
+                if ($(this).parent().parent().find("input[name=expiration_date]").val() == "") {
+                    alert('유효기간을 입력 하세요.');
+                    return false;
+                }
+
+                var con_test = confirm("정확한 데이터를 입력 하셨나요?");
+                if(con_test == true){
+                    var data = new Object();
+                    data.cart_id = $(this).data("cart_id");
+                    data.goods_id = $(this).data("goods_id");
+                    data.data_count = $(this).parent().parent().find("input[name=data_count]").val();
+                    data.buy_price = $(this).parent().parent().find("input[name=buy_price]").val();
+                    data.expiration_date = $(this).parent().parent().find("input[name=expiration_date]").val();
+                    data.states = "2";
+                    var jsonData = JSON.stringify(data);
+
+                    $.ajax({
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        url: "{{ route('state1_update') }}",
+                        method: "GET",
+                        dataType: "json",
+                        data: {'data': jsonData},
+                        success: function (data) {
+                            var JSONArray = JSON.parse(JSON.stringify(data));
+
+                            if (JSONArray['result'] == "success") {
+                                alert('수정 되었습니다.');
+                                location.reload();
+                            } else if (JSONArray['result'] == "error") {
+                                alert(JSONArray['error_message']);
+                            };
+                        },
+                        error: function () {
+                            alert("Error while getting results");
+                        }
+                    });
+
+                }
+                else if(con_test == false){
+                    alert("취소 되었습니다.");
+                }
+
+
+            });
+
+
+
+            $("#expiration_date, #expiration_date1").datepicker({
                 dateFormat: 'yy-mm-dd' //Input Display Format 변경
                 ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
                 ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
@@ -194,10 +253,11 @@
                                         <col width="20px">
                                         <col width="">
                                         <col width="">
-                                        <col width="80px">
-                                        <col width="80px">
+                                        <col width="130px">
+                                        <col width="130px">
+                                        <col width="130px">
                                         <col width="120px">
-                                        <col width="120px">
+
                                         <col width="90px">
                                         <col width="90px">
                                         <col width="90px">
@@ -212,8 +272,8 @@
                                         <th>데이터명</th>
                                         <th>데이터<br/>추출수</th>
                                         <th>구매가격</th>
-                                        <th>구매일</th>
                                         <th>유효기간</th>
+                                        <th>구매일</th>
                                         <th>요청횟수</th>
                                         <th>업로드<br/>파일</th>
                                         <th>메모</th>
@@ -227,10 +287,31 @@
                                             <td>{{ $cart->goods->id }}</td>
                                             <td>{{ $cart->goods->advertiser }}</td>
                                             <td>{{ $cart->goods->data_name }}</td>
-                                            <td>{{ number_format($cart->goods->data_count) }}</td>
-                                            <td>{{ number_format($cart->goods->buy_price) }}</td>
-                                            <td>{{ $cart->buy_date }}</td>
-                                            <td>{{ $cart->goods->expiration_date }}</td>
+                                            <td>
+                                                @if ($cart->state != '1')
+                                                    {{ number_format($cart->goods->data_count) }}
+                                                @else
+                                                    <input class="form-control" type="number" placeholder="" name="data_count" value="{{ $cart->goods->data_count }}"  required autofocus>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($cart->state != '1')
+                                                    {{ number_format($cart->goods->buy_price) }}
+                                                @else
+                                                    <input class="form-control" type="number" placeholder="" name="buy_price" value="{{ $cart->goods->buy_price }}"  required autofocus>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($cart->state != '1')
+                                                    {{ $cart->goods->expiration_date }}
+                                                @else
+                                                    <input class="form-control" type="text" placeholder="" id="expiration_date1" name="expiration_date"  value="{{ $cart->goods->expiration_date }}"  autofocus>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                {{ $cart->buy_date }}
+                                            </td>
+
                                             <td>{{ $cart->goods->data_request }}</td>
                                             <td>
                                                 @if ($cart->goods->org_files)
@@ -243,6 +324,7 @@
                                                 @endif
                                             </td>
                                             <td>
+                                                @if ($cart->state != '1')
                                                 <select name="cart_state" data-cart_id="{{ $cart->goods->id }}">
                                                     <option value="1" {{ $cart->state == '1' ? 'selected' : '' }}>확인중</option>
                                                     <option value="2" {{ $cart->state == '2' ? 'selected' : '' }}>결제대기중</option>
@@ -250,9 +332,19 @@
                                                     <option value="4" {{ $cart->state == '4' ? 'selected' : '' }}>데이터추출중</option>
                                                     <option value="5" {{ $cart->state == '5' ? 'selected' : '' }}>데이터추출완료</option>
                                                 </select>
+                                                @else
+                                                <select >
+                                                    <option value="1" {{ $cart->state == '1' ? 'selected' : '' }}>확인중</option>
+                                                </select>
+                                                @endif
                                             </td>
                                             <td>
-                                                <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-cart_id="{{ $cart->goods->id }}"  >수정</button>
+                                                @if ($cart->state != '1')
+                                                    <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-cart_id="{{ $cart->goods->id }}"  >수정</button>
+                                                @else
+                                                    <button class="btn btn-block btn-success btn-sm" type="button" name="btn_state1" data-cart_id="{{ $cart->id }}"  data-goods_id="{{ $cart->goods->id }}" >수정</button>
+                                                @endif
+
                                             </td>
                                         </tr>
                                         @if (!$cart->options->isEmpty())
