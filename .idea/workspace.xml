@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e70303c1-1788-4b07-b368-b43ec7853421" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CartRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CartRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CartRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CartRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/OrderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/OrderRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/carts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/carts/uploade.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/uploade.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +112,15 @@
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/microsoft/azure-storage-common" />
+      <path value="$PROJECT_DIR$/vendor/microsoft/azure-storage-blob" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-azure-blob-storage" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/matthewbdaly/laravel-azure-storage" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
     </include_path>
   </component>
   <component name="ProjectId" id="1YKkSpEcsuk5oK0rkl14EE6AL9D" />
@@ -221,7 +220,7 @@
       <workItem from="1585903750325" duration="672000" />
       <workItem from="1586228692719" duration="581000" />
       <workItem from="1586242318446" duration="24678000" />
-      <workItem from="1586306043890" duration="1042000" />
+      <workItem from="1586306043890" duration="1412000" />
     </task>
     <servers />
   </component>
