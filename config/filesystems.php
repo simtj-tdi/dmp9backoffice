@@ -63,7 +63,7 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
         ],
-        
+
         'azure' => [
             'driver'    => 'azure',
             'name'      => env('AZURE_STORAGE_NAME'),

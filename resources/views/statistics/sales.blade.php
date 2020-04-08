@@ -140,7 +140,7 @@
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        <td style="background:rgba(0, 0, 21, 0.05)">총 매출 데이터수</td>
+                                        <td style="background:rgba(0, 0, 21, 0.05)">총 데이터 수</td>
                                         <td>{{ number_format($total_count) }}</td>
                                         <td>&nbsp;</td>
                                     </tr>
