@@ -159,7 +159,7 @@
                                                 <td>
                                                     @if ($cart->cart->goods->org_files)
 {{--                                                        <a class="btn btn-secondary btn-sm" href="{{ route('file_download', [$cart->cart->goods->data_files,$cart->cart->goods->org_files]) }}">다운로드</a>--}}
-                                                        <a class="btn btn-secondary btn-sm" target="_blank" href="https://dmp9storage1.blob.core.windows.net/images/files/{{$cart->goods->data_files}}">다운로드</a>
+                                                        <a class="btn btn-secondary btn-sm" target="_blank" href="https://dmp9storage1.blob.core.windows.net/images/files/{{$cart->cart->goods->data_files}}">다운로드</a>
                                                     @endif
                                                 </td>
                                                 <td>
