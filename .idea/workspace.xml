@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e70303c1-1788-4b07-b368-b43ec7853421" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/UserRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserRepositoryInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/carts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/carts/uploade.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/uploade.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +227,7 @@
       <workItem from="1586242318446" duration="24678000" />
       <workItem from="1586306043890" duration="11451000" />
       <workItem from="1586345588027" duration="8099000" />
-      <workItem from="1586407054902" duration="6705000" />
+      <workItem from="1586407054902" duration="11491000" />
     </task>
     <servers />
   </component>
@@ -258,10 +262,10 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="1950" y="361" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1582705820859" />
-    <state x="2530" y="232" key="#com.intellij.ide.util.MemberChooser" timestamp="1586351712197">
-      <screen x="1280" y="23" width="1920" height="1006" />
+    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser" timestamp="1586421323338">
+      <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586246523227" />
+    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586421323338" />
     <state x="2530" y="232" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777/1280.23.1920.1006@1280.23.1920.1006" timestamp="1586351712197" />
     <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586261313599">
       <screen x="1280" y="23" width="1920" height="1057" />
@@ -292,12 +296,12 @@
     </state>
     <state x="268" y="105" width="861" height="540" key="find.popup/0.23.1280.726/1280.23.1920.1057@0.23.1280.726" timestamp="1586228780658" />
     <state x="1920" y="308" width="639" height="486" key="find.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586253431109" />
-    <state x="1905" y="247" width="670" height="644" key="search.everywhere.popup" timestamp="1586351707843">
-      <screen x="1280" y="23" width="1920" height="1006" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1586421306084">
+      <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="625" y="244" width="670" height="635" key="search.everywhere.popup/-2560.23.2560.1417/0.23.1920.992@0.23.1920.992" timestamp="1585067324666" />
     <state x="417" y="184" width="670" height="465" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@0.23.1280.726" timestamp="1586228735288" />
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586332853360" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586421306084" />
     <state x="1905" y="247" width="670" height="644" key="search.everywhere.popup/0.23.1280.777/1280.23.1920.1006@1280.23.1920.1006" timestamp="1586351707843" />
   </component>
 </project>

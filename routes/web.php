@@ -34,6 +34,7 @@ Route::middleware(['auth', 'role'])->group( function () {
 
     Route::resource('users' , 'UserController');
     Route::get('/user_find_id', 'UserController@find_id')->name('users.find.id');
+    Route::get('/NonCertification', 'UserController@NonCertification')->name('users.NonCertification');
 
     Route::resource('faqs' , 'FaqController');
     Route::get('/faq_find_id', 'FaqController@find_id')->name('faqs.find.id');

@@ -82,6 +82,8 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
+                            <a href="/users" class="btn btn-sm btn-warning ">전체</a>
+                            <a href="/NonCertification" class="btn btn-sm btn-secondary ">비인증</a>
 
                         <div class="card-body">
 

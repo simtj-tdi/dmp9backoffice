@@ -134,6 +134,28 @@
                     <div class="card">
                         <div class="card-header">
                             <i class="fa fa-align-justify"></i>
+                            @if (Route::current()->getActionMethod() === "index")
+                                전체
+                            @elseif (Route::current()->getActionMethod() === "cart_state_1")
+                                확인중
+                            @elseif (Route::current()->getActionMethod() === "cart_state_2")
+                                결제대기중
+                            @elseif (Route::current()->getActionMethod() === "cart_state_3")
+                                결제완료
+                            @elseif (Route::current()->getActionMethod() === "cart_state_4")
+                                데이터추출중
+                            @elseif (Route::current()->getActionMethod() === "cart_state_4")
+                                데이터추출완료
+                            @elseif (Route::current()->getActionMethod() === "option_state_1")
+                                업로드대기
+                            @elseif (Route::current()->getActionMethod() === "option_state_2")
+                                업로드요청
+                            @elseif (Route::current()->getActionMethod() === "option_state_3")
+                                업로드완료
+                            @endif
+                        </div>
+                        <div class="card-header">
+                            <i class="fa fa-align-justify"></i>
                             <div class="card-body">
                                 <table class="table table-responsive-sm table-striped">
                                     <thead>
@@ -185,10 +207,6 @@
                                                     <div>{{ $cart->cart->goods->data_name }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>{{ $cart->cart->goods->advertiser }}</div>
-                                                    <div>{{ $cart->cart->goods->data_name }}</div>
-                                                </td>
-                                                <td>
                                                     <div>{{ number_format($cart->cart->goods->data_count) }}</div>
                                                     <div>{{ number_format($cart->cart->goods->buy_price) }}</div>
                                                 </td>
@@ -204,13 +222,14 @@
                                                     <div>{{ $cart->sns_id }}</div>
                                                     <div>{{ $cart->sns_password }}</div>
                                                 </td>
-
                                                 <td>
                                                     @if ($cart->cart->goods->org_files)
-{{--                                                        <a class="btn btn-secondary btn-sm" href="{{ route('file_download', [$cart->cart->goods->data_files,$cart->cart->goods->org_files]) }}">다운로드</a>--}}
+                                                        {{--                                                        <a class="btn btn-secondary btn-sm" href="{{ route('file_download', [$cart->cart->goods->data_files,$cart->cart->goods->org_files]) }}">다운로드</a>--}}
                                                         <a class="btn btn-secondary btn-sm" target="_blank" href="https://dmp9storage1.blob.core.windows.net/images/files/{{$cart->cart->goods->data_files}}">다운로드</a>
                                                     @endif
                                                 </td>
+
+
                                                 <td>
                                                     @if ($cart->cart->memo)
                                                         <button class="btn btn-secondary btn-sm" type="button" data-placement="bottom" data-toggle="tooltip" data-html="true" title="" data-original-title="{{ $cart->cart->memo }}">메모보기</button>

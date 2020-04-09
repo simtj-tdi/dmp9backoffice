@@ -69,4 +69,18 @@ class UserController extends Controller
 
         return $response;
     }
+
+    public function NonCertification(Request $request)
+    {
+        $route_name = $this->route_name;
+
+        $users = $this->userRepository->NonCertification($request);
+
+        $sch_key = $request->sch_key;
+        $sch = $request->sch;
+        $sch1 = $request->sch1;
+        $sch2 = $request->sch2;
+
+        return view('users.index', compact('users', 'sch_key','sch','sch1','sch2', 'route_name'));
+    }
 }
