@@ -318,7 +318,7 @@
 
                                         <col width="90px">
 
-                                        @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_5")
+                                        @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_4" && Route::current()->getActionMethod() != "cart_state_5")
                                             <col width="120px">
                                         @endif
                                         <col width="70px">
@@ -350,7 +350,7 @@
 
                                         <th>메모</th>
 
-                                        @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_5")
+                                        @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_4" && Route::current()->getActionMethod() != "cart_state_5")
                                             <th>상태</th>
                                         @endif
                                         <th></th>
@@ -430,7 +430,7 @@
                                                     <button class="btn btn-secondary btn-sm" type="button" data-placement="bottom" data-toggle="tooltip" data-html="true" title="" data-original-title="{{ $cart->memo }}">메모보기</button>
                                                 @endif
                                             </td>
-                                            @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_5")
+                                            @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_4" && Route::current()->getActionMethod() != "cart_state_5")
                                                 <td>
                                                     @if (Route::current()->getActionMethod() === "index")
                                                         {{ $cart->state == '1' ? '확인중' : '' }}
