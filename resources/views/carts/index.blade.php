@@ -492,11 +492,17 @@
                                                                 <td>ID : {{$option->sns_id}}</td>
                                                                 <td>PASSWORD : {{$option->sns_password}}</td>
                                                                 <td>
-                                                                    <select name="option_state" data-option_id="{{ $option->id }}">
-                                                                        <option value="1" {{ $option->state == '1' ? 'selected' : '' }}>대기</option>
-                                                                        <option value="2" {{ $option->state == '2' ? 'selected' : '' }}>업로드요청</option>
-                                                                        <option value="3" {{ $option->state == '3' ? 'selected' : '' }}>업로드완료</option>
-                                                                    </select>
+                                                                    @if (Route::current()->getActionMethod() === "index")
+                                                                        {{ $option->state == '1' ? '대기' : '' }}
+                                                                        {{ $option->state == '2' ? '업로드요청' : '' }}
+                                                                        {{ $option->state == '3' ? '업로드완료' : '' }}
+                                                                    @else
+                                                                        <select name="option_state" data-option_id="{{ $option->id }}">
+                                                                            <option value="1" {{ $option->state == '1' ? 'selected' : '' }}>대기</option>
+                                                                            <option value="2" {{ $option->state == '2' ? 'selected' : '' }}>업로드요청</option>
+                                                                            <option value="3" {{ $option->state == '3' ? 'selected' : '' }}>업로드완료</option>
+                                                                        </select>
+                                                                    @endif
                                                                 </td>
                                                                 <td></td>
                                                             </tr>

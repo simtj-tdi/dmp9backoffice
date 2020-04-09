@@ -36,7 +36,7 @@ class GoodsRepository implements GoodsRepositoryInterface
             $request_data['data_files'] = $request->data_filess;
             $request_data['org_files'] = $request->org_files;
         }
-        
+
         $goods = goods::where('id', $id)
             ->update($request_data);
         return $goods;
