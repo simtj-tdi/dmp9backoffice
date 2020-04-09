@@ -147,12 +147,14 @@ class CartController extends Controller
         $route_name = $this->route_name;
 
         $carts = $this->cartRepository->cart_state_5($request);
+
         $platforms = $this->platformRepository->all();
 
         $sch_key = $request->sch_key;
         $sch = $request->sch;
         $sch1 = $request->sch1;
         $sch2 = $request->sch2;
+
 
         return view('carts.index', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name'));
     }

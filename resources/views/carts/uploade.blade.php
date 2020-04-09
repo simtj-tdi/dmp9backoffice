@@ -83,6 +83,17 @@
             });
 
             $("select[name=option_state]").change(function() {
+
+                @if ($route_name == "option_state_1")
+                    var con_test = confirm("대기 상태에서 변경하시겠습니까?");
+
+                    if(con_test == false){
+                        return false;
+                    } else {
+                        location.reload();
+                    }
+                @endif
+
                 var data = new Object();
                 data.option_id = $(this).data("option_id");
                 data.states = $(this).val();
@@ -128,16 +139,34 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>광고주</th>
-                                            <th>데이터명</th>
-                                            <th>데이터<br/>추출수</th>
-                                            <th>구매가격</th>
-                                            <th>구매일</th>
-                                            <th>대상플랫폼</th>
-                                            <th>대상플랫폼 URL</th>
-                                            <th>아이디</th>
-                                            <th>비밀번호</th>
-                                            <th>업로드<br/>파일</th>
+                                            <th>
+                                                <div>User ID</div>
+                                                <div>User 이름</div>
+                                            </th>
+                                            <th>
+                                                <div>광고주</div>
+                                                <div>데이터명</div>
+                                            </th>
+                                            <th>
+                                                <div>데이터추출수</div>
+                                                <div>구매가격</div>
+                                            </th>
+                                            <th>
+                                                <div>구매일</div>
+                                                <div>유효기간</div>
+                                            </th>
+
+                                            <th>
+                                                <div>대상플랫폼</div>
+                                                <div>대상플랫폼 URL</div>
+                                            </th>
+                                            <th>
+                                                <div>아이디</div>
+                                                <div>비밀번호</div>
+                                            </th>
+                                            <th>
+                                                업로드파일
+                                            </th>
                                             <th>메모</th>
                                             <th>상태</th>
                                             <th></th>
@@ -147,15 +176,35 @@
                                     @forelse($carts as $cart)
                                             <tr>
                                                 <td>{{ $cart->id }}</td>
-                                                <td>{{ $cart->cart->goods->advertiser }}</td>
-                                                <td>{{ $cart->cart->goods->data_name }}</td>
-                                                <td>{{ number_format($cart->cart->goods->data_count) }}</td>
-                                                <td>{{ number_format($cart->cart->goods->buy_price) }}</td>
-                                                <td>{{ $cart->cart->buy_date }}</td>
-                                                <td>{{ $cart->platform->name }}</td>
-                                                <td>{{ $cart->platform->url }}</td>
-                                                <td>{{ $cart->sns_id }}</td>
-                                                <td>{{ $cart->sns_password }}</td>
+                                                <td>
+                                                    <div>{{ $cart->cart->user->user_id }}</div>
+                                                    <div>{{ $cart->cart->user->name }}</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $cart->cart->goods->advertiser }}</div>
+                                                    <div>{{ $cart->cart->goods->data_name }}</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $cart->cart->goods->advertiser }}</div>
+                                                    <div>{{ $cart->cart->goods->data_name }}</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ number_format($cart->cart->goods->data_count) }}</div>
+                                                    <div>{{ number_format($cart->cart->goods->buy_price) }}</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $cart->cart->buy_date }}</div>
+                                                    <div>{{ $cart->cart->goods->expiration_date }}</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $cart->platform->name }}</div>
+                                                    <div>{{ $cart->platform->url }}</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{ $cart->sns_id }}</div>
+                                                    <div>{{ $cart->sns_password }}</div>
+                                                </td>
+
                                                 <td>
                                                     @if ($cart->cart->goods->org_files)
 {{--                                                        <a class="btn btn-secondary btn-sm" href="{{ route('file_download', [$cart->cart->goods->data_files,$cart->cart->goods->org_files]) }}">다운로드</a>--}}
@@ -180,7 +229,7 @@
                                             </tr>
                                     @empty
                                         <tr>
-                                            <td class="text-center" colspan="13">등록 데이터가 없습니다.</td>
+                                            <td class="text-center" colspan="14">등록 데이터가 없습니다.</td>
                                         </tr>
                                     @endforelse
                                     </tbody>

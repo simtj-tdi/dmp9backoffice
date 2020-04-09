@@ -3,6 +3,19 @@
 @prepend('scripts')
     <script src="{{ asset('/js/tooltips.js') }}"></script>
     <script>
+
+        $(document).ready(function(){
+            var fileTarget = $('.upload_name');
+            fileTarget.on('change', function(){
+                if(window.FileReader){
+                    var fileName = $(this)[0].files[0].name;
+                } else {
+                    var fileName = $(this).val().split('/').pop().split('\\').pop();
+                }
+                $(this).siblings('.text_name').val(fileName);
+            });
+        });
+
         $(function() {
             $(".sch1, .sch2").datepicker({
                 dateFormat: 'yy-mm-dd' //Input Display Format 변경
@@ -159,6 +172,7 @@
                 }
 
                 var con_test = confirm("정확한 데이터를 입력 하셨나요?");
+
                 if(con_test == true){
                     var data = new Object();
                     data.cart_id = $(this).data("cart_id");
@@ -237,26 +251,6 @@
                     }
                 });
 
-                {{--$.ajax({--}}
-                {{--    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},--}}
-                {{--    url: "{{ route('state1_update') }}",--}}
-                {{--    method: "get",--}}
-                {{--    dataType: "json",--}}
-                {{--    data: {'data': jsonData},--}}
-                {{--    success: function (data) {--}}
-                {{--        var JSONArray = JSON.parse(JSON.stringify(data));--}}
-
-                {{--        if (JSONArray['result'] == "success") {--}}
-                {{--            alert('수정 되었습니다.');--}}
-                {{--            location.reload();--}}
-                {{--        } else if (JSONArray['result'] == "error") {--}}
-                {{--            alert(JSONArray['error_message']);--}}
-                {{--        };--}}
-                {{--    },--}}
-                {{--    error: function () {--}}
-                {{--        alert("Error while getting results");--}}
-                {{--    }--}}
-                {{--});--}}
             });
 
 
@@ -315,10 +309,8 @@
                                         <col width="">
                                         <col width="130px">
                                         <col width="130px">
-                                        <col width="130px">
-                                        <col width="120px">
-                                        <col width="90px">
-                                        <col width="90px">
+                                        <col width="50px">
+                                        <col width="260px">
                                         <col width="90px">
                                         <col width="40px">
                                         <col width="70px">
@@ -327,14 +319,24 @@
                                     <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>광고주</th>
-                                        <th>데이터명</th>
-                                        <th>데이터<br/>추출수</th>
-                                        <th>구매가격</th>
-                                        <th>유효기간</th>
-                                        <th>구매일</th>
+                                        <th>
+                                            <div>User ID</div>
+                                            <div>User 이름</div>
+                                        </th>
+                                        <th>
+                                            <div>광고주</div>
+                                            <div>데이터명</div>
+                                        </th>
+                                        <th>
+                                            <div>데이터추출수</div>
+                                            <div>구매가격</div>
+                                        </th>
+                                        <th>
+                                            <div>구매일</div>
+                                            <div>유효기간</div>
+                                        </th>
                                         <th>요청횟수</th>
-                                        <th>업로드<br/>파일</th>
+                                        <th>업로드파일</th>
                                         <th>메모</th>
                                         <th>상태</th>
                                         <th></th>
@@ -342,45 +344,64 @@
                                     </thead>
                                     <tbody>
                                     @forelse($carts as $cart)
-                                        <tr style="background:rgba(0, 0, 21, 0.05)">
+                                        <tr style="background:rgba(0, 0, 21, 0.05);">
                                             <td>{{ $cart->goods->id }}</td>
-                                            <td>{{ $cart->goods->advertiser }}</td>
-                                            <td>{{ $cart->goods->data_name }}</td>
                                             <td>
+                                                <div>
+                                                {{ $cart->user->user_id }}
+                                                </div>
+                                                <div>
+                                                {{ $cart->user->name }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                {{ $cart->goods->advertiser }}
+                                                </div>
+                                                <div>
+                                                {{ $cart->goods->data_name }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
                                                 @if ($cart->state != '1')
                                                     {{ number_format($cart->goods->data_count) }}
                                                 @else
                                                     <input class="form-control" type="number" placeholder="" name="data_count" value="{{ $cart->goods->data_count }}"  required autofocus>
                                                 @endif
-                                            </td>
-                                            <td>
+                                                </div>
+                                                <div>
                                                 @if ($cart->state != '1')
                                                     {{ number_format($cart->goods->buy_price) }}
                                                 @else
                                                     <input class="form-control" type="number" placeholder="" name="buy_price" value="{{ $cart->goods->buy_price }}"  required autofocus>
                                                 @endif
+                                                </div>
                                             </td>
                                             <td>
+                                                <div>
+                                                    {{ $cart->buy_date }}
+                                                </div>
+                                                <div>
                                                 @if ($cart->state != '1')
                                                     {{ $cart->goods->expiration_date }}
                                                 @else
                                                     <input class="form-control" type="text" placeholder="" id="expiration_date1" name="expiration_date"  value="{{ $cart->goods->expiration_date }}"  autofocus>
                                                 @endif
-                                            </td>
-                                            <td>
-                                                {{ $cart->buy_date }}
+                                                </div>
                                             </td>
 
                                             <td>{{ $cart->goods->data_request }}</td>
-                                            <td>
+                                            <td class="form-inline" >
                                                 @if ($cart->state =='4')
-                                                    <input class="" type="file"  id="data_files1" name="data_files"  value="" style="width: 90px"  autofocus>
+                                                    <input type="text" class="form-control text_name form-control-sm col-8" disabled/>
+                                                    <input id="data_files1"  name="data_files" type="file" class="upload_name form-control" style="display: none"/>
+                                                    <label for="data_files1" class="btn btn-danger btn-sm col-4">업로드</label>
+{{--                                                    <input class="" type="file"  id="data_files1" name="data_files"  value="" style="width: 90px"  autofocus>--}}
                                                 @elseif ($cart->goods->org_files)
 {{--                                                    <a class="btn btn-secondary btn-sm" href="{{ route('file_download', [$cart->goods->data_files,$cart->goods->org_files]) }}">다운로드</a>--}}
-                                                    <a class="btn btn-secondary btn-sm" target="_blank" href="https://dmp9storage1.blob.core.windows.net/images/files/{{$cart->goods->data_files}}">다운로드</a>
-
+                                                    <a class="btn btn-secondary btn-sm"  target="_blank" href="https://dmp9storage1.blob.core.windows.net/images/files/{{$cart->goods->data_files}}">다운로드</a>
                                                 @endif
-
                                             </td>
                                             <td>
                                                 @if ($cart->memo)
@@ -410,7 +431,6 @@
                                                 @else
                                                     <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-cart_id="{{ $cart->goods->id }}" >수정</button>
                                                 @endif
-
                                             </td>
                                         </tr>
                                         @if (!$cart->options->isEmpty())
@@ -426,17 +446,17 @@
                                                             <col width="138px">
                                                             <col width="70px">
                                                         </colgroup>
-{{--                                                        <thead>--}}
-{{--                                                        <tr>--}}
-{{--                                                            <th></th>--}}
-{{--                                                            <th>대상플랫폼</th>--}}
-{{--                                                            <th>대상플랫폼 URL</th>--}}
-{{--                                                            <th>아이디</th>--}}
-{{--                                                            <th>비밀번호</th>--}}
-{{--                                                            <th>상태</th>--}}
-{{--                                                            <th></th>--}}
-{{--                                                        </tr>--}}
-{{--                                                        </thead>--}}
+                                                        <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>대상플랫폼</th>
+                                                            <th>대상플랫폼 URL</th>
+                                                            <th>아이디</th>
+                                                            <th>비밀번호</th>
+                                                            <th>상태</th>
+                                                            <th></th>
+                                                        </tr>
+                                                        </thead>
                                                         <tbody>
                                                             @foreach($cart->options as $option)
                                                             <tr>
@@ -533,13 +553,6 @@
                                 <input class="form-control" type="text" placeholder="요청횟수" name="data_request" value="" disabled required autofocus>
                             </div>
                         </div>
-
-{{--                        <div class="form-group row">--}}
-{{--                            <div class="col">--}}
-{{--                                <label>데이터항목</label>--}}
-{{--                                <input class="form-control" type="text" placeholder="데이터항목" name="data_category" value="" disabled required autofocus>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
 
                         <div class="form-group row">
                             <div class="col">
