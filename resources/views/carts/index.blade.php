@@ -379,14 +379,14 @@
                                             <td>
                                                 <div>
                                                 @if (Route::current()->getActionMethod() === "cart_state_1")
-                                                    <input class="form-control" type="number" placeholder="" name="data_count" value="{{ $cart->goods->data_count }}"  placeholder="데이터추출수" required autofocus>
+                                                    <input class="form-control" type="number"  name="data_count" value="{{ $cart->goods->data_count }}"  placeholder="데이터추출수" required autofocus>
                                                 @else
                                                     {{ number_format($cart->goods->data_count) }}
                                                 @endif
                                                 </div>
                                                 <div>
                                                 @if (Route::current()->getActionMethod() === "cart_state_1")
-                                                    <input class="form-control" type="number" placeholder="" name="buy_price" value="{{ $cart->goods->buy_price }}" placeholder="구매가격"  required autofocus>
+                                                    <input class="form-control" type="number"  name="buy_price" value="{{ $cart->goods->buy_price }}" placeholder="구매가격"  required autofocus>
                                                 @else
                                                     {{ number_format($cart->goods->buy_price) }}
                                                 @endif
@@ -398,7 +398,7 @@
                                                 </div>
                                                 <div>
                                                 @if (Route::current()->getActionMethod() === "cart_state_1")
-                                                    <input class="form-control" type="text" placeholder="" id="expiration_date1" name="expiration_date"  placeholder="유효기간" value="{{ $cart->goods->expiration_date }}"  autofocus>
+                                                    <input class="form-control" type="text"  id="expiration_date1" name="expiration_date"  placeholder="유효기간" value="{{ $cart->goods->expiration_date }}"  autofocus>
                                                 @else
                                                     {{ $cart->goods->expiration_date }}
                                                 @endif
