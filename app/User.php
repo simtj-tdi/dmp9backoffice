@@ -49,6 +49,7 @@ class User extends Authenticatable
             'email' => $this->email,
             'title' => $this->title,
             'company_name' => $this->company_name,
+            'taxes' => $this->taxes,
             'created_at' => $this->created_at,
             'approved' => $this->approved,
             'approved_at' => $this->approved_at,

@@ -1,5 +1,9 @@
 @extends('layouts.backoffice')
 
+<style>
+    table td div span {color: #bbb;}
+</style>
+
 @prepend('scripts')
     <script src="{{ asset('/js/tooltips.js') }}"></script>
     <script>
@@ -319,7 +323,7 @@
                                         @endif
                                         <col width="100px">
                                         @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_2" && Route::current()->getActionMethod() != "cart_state_3")
-                                        <col width="260px">
+                                        <col width="120px">
                                         @endif
                                         <col width="90px">
                                         @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_4" && Route::current()->getActionMethod() != "cart_state_5")
@@ -379,18 +383,18 @@
                                             <td>{{ $cart->goods->id }}</td>
                                             <td>
                                                 <div>
-                                                    User ID&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->user->user_id }}
+                                                    <span>User ID :</span> {{ $cart->user->user_id }}
                                                 </div>
                                                 <div>
-                                                    User 이름 : {{ $cart->user->name }}
+                                                    <span>User 이름 :</span> {{ $cart->user->name }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div>
-                                                    광고주&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->goods->advertiser }}
+                                                    <span>광고주 :</span> {{ $cart->goods->advertiser }}
                                                 </div>
                                                 <div>
-                                                    데이터명 : {{ $cart->goods->data_name }}
+                                                    <span>데이터명 :</span> {{ $cart->goods->data_name }}
                                                 </div>
                                             </td>
 
@@ -407,18 +411,18 @@
                                             @else
                                             <td>
                                                 <div>
-                                                    데이터추출수 : {{ number_format($cart->goods->data_count) }}
+                                                    <span>데이터추출수 :</span> {{ number_format($cart->goods->data_count) }}
                                                 </div>
                                                 <div>
-                                                    구매가격&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{ number_format($cart->goods->buy_price) }}
+                                                    <span>구매가격 :</span> {{ number_format($cart->goods->buy_price) }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div>
-                                                    구매일&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->buy_date }}
+                                                    <span>구매일 :</span> {{ $cart->buy_date }}
                                                 </div>
                                                 <div>
-                                                    유효기간 : {{ $cart->goods->expiration_date }}
+                                                    <span>유효기간 :</span> {{ $cart->goods->expiration_date }}
                                                 </div>
                                             </td>
                                             @endif
@@ -430,7 +434,7 @@
                                                 @if ($cart->state =='4')
 {{--                                                    <input type="text" class="form-control text_name form-control-sm col-8" disabled/>--}}
                                                     <input id="data_files1"  name="data_files" type="file" class="upload_name form-control" style="display: none"/>
-                                                    <label for="data_files1" class="btn btn-danger btn-sm col-4">파일찾기</label>
+                                                    <label for="data_files1" class="btn btn-danger btn-sm">파일찾기</label>
 {{--                                                    <input class="" type="file"  id="data_files1" name="data_files"  value="" style="width: 90px"  autofocus>--}}
                                                 @elseif ($cart->goods->org_files)
 {{--                                                    <input type="text" class="form-control text_name form-control-sm col-8" value="{{$cart->goods->org_files}}" disabled/>--}}

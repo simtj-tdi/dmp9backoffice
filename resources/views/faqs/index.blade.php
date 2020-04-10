@@ -186,14 +186,14 @@
                         <div class="form-group row">
                             <div class="col">
                                 <label>제목</label>
-                                <input class="form-control" type="text" placeholder="title" name="title" value="" required autofocus>
+                                <input class="form-control" type="text" placeholder="title" name="title" value="" autocomplete="off" required autofocus>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col">
                                 <label>내용</label>
-                                <textarea class="form-control" style="height: 300px" placeholder="content" name="content"  required autofocus></textarea>
+                                <textarea class="form-control" style="height: 300px" placeholder="content" name="content" autocomplete="off" required autofocus></textarea>
                             </div>
                         </div>
 

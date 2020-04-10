@@ -38,11 +38,16 @@ class userrepository implements userrepositoryinterface
     {
         $user = user::where('id', $id)->firstorfail();
 
+        $request_date['company_name'] = $request['company_name'];
+        $request_date['phone'] = $request['phone'];
+        $request_date['email'] = $request['email'];
+        $request_date['approved'] = $request['approved'];
+
         if ($request['approved']) {
-            $request['approved_at'] = now();
+            $request_date['approved_at'] = now();
         }
 
-        $user->update($request->toarray());
+        $user->update($request_date);
     }
 
     public function destory($id)

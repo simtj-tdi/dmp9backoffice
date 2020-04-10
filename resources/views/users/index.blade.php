@@ -1,7 +1,56 @@
 @extends('layouts.backoffice')
 
 @prepend('scripts')
+    <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
+        function  execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var addr = ''; // 주소 변수
+                    var extraAddr = ''; // 참고항목 변수
+
+                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+
+                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                    if(data.userSelectedType === 'R'){
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                            extraAddr += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if(data.buildingName !== '' && data.apartment === 'Y'){
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if(extraAddr !== ''){
+                            extraAddr = ' (' + extraAddr + ')';
+                        }
+                        // 조합된 참고항목을 해당 필드에 넣는다.
+                        document.getElementById("extraAddress").value = extraAddr;
+
+                    } else {
+                        document.getElementById("extraAddress").value = '';
+                    }
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById('postcode').value = data.zonecode;
+                    document.getElementById("address").value = addr;
+                    // 커서를 상세주소 필드로 이동한다.
+                    document.getElementById("detailAddress").focus();
+                }
+            }).open();
+        }
+
         $(function() {
             $(".sch1, .sch2").datepicker({
                 dateFormat: 'yy-mm-dd' //Input Display Format 변경
@@ -56,6 +105,20 @@
                             $("input[name='email']").val(JSONArray['user_info']['email']);
                             $("select[name='approved']").val(JSONArray['user_info']['approved']).attr("selected", "selected");
 
+                            if (JSONArray['user_info']['taxes'][0]) {
+                                $("#taxes").css('display','block');
+                                $("input[name='tax_company_number']").val(JSONArray['user_info']['taxes'][0]['tax_company_number']);
+                                $("input[name='tax_company_name']").val(JSONArray['user_info']['taxes'][0]['tax_company_name']);
+                                $("input[name='tax_name']").val(JSONArray['user_info']['taxes'][0]['tax_name']);
+                                $("input[name='tax_zipcode']").val(JSONArray['user_info']['taxes'][0]['tax_zipcode']);
+                                $("input[name='tax_addres_1']").val(JSONArray['user_info']['taxes'][0]['tax_addres_1']);
+                                $("input[name='tax_addres_2']").val(JSONArray['user_info']['taxes'][0]['tax_addres_2']);
+
+                                $("#file_url").text(JSONArray['user_info']['taxes'][0]['tax_img']);
+                                $("#file_url").attr("href", "https://dmp9storage1.blob.core.windows.net/images/tax/"+JSONArray['user_info']['user_id']+"/"+JSONArray['user_info']['taxes'][0]['tax_img']);
+                            } else {
+                                $("#taxes").css('display','none');
+                            }
 
                             //$("#modalForm").attr("action", "users/"+JSONArray['user_info']['id']);
                             $("form[name='frms']").attr("action", "users/"+JSONArray['user_info']['id']);
@@ -209,7 +272,7 @@
     <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <form method="POST" name="frms" action="">
+                    <form method="POST" name="frms" action="" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modal-header">
@@ -257,6 +320,58 @@
                                         </select>
                                     </div>
                                 </div>
+
+                            <div id="taxes" style="display: none">
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>사업자등록번호</label>
+                                        <input class="form-control" type="text" name="tax_company_number" placeholder="사업자등록번호를 입력해주세요" value=""  autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>업체명(법인명)</label>
+                                        <input class="form-control" type="text" name="tax_company_name" placeholder="업체명을 입력해주세요" value=""  autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>대표자명</label>
+                                        <input class="form-control" type="text" name="tax_name" placeholder="대표자명을 입력해주세요" value=""  autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>주소</label>
+
+                                        <div class="address_box">
+                                            <div class="form-inline mb-2">
+                                                <input type="text" id="postcode" class="postcode form-control col-6" name="tax_zipcode" placeholder="우편번호를 입력해주세요">
+                                                <button type="button" onclick=" execDaumPostcode()" style="top:33px; " class="ml-2 ">검색</button>
+                                            </div>
+                                            <input type="text" id="address" class=" form-control mb-2" name="tax_addres_1" placeholder="기본주소를 검색하세요">
+                                            <input type="text" id="detailAddress" class=" form-control mb-2" name="tax_addres_2" placeholder="상세주소를 입력해주세요" autocomplete="off">
+                                            <input type="text" id="extraAddress" class="extraAddress form-control" style="display: none" placeholder="참고항목">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>사업자등록증</label>
+                                        <div class="form-inline mb-2">
+                                            <input id="file_name" type="file" name="tax_img" class="upload_name form-control"/>
+                                        </div>
+                                        <a id="file_url" target="_blank" href=""></a>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">닫기</button>

@@ -17,7 +17,76 @@
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
     <script>
+
         $(function() {
+
+            /* 날짜 객체 받아서 문자열로 리턴하는 함수 */
+            function getDateStr(myDate){
+
+                var day = myDate.getDate();
+                var month =  myDate.getMonth() + 1;
+
+                if (String(day).length == 1) {
+                    day = "0" + day;
+                }
+
+                if (String(month).length == 1) {
+                    month = "0" + month;
+                }
+
+                return (myDate.getFullYear() + '-' + month + '-' + day)
+            }
+
+            /* 오늘 날짜를 문자열로 반환 */
+            function today() {
+                var d = new Date()
+                return getDateStr(d)
+            }
+
+            /* 오늘로부터 1주일전 날짜 반환 */
+            function lastWeek() {
+                var d = new Date()
+                var dayOfMonth = d.getDate()
+                d.setDate(dayOfMonth - 7)
+                return getDateStr(d)
+            }
+
+            /* 오늘로부터 1개월전 날짜 반환 */
+            function lastMonth() {
+                var d = new Date()
+                var monthOfYear = d.getMonth()
+                d.setMonth(monthOfYear - 1)
+                return getDateStr(d)
+            }
+
+            $("#today").click(function(){
+                $(".sch2").val(today())
+                $(".sch1").val(today())
+            });
+
+            $("#lastWeek").click(function(){
+                $(".sch2").val(today())
+                $(".sch1").val(lastWeek())
+            });
+
+            $("#lastMonth").click(function(){
+                $(".sch2").val(today())
+                $(".sch1").val(lastMonth())
+            });
+
+            // $(".srch_area :radio").click(function(){
+            //     var rname = $(this).attr("name")
+            //     $("#search_end_date").val(today())
+            //     if( rname == "today"){
+            //         $("#search_start_date").val(today())
+            //     }else if(rname == "week") {
+            //         $("#search_start_date").val(lastWeek())
+            //     }else{
+            //         $("#search_start_date").val(lastMonth())
+            //     }
+            // })
+
+
             $(".sch1, .sch2").datepicker({
                 dateFormat: 'yy-mm-dd', //Input Display Format 변경
                 showOtherMonths: true, //빈 공간에 현재월의 앞뒤월의 날짜를 표시
@@ -123,6 +192,7 @@
     <div class="container-fluid">
         <div class="animated fadeIn">
             <div class="row">
+
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
@@ -132,31 +202,30 @@
                             <div class="float-right" >
                                 &nbsp;
                             </div>
-                            <table class="table table-responsive-sm" >
-                                <colgroup>
-                                    <col width="10%" >
-                                    <col width="40%">
-                                    <col width="">
-                                </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <td style="background:rgba(0, 0, 21, 0.05)">총 데이터 수</td>
-                                        <td>{{ number_format($total_count) }}</td>
-                                        <td>&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="background:rgba(0, 0, 21, 0.05)">총 매출 금액</td>
-                                        <td>{{ number_format($total_price) }}</td>
-                                        <td>&nbsp;</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                            <div class="row">
+
+                                <div class="col-6">
+                                    <div class="c-callout c-callout-info"><small class="text-muted">총 매출 금액</small>
+                                        <div class="text-value-lg">{{ number_format($total_price) }}</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="c-callout c-callout-danger"><small class="text-muted">총 데이터 수</small>
+                                        <div class="text-value-lg">{{ number_format($total_count) }}</div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
                             <div id="chartdiv"></div>
                         </div>
 
 
-                        <div class="card-body">
-                            <table class="table table-responsive-sm table-striped">
+                        <div class="card-body table-responsive" >
+                            <table class="table  table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>날짜</th>
@@ -183,28 +252,29 @@
                                         @endforeach
                                     </tr>
                                 </thead>
-
-
-
                             </table>
-
-
                         </div>
 
 
                         <div class="card-body">
                             <div class="col-sm-4 " style="margin: auto">
+
                                 <form class="form-horizontal" action="{{ route($route_name) }}" method="GET">
                                     <input type="hidden" name="sch_key" value="created_at">
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <div class="input-group">
+
+                                                <button class="btn-info" type="button" id="today">오늘</button>&nbsp;
+                                                <button class="btn-info" type="button" id="lastWeek">일주일</button>&nbsp;
+                                                <button class="btn-info" type="button" id="lastMonth">한달</button>&nbsp;
+                                                &nbsp;&nbsp;&nbsp;
                                                 <input class="form-control sch1" id="input1-group1" type="text" name="sch1" value="{{ $sch1 }}" placeholder="검색어" autocomplete="sch"  >
                                                 &nbsp;<span id="input_span" style="display: {{ ($sch_key=="buy_date") ? "block;" : "none;"  }}">~</span>&nbsp;
                                                 <input class="form-control sch2" id="input2-group2" type="text" name="sch2" value="{{ $sch2 }}" placeholder="검색어" autocomplete="sch" >
                                                 <span class="input-group-append">
                                                     <button class="btn btn-primary" type="submit">검색</button>
-                                                    </span>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>

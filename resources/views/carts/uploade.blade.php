@@ -1,5 +1,9 @@
 @extends('layouts.backoffice')
 
+<style>
+    table td div span {color: #bbb;}
+</style>
+
 @prepend('scripts')
     <script src="{{ asset('/js/tooltips.js') }}"></script>
     <script>
@@ -199,28 +203,28 @@
                                             <tr>
                                                 <td>{{ $cart->id }}</td>
                                                 <td>
-                                                    <div>User ID&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->cart->user->user_id }}</div>
-                                                    <div>User 이름 : {{ $cart->cart->user->name }}</div>
+                                                    <div><span>User ID :</span> {{ $cart->cart->user->user_id }}</div>
+                                                    <div><span>User 이름 :</span> {{ $cart->cart->user->name }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>광고주&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->cart->goods->advertiser }}</div>
-                                                    <div>데이터명 : {{ $cart->cart->goods->data_name }}</div>
+                                                    <div><span>광고주 :</span> {{ $cart->cart->goods->advertiser }}</div>
+                                                    <div><span>데이터명 :</span> {{ $cart->cart->goods->data_name }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>데이터추출수 : {{ number_format($cart->cart->goods->data_count) }}</div>
-                                                    <div>구매가격&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ number_format($cart->cart->goods->buy_price) }}</div>
+                                                    <div><span>데이터추출수 :</span> {{ number_format($cart->cart->goods->data_count) }}</div>
+                                                    <div><span>구매가격 :</span> {{ number_format($cart->cart->goods->buy_price) }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>구매일&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->cart->buy_date }}</div>
-                                                    <div>유효기간 : {{ $cart->cart->goods->expiration_date }}</div>
+                                                    <div><span>구매일 :</span> {{ $cart->cart->buy_date }}</div>
+                                                    <div><span>유효기간 :</span> {{ $cart->cart->goods->expiration_date }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>대상플랫폼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->platform->name }}</div>
-                                                    <div>대상플랫폼 URL : {{ $cart->platform->url }}</div>
+                                                    <div><span>대상플랫폼 :</span> {{ $cart->platform->name }}</div>
+                                                    <div><span>대상플랫폼 URL :</span> {{ $cart->platform->url }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>아이디&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->sns_id }}</div>
-                                                    <div>비밀번호 : {{ $cart->sns_password }}</div>
+                                                    <div><span>아이디 :</span> {{ $cart->sns_id }}</div>
+                                                    <div><span>비밀번호 :</span> {{ $cart->sns_password }}</div>
                                                 </td>
                                                 <td>
                                                     @if ($cart->cart->goods->org_files)

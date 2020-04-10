@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\UserRepositoryInterface;
+use App\Tax;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,43 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->userRepository->update($request, $id);
+
+        $info = $this->userRepository->findById($id);
+
+        if ($request->tax_company_number) {
+
+//            $user = user::where('id', $id)->firstorfail();
+//
+//            $request_date['company_name'] = $request['company_name'];
+//            $request_date['phone'] = $request['phone'];
+//            $request_date['email'] = $request['email'];
+//            $request_date['approved'] = $request['approved'];
+//
+//            if ($request['approved']) {
+//                $request_date['approved_at'] = now();
+//            }
+//
+//            $user->update($request_date);
+            $taxs = Tax::where('user_id', $info['id'])->get();
+
+            $taxs_data['tax_company_number'] = $request['tax_company_number'];
+            $taxs_data['tax_company_name'] = $request['tax_company_name'];
+            $taxs_data['tax_name'] = $request['tax_name'];
+            $taxs_data['tax_zipcode'] = $request['tax_zipcode'];
+            $taxs_data['tax_addres_1'] = $request['tax_addres_1'];
+            $taxs_data['tax_addres_2'] = $request['tax_addres_2'];
+            $taxs_data['tax_img'] = $request['tax_img'];
+
+            if ($request->tax_img) {
+                $path = explode('/', $taxs_data['tax_img']->store('tax/'.$info['user_id']));
+                $taxs_data['tax_img'] = $path[2];
+            } else {
+                $taxs_data['tax_img'] = $taxs[0]->tax_img;
+            }
+
+            Tax::where('user_id', $info['id'])->update($taxs_data);
+        }
+
 
         return redirect()->route('users.index');
     }
