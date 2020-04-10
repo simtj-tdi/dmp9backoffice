@@ -71,6 +71,36 @@
                 });
                 //$('#largeModal').modal('show')
             });
+
+
+            $("select[name=state]").change(function() {
+                var data = new Object();
+                data.user_id = $(this).data("user_id");
+                data.states = $(this).val();
+                var jsonData = JSON.stringify(data);
+
+                $.ajax({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url: "{{ route('users.state_change') }}",
+                    method: "get",
+                    dataType: "json",
+                    data: {'data': jsonData},
+                    success: function (data) {
+                        var JSONArray = JSON.parse(JSON.stringify(data));
+
+                        if (JSONArray['result'] == "success") {
+                            alert('수정 되었습니다.');
+                            location.reload();
+                        } else if (JSONArray['result'] == "error") {
+                            alert(JSONArray['error_message']);
+                        };
+                    },
+                    error: function () {
+                        alert("Error while getting results");
+                    }
+                });
+            });
+
         });
     </script>
 @endprepend
@@ -120,15 +150,10 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ( $user->approved)
-                                            <span class="badge badge-pill badge-warning">
-                                              인증
-                                            </span>
-                                        @else
-                                            <span class="badge badge-pill badge-secondary">
-                                              비인증
-                                            </span>
-                                        @endif
+                                        <select name="state" data-user_id="{{ $user->id }}">
+                                            <option value="0" {{ $user->approved == '0' ? 'selected' : '' }}>비인증</option>
+                                            <option value="1" {{ $user->approved == '1' ? 'selected' : '' }}>인증</option>
+                                        </select>
                                     </td>
                                     <td>
                                         {{ Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}

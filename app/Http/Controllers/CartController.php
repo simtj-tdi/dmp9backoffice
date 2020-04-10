@@ -88,8 +88,9 @@ class CartController extends Controller
         $sch = $request->sch;
         $sch1 = $request->sch1;
         $sch2 = $request->sch2;
+        $default_expiration_date = date("Y-m-d", strtotime("+1 months"));
 
-        return view('carts.index', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name'));
+        return view('carts.index', compact('carts', 'platforms','sch_key','sch','sch1','sch2', 'route_name', 'default_expiration_date'));
     }
 
 

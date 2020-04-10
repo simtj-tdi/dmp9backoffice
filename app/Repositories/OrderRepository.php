@@ -11,9 +11,8 @@ class OrderRepository implements OrderRepositoryInterface
 
         $orders = order::where('state', 1)
             ->whereNotNull('payment_id')
-            ->orderBy('id', 'desc')
-            ->wherehas('carts', function ($query) use ($request) {
-                $query->where('state', 5);
+            ->wherehas('carts', function ($query)  {
+                $query->where('state','>=', 3);
             })
             ->when($request->sch_key,
                 function ($q) use ($request) {
@@ -24,6 +23,7 @@ class OrderRepository implements OrderRepositoryInterface
                     }
                 }
             )
+            ->orderBy('id', 'desc')
             ->paginate(10);
 
         $orders->getCollection()->map->format();;

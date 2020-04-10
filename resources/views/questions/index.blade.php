@@ -111,30 +111,30 @@
                                 <tbody>
                                 @foreach($questions as $question)
                                     <tr>
-                                    <td>{{ $question->id }}</td>
-                                    <td><strong>{{ $question->title }}</strong></td>
-                                    <td>{{ $question->user->name }}</td>
-                                    <td>
-                                        @if (!$question->answers->isEmpty())
-                                            답변완료
-                                        @else
-                                            답변대기
-                                        @endif
-                                    </td>
-                                    <td>
-                                        {{ Carbon\Carbon::parse($question->created_at)->format('Y-m-d') }}
-                                    </td>
-                                    <td style="width: 70px">
-                                        <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-question_id="{{ $question->id }}"  >답변</button>
-                                    </td>
-                                    <td style="width: 70px">
-                                        <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-block btn-danger btn-sm">삭제</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                        <td>{{ $question->id }}</td>
+                                        <td><strong>{{ $question->title }}</strong></td>
+                                        <td>{{ $question->user->name }}</td>
+                                        <td>
+                                            @if (!$question->answers->isEmpty())
+                                                답변완료
+                                            @else
+                                                답변대기
+                                            @endif
+                                        </td>
+                                        <td>
+                                            {{ Carbon\Carbon::parse($question->created_at)->format('Y-m-d') }}
+                                        </td>
+                                        <td style="width: 70px">
+                                            <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-question_id="{{ $question->id }}"  >답변</button>
+                                        </td>
+                                        <td style="width: 70px">
+                                            <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-block btn-danger btn-sm">삭제</button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>

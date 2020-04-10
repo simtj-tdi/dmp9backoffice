@@ -199,28 +199,28 @@
                                             <tr>
                                                 <td>{{ $cart->id }}</td>
                                                 <td>
-                                                    <div>{{ $cart->cart->user->user_id }}</div>
-                                                    <div>{{ $cart->cart->user->name }}</div>
+                                                    <div>User ID&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->cart->user->user_id }}</div>
+                                                    <div>User 이름 : {{ $cart->cart->user->name }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>{{ $cart->cart->goods->advertiser }}</div>
-                                                    <div>{{ $cart->cart->goods->data_name }}</div>
+                                                    <div>광고주&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->cart->goods->advertiser }}</div>
+                                                    <div>데이터명 : {{ $cart->cart->goods->data_name }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>{{ number_format($cart->cart->goods->data_count) }}</div>
-                                                    <div>{{ number_format($cart->cart->goods->buy_price) }}</div>
+                                                    <div>데이터추출수 : {{ number_format($cart->cart->goods->data_count) }}</div>
+                                                    <div>구매가격&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ number_format($cart->cart->goods->buy_price) }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>{{ $cart->cart->buy_date }}</div>
-                                                    <div>{{ $cart->cart->goods->expiration_date }}</div>
+                                                    <div>구매일&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->cart->buy_date }}</div>
+                                                    <div>유효기간 : {{ $cart->cart->goods->expiration_date }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>{{ $cart->platform->name }}</div>
-                                                    <div>{{ $cart->platform->url }}</div>
+                                                    <div>대상플랫폼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->platform->name }}</div>
+                                                    <div>대상플랫폼 URL : {{ $cart->platform->url }}</div>
                                                 </td>
                                                 <td>
-                                                    <div>{{ $cart->sns_id }}</div>
-                                                    <div>{{ $cart->sns_password }}</div>
+                                                    <div>아이디&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->sns_id }}</div>
+                                                    <div>비밀번호 : {{ $cart->sns_password }}</div>
                                                 </td>
                                                 <td>
                                                     @if ($cart->cart->goods->org_files)

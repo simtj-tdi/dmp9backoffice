@@ -309,17 +309,21 @@
                                         <col width="20px">
                                         <col width="">
                                         <col width="">
-                                        <col width="200px">
-                                        <col width="200px">
+                                        @if (Route::current()->getActionMethod() == "cart_state_1")
+                                            <col width="200px">
+                                            <col width="200px">
+                                            <col width="200px">
+                                        @else
+                                            <col width="200px">
+                                            <col width="200px">
+                                        @endif
                                         <col width="50px">
                                         @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_2" && Route::current()->getActionMethod() != "cart_state_3")
                                         <col width="260px">
                                         @endif
-
                                         <col width="90px">
-
                                         @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_4" && Route::current()->getActionMethod() != "cart_state_5")
-                                            <col width="120px">
+                                        <col width="120px">
                                         @endif
                                         <col width="70px">
                                     </colgroup>
@@ -334,6 +338,17 @@
                                             <div>광고주</div>
                                             <div>데이터명</div>
                                         </th>
+                                        @if (Route::current()->getActionMethod() == "cart_state_1")
+                                            <th>
+                                                데이터추출수
+                                            </th>
+                                            <th>
+                                                구매가격
+                                            </th>
+                                            <th>
+                                                유효기간
+                                            </th>
+                                        @else
                                         <th>
                                             <div>데이터추출수</div>
                                             <div>구매가격</div>
@@ -342,6 +357,8 @@
                                             <div>구매일</div>
                                             <div>유효기간</div>
                                         </th>
+                                        @endif
+
                                         <th>요청횟수</th>
 
                                         @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_2" && Route::current()->getActionMethod() != "cart_state_3")
@@ -362,65 +379,62 @@
                                             <td>{{ $cart->goods->id }}</td>
                                             <td>
                                                 <div>
-                                                {{ $cart->user->user_id }}
+                                                    User ID&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->user->user_id }}
                                                 </div>
                                                 <div>
-                                                {{ $cart->user->name }}
+                                                    User 이름 : {{ $cart->user->name }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div>
-                                                {{ $cart->goods->advertiser }}
+                                                    광고주&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->goods->advertiser }}
                                                 </div>
                                                 <div>
-                                                {{ $cart->goods->data_name }}
+                                                    데이터명 : {{ $cart->goods->data_name }}
+                                                </div>
+                                            </td>
+
+                                            @if (Route::current()->getActionMethod() == "cart_state_1")
+                                                <td>
+                                                    <input class="form-control" type="number"  name="data_count" value=""  placeholder="데이터추출수" required autofocus>
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" type="number"  name="buy_price" value="" placeholder="구매가격"  required autofocus>
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" type="text"  id="expiration_date1" name="expiration_date"  placeholder="유효기간" value="{{$default_expiration_date}}"  autofocus>
+                                                </td>
+                                            @else
+                                            <td>
+                                                <div>
+                                                    데이터추출수 : {{ number_format($cart->goods->data_count) }}
+                                                </div>
+                                                <div>
+                                                    구매가격&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{ number_format($cart->goods->buy_price) }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div>
-                                                @if (Route::current()->getActionMethod() === "cart_state_1")
-                                                    <input class="form-control" type="number"  name="data_count" value="{{ $cart->goods->data_count }}"  placeholder="데이터추출수" required autofocus>
-                                                @else
-                                                    {{ number_format($cart->goods->data_count) }}
-                                                @endif
+                                                    구매일&nbsp;&nbsp;&nbsp;&nbsp;: {{ $cart->buy_date }}
                                                 </div>
                                                 <div>
-                                                @if (Route::current()->getActionMethod() === "cart_state_1")
-                                                    <input class="form-control" type="number"  name="buy_price" value="{{ $cart->goods->buy_price }}" placeholder="구매가격"  required autofocus>
-                                                @else
-                                                    {{ number_format($cart->goods->buy_price) }}
-                                                @endif
+                                                    유효기간 : {{ $cart->goods->expiration_date }}
                                                 </div>
                                             </td>
-                                            <td>
-                                                <div>
-                                                    {{ $cart->buy_date }}
-                                                </div>
-                                                <div>
-                                                @if (Route::current()->getActionMethod() === "cart_state_1")
-                                                    <input class="form-control" type="text"  id="expiration_date1" name="expiration_date"  placeholder="유효기간" value="{{ $cart->goods->expiration_date }}"  autofocus>
-                                                @else
-                                                    {{ $cart->goods->expiration_date }}
-                                                @endif
-                                                </div>
-                                            </td>
+                                            @endif
 
                                             <td>{{ $cart->goods->data_request }}</td>
 
                                             @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_2" && Route::current()->getActionMethod() != "cart_state_3")
                                             <td class="form-inline" >
                                                 @if ($cart->state =='4')
-                                                    <input type="text" class="form-control text_name form-control-sm col-8" disabled/>
+{{--                                                    <input type="text" class="form-control text_name form-control-sm col-8" disabled/>--}}
                                                     <input id="data_files1"  name="data_files" type="file" class="upload_name form-control" style="display: none"/>
-                                                    <label for="data_files1" class="btn btn-danger btn-sm col-4">업로드</label>
+                                                    <label for="data_files1" class="btn btn-danger btn-sm col-4">파일찾기</label>
 {{--                                                    <input class="" type="file"  id="data_files1" name="data_files"  value="" style="width: 90px"  autofocus>--}}
                                                 @elseif ($cart->goods->org_files)
-                                                    <input type="text" class="form-control text_name form-control-sm col-8" value="{{$cart->goods->org_files}}" disabled/>
+{{--                                                    <input type="text" class="form-control text_name form-control-sm col-8" value="{{$cart->goods->org_files}}" disabled/>--}}
                                                     <a class="btn btn-info btn-sm col-4"  target="_blank" href="https://dmp9storage1.blob.core.windows.net/images/files/{{$cart->goods->data_files}}">다운로드</a>
-                                                    {{--                                                    <input class="" type="file"  id="data_files1" name="data_files"  value="" style="width: 90px"  autofocus>--}}
-
-{{--                                                    <a class="btn btn-secondary btn-sm" href="{{ route('file_download', [$cart->goods->data_files,$cart->goods->org_files]) }}">다운로드</a>--}}
-
                                                 @endif
                                             </td>
                                             @endif
@@ -453,7 +467,7 @@
                                                 @if ($cart->state == "4")
                                                     <button class="btn btn-block btn-success btn-sm" type="button" name="btn_file_update" data-cart_id="{{ $cart->goods->id }}" data-goods_id="{{ $cart->goods->id }}" >수정</button>
                                                 @elseif (Route::current()->getActionMethod() === "cart_state_1")
-                                                    <button class="btn btn-block btn-success btn-sm" type="button" name="btn_state1" data-cart_id="{{ $cart->id }}"  data-goods_id="{{ $cart->goods->id }}" >수정</button>
+                                                    <button class="btn btn-block btn-info btn-sm" type="button" name="btn_state1" data-cart_id="{{ $cart->id }}"  data-goods_id="{{ $cart->goods->id }}" >입력</button>
                                                 @else
                                                     <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-cart_id="{{ $cart->goods->id }}" >수정</button>
                                                 @endif

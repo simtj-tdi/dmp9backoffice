@@ -158,39 +158,37 @@
                         <div class="card-body">
                             <table class="table table-responsive-sm table-striped">
                                 <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>주문번호</th>
-                                    <th>구매내역</th>
-                                    <th>구매날짜</th>
-                                    <th>구매가격</th>
-                                    <th>결제방식</th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($orders as $order)
                                     <tr>
-                                        <td>{{ $order->id }}</td>
-                                        <td>{{ $order->order_no }}</td>
-                                        <td>{{ $order->order_name }}</td>
-                                        <td>{{ $order->created_at }}</td>
-                                        <td>{{ number_format($order->total_price) }}</td>
-                                        <td>
-                                            @if ($order->payment_returns->pgcode == "creditcard")
-                                                신용카드
-                                            @else
-                                                가상계좌
-                                            @endif
-
-                                        </td>
-
+                                        <th>날짜</th>
+                                        @foreach($data_table as $data_tables)
+                                            <th>
+                                            {{ $data_tables['date'] }}
+                                            </th>
+                                        @endforeach
                                     </tr>
-                                @endforeach
-                                </tbody>
+                                    <tr>
+                                        <td>금액</td>
+                                        @foreach($data_table as $data_tables)
+                                            <td>
+                                                {{ number_format($data_tables['price_value']) }}
+                                            </td>
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        <td>데이터</td>
+                                        @foreach($data_table as $data_tables)
+                                            <td>
+                                                {{ number_format($data_tables['price_count']) }}
+                                            </td>
+                                        @endforeach
+                                    </tr>
+                                </thead>
+
+
+
                             </table>
 
-                            {{ $orders->links() }}
+
                         </div>
 
 

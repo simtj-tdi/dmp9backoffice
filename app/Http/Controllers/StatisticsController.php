@@ -32,7 +32,6 @@ class StatisticsController extends Controller
         $sch1 = $request->sch1 ? $request->sch1 : date("Y-m-d", strtotime("-7 days"));
         $sch2 = $request->sch2 ? $request->sch2 : date("Y-m-d");
 
-
         $date_range = $this->date_range($sch1, $sch2, "+1 day", "Y-m-d");
 
         $total_price = $orders->sum(function($item)  {
@@ -53,7 +52,21 @@ class StatisticsController extends Controller
             return ['device' => "dev1", 'date'=> $item, 'value'=>$value];
         }, $date_range);
 
-        return view('statistics.sales', compact('data', 'sch_key','sch','sch1','sch2', 'route_name', 'total_price','total_count', 'orders'));
+        $data_table = array_map(function ($item) use ($orders) {
+            $price_value = $orders->sum(function($order_item) use ($item)  {
+                if ($item == date("Y-m-d", strtotime($order_item->created_at))) {
+                    return $order_item->total_price;
+                }
+            });
+            $price_count = $orders->sum(function($order_item) use ($item)  {
+                if ($item == date("Y-m-d", strtotime($order_item->created_at))) {
+                    return $order_item->total_count;
+                }
+            });
+            return ['date'=> $item, 'price_value'=>$price_value, 'price_count'=>$price_count];
+        }, $date_range);
+
+        return view('statistics.sales', compact('data', 'sch_key','sch','sch1','sch2', 'route_name', 'total_price','total_count', 'data_table','orders'));
     }
 
     public function date_range($first, $last, $step = '+1 day', $output_format = 'd/m/Y' )

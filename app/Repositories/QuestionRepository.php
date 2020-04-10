@@ -9,7 +9,7 @@ class QuestionRepository implements QuestionRepositoryInterface
 {
     public function all($request)
     {
-        $questions = question::orderBy('id', 'desc')
+        $questions = question::has('user')
             ->when($request->sch_key,
                 function ($q) use ($request) {
                     if ($request->sch) {
@@ -19,9 +19,12 @@ class QuestionRepository implements QuestionRepositoryInterface
                     }
                 }
             )
+            ->orderBy('id', 'desc')
             ->paginate(5);
 
         $questions->getCollection()->map->format();;
+
+
 
         return $questions;
     }
