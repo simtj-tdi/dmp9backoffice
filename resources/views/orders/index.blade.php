@@ -121,7 +121,7 @@
                                                     &nbsp;<span id="input_span" style="display: {{ ($sch_key=="created_at") ? "block;" : "none;"  }}">~</span>&nbsp;
                                                     <input class="form-control sch2" id="input2-group2" type="text" name="sch2" value="{{ $sch2 }}" placeholder="검색어" autocomplete="sch" style="display: {{ ($sch_key=="created_at") ? "block;" : "none;"  }}" >
                                                     <span class="input-group-append">
-                                                        <button class="btn btn-primary" type="submit">검색</button>
+                                                        <button class="btn btn-facebook" type="submit" style="z-index: 0;">검색</button>
                                                     </span>
                                                 </div>
                                             </div>

@@ -461,7 +461,7 @@
                                                 @if ($cart->state =='4')
 {{--                                                    <input type="text" class="form-control text_name form-control-sm col-8" disabled/>--}}
                                                     <input id="data_files1"  name="data_files" type="file" class="upload_name form-control" style="display: none"/>
-                                                    <label for="data_files1" class="btn btn-light btn-sm">파일찾기</label>
+                                                    <label for="data_files1" class="btn btn-dark btn-sm">파일찾기</label>
 {{--                                                    <input class="" type="file"  id="data_files1" name="data_files"  value="" style="width: 90px"  autofocus>--}}
                                                 @elseif ($cart->goods->org_files)
 {{--                                                    <input type="text" class="form-control text_name form-control-sm col-8" value="{{$cart->goods->org_files}}" disabled/>--}}
@@ -580,7 +580,7 @@
                                                     &nbsp;<span id="input_span" style="display: {{ ($sch_key=="buy_date") ? "block;" : "none;"  }}">~</span>&nbsp;
                                                     <input class="form-control sch2" id="input2-group2" type="text" name="sch2" value="{{ $sch2 }}" placeholder="검색어" autocomplete="sch" style="display: {{ ($sch_key=="buy_date") ? "block;" : "none;"  }}" >
                                                     <span class="input-group-append">
-                                                    <button class="btn btn-primary" type="submit" style="z-index: 0;">검색</button>
+                                                    <button class="btn btn-facebook" type="submit" style="z-index: 0;">검색</button>
                                                     </span>
                                                 </div>
                                             </div>

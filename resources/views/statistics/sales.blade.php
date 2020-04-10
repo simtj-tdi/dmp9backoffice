@@ -159,7 +159,7 @@
         // Create axes
         var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         dateAxis.renderer.grid.template.location = 0;
-        dateAxis.renderer.minGridDistance = 30;
+        dateAxis.renderer.maxGridDistance = 10;
         // Set date label formatting
         dateAxis.skipEmptyPeriods = true;
         dateAxis.dateFormats.setKey("day", "yyyy-MM-dd");
@@ -265,15 +265,15 @@
                                         <div class="col-md-12">
                                             <div class="input-group">
 
-                                                <button class="btn btn-info" type="submit" id="today">오늘</button>&nbsp;
-                                                <button class="btn btn-info" type="submit" id="lastWeek">일주일</button>&nbsp;
-                                                <button class="btn btn-info" type="submit" id="lastMonth">한달</button>&nbsp;
+                                                <button class="btn btn-facebook" type="submit" id="today">오늘</button>&nbsp;
+                                                <button class="btn btn-facebook" type="submit" id="lastWeek">일주일</button>&nbsp;
+                                                <button class="btn btn-facebook" type="submit" id="lastMonth">한달</button>&nbsp;
                                                 &nbsp;&nbsp;&nbsp;
                                                 <input class="form-control sch1" id="input1-group1" type="text" name="sch1" value="{{ $sch1 }}" placeholder="검색어" autocomplete="sch"  >
                                                 &nbsp;<span id="input_span" style="display: {{ ($sch_key=="buy_date") ? "block;" : "none;"  }}">~</span>&nbsp;
                                                 <input class="form-control sch2" id="input2-group2" type="text" name="sch2" value="{{ $sch2 }}" placeholder="검색어" autocomplete="sch" >
                                                 <span class="input-group-append">
-                                                    <button class="btn btn-primary" type="submit">검색</button>
+                                                    <button class="btn btn-facebook" type="submit" style="z-index: 0;">검색</button>
                                                 </span>
                                             </div>
                                         </div>
