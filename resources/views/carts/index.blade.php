@@ -325,7 +325,7 @@
                                         @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_4" && Route::current()->getActionMethod() != "cart_state_5")
                                         <col width="120px">
                                         @endif
-                                        <col width="70px">
+                                        <col width="80px">
                                     </colgroup>
                                     <thead>
                                     <tr>
