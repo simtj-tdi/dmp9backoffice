@@ -426,7 +426,7 @@
                                             <td>{{ $cart->goods->data_request }}</td>
 
                                             @if (Route::current()->getActionMethod() != "cart_state_1" && Route::current()->getActionMethod() != "cart_state_2" && Route::current()->getActionMethod() != "cart_state_3")
-                                            <td class="form-inline" style="border-top: none;" >
+                                            <td>
                                                 @if ($cart->state =='4')
 {{--                                                    <input type="text" class="form-control text_name form-control-sm col-8" disabled/>--}}
                                                     <input id="data_files1"  name="data_files" type="file" class="upload_name form-control" style="display: none"/>
