@@ -1,7 +1,8 @@
 @extends('layouts.backoffice')
 
 <style>
-    table td div span {color: #bbb;}
+    table td {font-size : 14px;}
+    table td div span {color: #bbb; display:inline-block; min-width:65px;}
 </style>
 
 @prepend('scripts')

@@ -1,7 +1,8 @@
 @extends('layouts.backoffice')
 
 <style>
-    table td div span {color: #bbb;}
+    table td {font-size : 14px;}
+    table td div span {color: #bbb; display:inline-block; min-width:65px;}
 </style>
 
 @prepend('scripts')
@@ -434,11 +435,11 @@
                                                 @if ($cart->state =='4')
 {{--                                                    <input type="text" class="form-control text_name form-control-sm col-8" disabled/>--}}
                                                     <input id="data_files1"  name="data_files" type="file" class="upload_name form-control" style="display: none"/>
-                                                    <label for="data_files1" class="btn btn-danger btn-sm">파일찾기</label>
+                                                    <label for="data_files1" class="btn btn-light btn-sm">파일찾기</label>
 {{--                                                    <input class="" type="file"  id="data_files1" name="data_files"  value="" style="width: 90px"  autofocus>--}}
                                                 @elseif ($cart->goods->org_files)
 {{--                                                    <input type="text" class="form-control text_name form-control-sm col-8" value="{{$cart->goods->org_files}}" disabled/>--}}
-                                                    <a class="btn btn-info btn-sm col-4"  target="_blank" href="https://dmp9storage1.blob.core.windows.net/images/files/{{$cart->goods->data_files}}">다운로드</a>
+                                                    <a class="btn btn-info btn-sm"  target="_blank" href="https://dmp9storage1.blob.core.windows.net/images/files/{{$cart->goods->data_files}}">다운로드</a>
                                                 @endif
                                             </td>
                                             @endif

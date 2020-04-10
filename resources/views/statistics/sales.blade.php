@@ -228,25 +228,25 @@
                             <table class="table  table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>날짜</th>
+                                        <th style="min-width: 100px;">날짜</th>
                                         @foreach($data_table as $data_tables)
-                                            <th>
+                                            <th style="min-width: 180px;">
                                             {{ $data_tables['date'] }}
                                             </th>
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        <td>금액</td>
+                                        <td style="min-width: 100px;">금액</td>
                                         @foreach($data_table as $data_tables)
-                                            <td>
+                                            <td  style="min-width: 180px;">
                                                 {{ number_format($data_tables['price_value']) }}
                                             </td>
                                         @endforeach
                                     </tr>
                                     <tr>
-                                        <td>데이터</td>
+                                        <td style="min-width: 100px;">데이터</td>
                                         @foreach($data_table as $data_tables)
-                                            <td>
+                                            <td  style="min-width: 180px;">
                                                 {{ number_format($data_tables['price_count']) }}
                                             </td>
                                         @endforeach
@@ -265,9 +265,9 @@
                                         <div class="col-md-12">
                                             <div class="input-group">
 
-                                                <button class="btn-info" type="button" id="today">오늘</button>&nbsp;
-                                                <button class="btn-info" type="button" id="lastWeek">일주일</button>&nbsp;
-                                                <button class="btn-info" type="button" id="lastMonth">한달</button>&nbsp;
+                                                <button class="btn btn-info" type="submit" id="today">오늘</button>&nbsp;
+                                                <button class="btn btn-info" type="submit" id="lastWeek">일주일</button>&nbsp;
+                                                <button class="btn btn-info" type="submit" id="lastMonth">한달</button>&nbsp;
                                                 &nbsp;&nbsp;&nbsp;
                                                 <input class="form-control sch1" id="input1-group1" type="text" name="sch1" value="{{ $sch1 }}" placeholder="검색어" autocomplete="sch"  >
                                                 &nbsp;<span id="input_span" style="display: {{ ($sch_key=="buy_date") ? "block;" : "none;"  }}">~</span>&nbsp;
