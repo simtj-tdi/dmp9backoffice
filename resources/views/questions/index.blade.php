@@ -183,28 +183,22 @@
                         <input type="hidden" name="id" value="">
 
                         <div class="form-group row">
-                            <div class="col">
+                            <div class="col col-6">
                                 <label>ID</label>
                                 <input class="form-control" type="text" placeholder="id" name="id" value="" disabled required autofocus>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col">
+                            <div class="col col-6">
                                 <label>이름</label>
                                 <input class="form-control" type="text" placeholder="Name" name="name" value="" disabled required autofocus>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <div class="col">
+                            <div class="col col-6">
                                 <label>연락처</label>
                                 <input class="form-control" type="text" placeholder="Phone" name="phone" value="" disabled required autofocus>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col">
+                            <div class="col col-6">
                                 <label>Email</label>
                                 <input class="form-control" type="text" placeholder="Email" name="email" value="" disabled required autofocus>
                             </div>
