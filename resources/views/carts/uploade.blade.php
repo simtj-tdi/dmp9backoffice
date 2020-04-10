@@ -3,6 +3,7 @@
 <style>
     table td {font-size : 14px;}
     table td div span {color: #bbb; display:inline-block; min-width:65px;}
+    table td, table th {vertical-align: middle !important;}
 </style>
 
 @prepend('scripts')
