@@ -465,7 +465,7 @@
                                             @endif
                                             <td>
                                                 @if ($cart->state == "4")
-                                                    <button class="btn btn-block btn-success btn-sm" type="button" name="btn_file_update" data-cart_id="{{ $cart->goods->id }}" data-goods_id="{{ $cart->goods->id }}" >수정</button>
+                                                    <button class="btn btn-block btn-info btn-sm" type="button" name="btn_file_update" data-cart_id="{{ $cart->goods->id }}" data-goods_id="{{ $cart->goods->id }}" >업로드</button>
                                                 @elseif (Route::current()->getActionMethod() === "cart_state_1")
                                                     <button class="btn btn-block btn-info btn-sm" type="button" name="btn_state1" data-cart_id="{{ $cart->id }}"  data-goods_id="{{ $cart->goods->id }}" >입력</button>
                                                 @else
