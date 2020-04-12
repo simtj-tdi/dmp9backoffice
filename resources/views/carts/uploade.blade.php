@@ -41,7 +41,7 @@
             });
 
             $("button[name='btn']").click(function() {
-
+                var option_id = $(this).data("option_id");
                 var data = new Object();
                 data.cart_id = $(this).data("cart_id");
                 var jsonData = JSON.stringify(data);
@@ -56,6 +56,9 @@
 
                         if (JSONArray['result'] == "success") {
                             console.log(JSONArray['casrt_info']);
+
+                            $("#del_btn").attr("data-del_option_id",option_id);
+
                             $("input[name='advertiser']").val(JSONArray['casrt_info'][0]['goods_id']['advertiser']);
                             $("input[name='data_name']").val(JSONArray['casrt_info'][0]['goods_id']['data_name']);
                             $("input[name='data_request']").val(JSONArray['casrt_info'][0]['goods_id']['data_request']);
@@ -126,6 +129,10 @@
                     }
                 });
             });
+
+            $("#del_btn").click(function () {
+                 alert($("#del_btn").attr("data-del_option_id"));
+            })
         });
     </script>
 @endprepend
@@ -234,8 +241,6 @@
                                                         <a class="btn btn-secondary btn-sm" target="_blank" href="https://dmp9storage1.blob.core.windows.net/images/files/{{$cart->cart->goods->data_files}}">다운로드</a>
                                                     @endif
                                                 </td>
-
-
                                                 <td>
                                                     @if ($cart->cart->memo)
                                                         <button class="btn btn-secondary btn-sm" type="button" data-placement="bottom" data-toggle="tooltip" data-html="true" title="" data-original-title="{{ $cart->cart->memo }}">메모보기</button>
@@ -249,7 +254,7 @@
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-cart_id="{{ $cart->cart->goods->id }}"  >수정</button>
+                                                    <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-option_id="{{ $cart->id }}" data-cart_id="{{ $cart->cart->goods->id }}"  >수정</button>
                                                 </td>
                                             </tr>
                                     @empty
@@ -389,6 +394,10 @@
 
                     </div>
                     <div class="modal-footer">
+                        @if (Route::current()->getActionMethod() === "option_state_1")
+                            <button class="btn btn-danger btn-sm" type="button" id="del_btn" data-del_option_id=""  >삭제</button>
+                        @endif
+
                         <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">닫기</button>
                         <button class="btn btn-success btn-sm" type="submit" name="submit" >수정</button>
                     </div>
