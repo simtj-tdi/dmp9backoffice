@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMailable;
 use App\Repositories\UserRepositoryInterface;
 use App\Tax;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 class UserController extends Controller
@@ -28,7 +30,10 @@ class UserController extends Controller
         $sch = $request->sch;
         $sch1 = $request->sch1;
         $sch2 = $request->sch2;
-        return view('users.index', compact('users', 'sch_key','sch','sch1','sch2', 'route_name'));
+
+        $cnt = $users->total();
+
+        return view('users.index', compact('users', 'sch_key','sch','sch1','sch2', 'route_name','cnt'));
     }
 
     public function show($id)
@@ -53,18 +58,6 @@ class UserController extends Controller
 
         if ($request->tax_company_number) {
 
-//            $user = user::where('id', $id)->firstorfail();
-//
-//            $request_date['company_name'] = $request['company_name'];
-//            $request_date['phone'] = $request['phone'];
-//            $request_date['email'] = $request['email'];
-//            $request_date['approved'] = $request['approved'];
-//
-//            if ($request['approved']) {
-//                $request_date['approved_at'] = now();
-//            }
-//
-//            $user->update($request_date);
             $taxs = Tax::where('user_id', $info['id'])->get();
 
             $taxs_data['tax_company_number'] = $request['tax_company_number'];
@@ -125,6 +118,13 @@ class UserController extends Controller
     public function state_change(Request $request)
     {
         $request_data = json_decode($request->data);
+
+        if ($request_data->states == "1") {
+            $user_info = $this->userRepository->findById($request_data->user_id);
+
+            Mail::to($user_info['email'])->send(new SendMailable($user_info));
+        }
+
         $return_result = $this->userRepository->StateChange($request_data);
 
         if (!$return_result) {

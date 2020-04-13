@@ -3,8 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="e70303c1-1788-4b07-b368-b43ec7853421" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactsusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactsusController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FaqController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FaqController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OptionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/OptionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/OptionRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/OptionRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/OptionRepositoryInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/carts/uploade.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/carts/uploade.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/backoffice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/contactsus/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/contactsus/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faqs/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/questions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,6 +236,7 @@
       <workItem from="1586407054902" duration="20633000" />
       <workItem from="1586480456650" duration="19519000" />
       <workItem from="1586720400122" duration="4949000" />
+      <workItem from="1586741354135" duration="4891000" />
     </task>
     <servers />
   </component>
@@ -259,15 +271,15 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="1950" y="361" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1582705820859" />
-    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser" timestamp="1586437496047">
+    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser" timestamp="1586743011551">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586437496047" />
+    <state x="2530" y="243" key="#com.intellij.ide.util.MemberChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586743011551" />
     <state x="2530" y="232" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777/1280.23.1920.1006@1280.23.1920.1006" timestamp="1586351712197" />
-    <state x="2458" y="299" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586501899101">
-      <screen x="1280" y="23" width="1920" height="1006" />
+    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586745141414">
+      <screen x="1280" y="23" width="1920" height="1057" />
     </state>
-    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586437881896" />
+    <state x="2458" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586745141414" />
     <state x="2458" y="299" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1280.777/1280.23.1920.1006@1280.23.1920.1006" timestamp="1586501899101" />
     <state x="2430" y="375" key="NewPhpClassDialog" timestamp="1586306138260">
       <screen x="1280" y="23" width="1920" height="1057" />
@@ -289,23 +301,23 @@
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="1881" y="173" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586248493060" />
-    <state x="640" y="290" width="639" height="486" key="find.popup" timestamp="1586723171582">
-      <screen x="0" y="23" width="1920" height="992" />
+    <state x="1920" y="308" width="639" height="486" key="find.popup" timestamp="1586743667287">
+      <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="640" y="290" width="639" height="486" key="find.popup/-2560.23.2560.1417/0.23.1920.992@0.23.1920.992" timestamp="1586723171582" />
     <state x="268" y="105" width="861" height="540" key="find.popup/0.23.1280.726/1280.23.1920.1057@0.23.1280.726" timestamp="1586228780658" />
-    <state x="1920" y="308" width="639" height="486" key="find.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586488938427" />
+    <state x="1920" y="308" width="639" height="486" key="find.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586743667287" />
     <state x="1920" y="294" width="639" height="486" key="find.popup/0.23.1280.777/1280.23.1920.1006@1280.23.1920.1006" timestamp="1586502752569" />
     <state x="1905" y="243" key="run.anything.popup" timestamp="1586487559270">
       <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="1905" y="243" key="run.anything.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586487559270" />
-    <state x="625" y="244" width="670" height="635" key="search.everywhere.popup" timestamp="1586723155606">
-      <screen x="0" y="23" width="1920" height="992" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1586743059282">
+      <screen x="1280" y="23" width="1920" height="1057" />
     </state>
     <state x="625" y="244" width="670" height="635" key="search.everywhere.popup/-2560.23.2560.1417/0.23.1920.992@0.23.1920.992" timestamp="1586723155606" />
     <state x="417" y="184" width="670" height="465" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@0.23.1280.726" timestamp="1586228735288" />
-    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586437458917" />
+    <state x="1905" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1280.726/1280.23.1920.1057@1280.23.1920.1057" timestamp="1586743059282" />
     <state x="1905" y="247" width="670" height="644" key="search.everywhere.popup/0.23.1280.777/1280.23.1920.1006@1280.23.1920.1006" timestamp="1586506082457" />
   </component>
 </project>

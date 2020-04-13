@@ -199,7 +199,7 @@
                                 <tbody>
                                 @foreach($users as $user)
                                     <tr>
-                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $cnt }}</td>
                                     <td><strong>{{ $user->user_id }}</strong></td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->company_name }}</td>
@@ -232,6 +232,7 @@
                                         </form>
                                     </td>
                                 </tr>
+                                <?php $cnt--;?>
                                 @endforeach
 
                                 </tbody>

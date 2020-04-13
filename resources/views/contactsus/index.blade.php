@@ -97,7 +97,7 @@
                                 <tbody>
                                 @foreach($contactsus as $contactsu)
                                     <tr>
-                                        <td>{{ $contactsu->id }}</td>
+                                        <td>{{ $cnt }}</td>
                                         <td><strong>{{ $contactsu->name }}</strong></td>
                                         <td>{{ $contactsu->phone }}</td>
                                         <td>{{ $contactsu->email }}</td>
@@ -113,6 +113,7 @@
                                             </form>
                                         </td>
                                     </tr>
+                                <?php $cnt--;?>
                                 @endforeach
 
                                 </tbody>

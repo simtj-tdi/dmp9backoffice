@@ -72,6 +72,8 @@ Route::middleware(['auth', 'role'])->group( function () {
 
     Route::get('/file_download/{data_files}/{org_files}', 'CartController@file_download')->name('file_download'); // 파일 다운로드
 
+    Route::get('ajaxDeleteOption', 'OptionController@DeleteOption')->name('DeleteOption'); // 옵션 삭제
+
     Route::get('/saleschart', 'StatisticsController@SalesChart')->name('saleschart');
 
 });

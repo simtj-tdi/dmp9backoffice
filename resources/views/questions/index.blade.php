@@ -111,7 +111,7 @@
                                 <tbody>
                                 @foreach($questions as $question)
                                     <tr>
-                                        <td>{{ $question->id }}</td>
+                                        <td>{{ $cnt }}</td>
                                         <td><strong>{{ $question->title }}</strong></td>
                                         <td>{{ $question->user->name }}</td>
                                         <td>
@@ -135,6 +135,7 @@
                                             </form>
                                         </td>
                                     </tr>
+                                <?php $cnt--;?>
                                 @endforeach
                                 </tbody>
                             </table>

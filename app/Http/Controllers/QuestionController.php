@@ -29,7 +29,9 @@ class QuestionController extends Controller
         $sch1 = $request->sch1;
         $sch2 = $request->sch2;
 
-        return view('questions.index', compact('questions','sch_key','sch','sch1','sch2', 'route_name'));
+        $cnt = $questions->total();
+
+        return view('questions.index', compact('questions','sch_key','sch','sch1','sch2', 'route_name', 'cnt'));
     }
 
     public function create()

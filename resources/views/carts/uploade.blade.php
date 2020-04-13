@@ -131,7 +131,36 @@
             });
 
             $("#del_btn").click(function () {
-                 alert($("#del_btn").attr("data-del_option_id"));
+                var con_test = confirm("삭제 하시겠습니까?");
+
+                if(con_test == false){
+                    return false;
+                } else {
+                    var data = new Object();
+                    data.option_id = $("#del_btn").attr("data-del_option_id");
+                    var jsonData = JSON.stringify(data);
+
+                    $.ajax({
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        url: "{{ route('DeleteOption') }}",
+                        method: "GET",
+                        dataType: "json",
+                        data: {'data': jsonData},
+                        success: function (data) {
+                            var JSONArray = JSON.parse(JSON.stringify(data));
+
+                            if (JSONArray['result'] == "success") {
+                                alert('삭제 되었습니다.');
+                                location.reload();
+                            } else if (JSONArray['result'] == "error") {
+                                alert(JSONArray['error_message']);
+                            };
+                        },
+                        error: function () {
+                            alert("Error while getting results");
+                        }
+                    });
+                }
             })
         });
     </script>

@@ -20,4 +20,9 @@ class OptionRepository implements OptionRepositoryInterface
     {
         return option::where('id', $request->option_id)->update(['state'=> $request->states]);
     }
+
+    public function DeleteOption($request)
+    {
+        return option::where('id', $request->option_id)->delete();
+    }
 }
