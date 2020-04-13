@@ -111,9 +111,17 @@
                                 <tbody>
                                 @foreach($questions as $question)
                                     <tr>
-                                        <td>{{ $cnt }}</td>
+                                        <td>
+                                            {{ $cnt }}
+                                            @if ($question->new_date == '1')
+                                                <img src="/assets/img/new.png" width="15" height="15" >
+                                            @endif
+                                        </td>
                                         <td><strong>{{ $question->title }}</strong></td>
-                                        <td>{{ $question->user->name }}</td>
+                                        <td>
+
+                                            <a href="/users?sch_key=user_id&sch={{ $question->user->name }}"&sch1=&sch2=>{{ $question->user->name }}</a>
+                                        </td>
                                         <td>
                                             @if (!$question->answers->isEmpty())
                                                 답변완료

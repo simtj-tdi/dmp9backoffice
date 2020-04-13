@@ -33,6 +33,7 @@ Route::middleware(['auth', 'role'])->group( function () {
 
 
     Route::resource('users' , 'UserController');
+    Route::get('/ajaxUserDeletes', 'UserController@UserDeletes')->name('UserDeletes');
     Route::get('/user_state_change', 'UserController@state_change')->name('users.state_change');
     Route::get('/user_find_id', 'UserController@find_id')->name('users.find.id');
     Route::get('/NonCertification', 'UserController@NonCertification')->name('users.NonCertification');

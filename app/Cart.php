@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
+
+    protected $appends = ['new_date'];
     protected $guarded = ['*','id'];
 
     CONST STATE_1 = 1;      // 확인중
@@ -13,6 +15,7 @@ class Cart extends Model
     CONST STATE_3 = 3;      // 결제 완료
     CONST STATE_4 = 4;      // 데이터 추출중
     CONST STATE_5 = 5;      // 데이터 완료
+
 
     public function format()
     {
@@ -28,6 +31,21 @@ class Cart extends Model
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];
+    }
+
+    public function getNewDateAttribute()
+    {
+        $REG_DATE = strtotime($this->updated_at);
+        $REG_TIME = time();
+        $TIME = 60*60*24;
+
+        if ( ($REG_TIME-$REG_DATE) < $TIME ) {
+            $new="1";
+        }else{
+            $new="";
+        }
+
+        return $new;
     }
 
     public function user()

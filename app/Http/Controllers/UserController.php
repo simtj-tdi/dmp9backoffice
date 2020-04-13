@@ -6,6 +6,7 @@ use App\Mail\SendMailable;
 use App\Repositories\UserRepositoryInterface;
 use App\Tax;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,8 @@ class UserController extends Controller
         $route_name = $this->route_name;
 
         $users = $this->userRepository->all($request);
+
+
 
         $sch_key = $request->sch_key;
         $sch = $request->sch;
@@ -52,9 +55,17 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $info = $this->userRepository->findById($id);
+
+        if (is_null($request->password)) {
+            $request['password'] = $info['password'];
+        } else {
+            $request['password'] =  Hash::make($request->password);
+        }
+
         $this->userRepository->update($request, $id);
 
-        $info = $this->userRepository->findById($id);
+
 
         if ($request->tax_company_number) {
 
@@ -81,6 +92,26 @@ class UserController extends Controller
 
         return redirect()->route('users.index');
     }
+
+    public function UserDeletes(Request $request)
+    {
+        $request_data = json_decode($request->data);
+
+
+        $return_result = $this->userRepository->Deletes($request_data->ids);
+
+
+        if (!$return_result) {
+            $result['result'] = "error";
+            $result['error_message'] = "등록되어 있는 데이터가 없습니다.";
+            $response = response()->json($result, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        } else {
+            $result['result'] = "success";
+            $response = response()->json($result, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+        }
+        return $response;
+    }
+
 
     public function destroy($id)
     {
@@ -112,7 +143,9 @@ class UserController extends Controller
         $sch1 = $request->sch1;
         $sch2 = $request->sch2;
 
-        return view('users.index', compact('users', 'sch_key','sch','sch1','sch2', 'route_name'));
+        $cnt = $users->total();
+
+        return view('users.index', compact('users', 'sch_key','sch','sch1','sch2', 'route_name', 'cnt'));
     }
 
     public function state_change(Request $request)

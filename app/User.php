@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
 
     /**
@@ -44,6 +44,7 @@ class User extends Authenticatable
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'password' => $this->password,
             'name' => $this->name,
             'phone' => $this->phone,
             'email' => $this->email,

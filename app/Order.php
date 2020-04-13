@@ -7,6 +7,8 @@ use Parsedown;
 
 class Order extends Model
 {
+    protected $appends = ['new_date'];
+
     CONST STATE_1 = 0;      // 결제전
     CONST STATE_2 = 1;      // 결제완료
 
@@ -32,6 +34,21 @@ class Order extends Model
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];
+    }
+
+    public function getNewDateAttribute()
+    {
+        $REG_DATE = strtotime($this->updated_at);
+        $REG_TIME = time();
+        $TIME = 60*60*24;
+
+        if ( ($REG_TIME-$REG_DATE) < $TIME ) {
+            $new="1";
+        }else{
+            $new="";
+        }
+
+        return $new;
     }
 
     public function user()

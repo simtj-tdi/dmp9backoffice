@@ -250,6 +250,23 @@ class CartController extends Controller
     {
         if ($request->uploadFile) {
 
+            if ($request->uploadFile->getMimeType() != "text/csv") {
+                $result['result'] = "error";
+                $result['error_message'] = "csv 파일을 업로드 해주세요";
+                $response = response()->json($result, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+                return $response;
+            }
+
+
+            if ($request->uploadFile->getsize() > 31457280) {
+                $result['result'] = "error";
+                $result['error_message'] = "파일 크기가 큽니다.";
+                $response = response()->json($result, 200, ['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
+
+                return $response;
+            }
+
             $path = explode('/', $request->uploadFile->store('files'));
 
             $request['state'] = $request->states;

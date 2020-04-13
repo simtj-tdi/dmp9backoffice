@@ -17,4 +17,6 @@ interface UserRepositoryInterface
     public function NonCertification($request);
 
     public function StateChange($request);
+
+    public function Deletes($ids);
 }

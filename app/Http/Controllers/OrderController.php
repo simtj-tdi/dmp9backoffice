@@ -24,6 +24,8 @@ class OrderController extends Controller
 
         $orders = $this->orderRepository->all($request);
 
+       // dd($orders[0]->user->user_id);
+
         $sch_key = $request->sch_key;
         $sch = $request->sch;
         $sch1 = $request->sch1;

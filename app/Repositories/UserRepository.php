@@ -37,7 +37,7 @@ class userrepository implements userrepositoryinterface
     public function update($request, $id)
     {
         $user = user::where('id', $id)->firstorfail();
-
+        $request_date['password'] = $request['password'];
         $request_date['company_name'] = $request['company_name'];
         $request_date['phone'] = $request['phone'];
         $request_date['email'] = $request['email'];
@@ -80,6 +80,11 @@ class userrepository implements userrepositoryinterface
     {
 
         return user::where('id', $request->user_id)->update(['approved'=> $request->states]);
+    }
+
+    public function Deletes($ids)
+    {
+        return user::whereIn('id', $ids)->delete();
     }
 
 }

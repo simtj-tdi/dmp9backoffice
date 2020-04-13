@@ -239,10 +239,19 @@
                                     <tbody>
                                     @forelse($carts as $cart)
                                             <tr>
-                                                <td>{{ $cart->id }}</td>
                                                 <td>
-                                                    <div><span>User ID :</span> {{ $cart->cart->user->user_id }}</div>
-                                                    <div><span>User 이름 :</span> {{ $cart->cart->user->name }}</div>
+                                                    {{ $cart->id }}
+                                                    @if ($cart->new_date == '1')
+                                                        <img src="/assets/img/new.png" width="15" height="15" >
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <div><span>User ID :</span>
+                                                        <a href="/users?sch_key=user_id&sch={{ $cart->cart->user->user_id }}"&sch1=&sch2=>{{ $cart->cart->user->user_id }}</a>
+                                                    </div>
+                                                    <div><span>User 이름 :</span>
+                                                        <a href="/users?sch_key=name&sch={{ $cart->cart->user->name }}"&sch1=&sch2=>{{ $cart->cart->user->name }}</a>
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <div><span>광고주 :</span> {{ $cart->cart->goods->advertiser }}</div>

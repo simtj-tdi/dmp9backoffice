@@ -100,7 +100,7 @@
                             $("input[name='id']").val(JSONArray['user_info']['id']);
                             $("input[name='user_id']").val(JSONArray['user_info']['user_id']);
                             $("input[name='name']").val(JSONArray['user_info']['name']);
-                            $("input[name='company_name']").val(JSONArray['user_info']['company_name']);
+
                             $("input[name='phone']").val(JSONArray['user_info']['phone']);
                             $("input[name='email']").val(JSONArray['user_info']['email']);
                             $("select[name='approved']").val(JSONArray['user_info']['approved']).attr("selected", "selected");
@@ -164,6 +164,52 @@
                 });
             });
 
+            $("#btn_delete").click(function () {
+
+                var ids = new Array();
+                var data = new Object() ;
+                $("[id^='Check_']:checked").each(function() {
+                    ids.push($(this).val());
+                });
+
+                var con_test = confirm("선택한 회원을 삭제 하시겠습니까?");
+
+                if(con_test == true){
+                    if (ids.length > 0) {
+                        var data = new Object() ;
+                        data.ids = ids;
+                        var jsonData = JSON.stringify(data);
+
+                        $.ajax({
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            url: "{{ route('UserDeletes') }}",
+                            method: "POST",
+                            dataType: "json",
+                            data: {'data': jsonData},
+                            success: function (data) {
+                                var JSONArray = JSON.parse(JSON.stringify(data));
+
+                                if (JSONArray['result'] == "success") {
+                                    alert('삭제 되었습니다.');
+                                    location.reload();
+                                } else if (JSONArray['result'] == "error") {
+                                    alert(JSONArray['error_message']);
+                                };
+                            },
+                            error: function () {
+                                alert("Error while getting results");
+                            }
+                        });
+
+                    } else {
+                        alert('회원을 선택해 주세요');
+                        return false;
+                    }
+                } else {
+                    alert("취소 되었습니다.");
+                }
+
+            })
         });
     </script>
 @endprepend
@@ -177,32 +223,35 @@
                         <div class="card-header">
                             <a href="/users" class="btn btn-sm btn-warning ">전체</a>
                             <a href="/NonCertification" class="btn btn-sm btn-secondary ">비인증</a>
-
+                            <button class="btn btn-sm btn-danger" id="btn_delete">삭제</button>
                         <div class="card-body">
 
                             <table class="table table-responsive-sm table-striped">
                                 <thead>
                                 <tr>
                                     <th>No.</th>
+                                    <th></th>
                                     <th>ID</th>
                                     <th>이름</th>
-                                    <th>회사명</th>
+
                                     <th>연락처</th>
                                     <th>Email</th>
                                     <th>가입구분</th>
                                     <th>승인여부</th>
                                     <th>가입일자</th>
                                     <th></th>
-                                    <th></th>
+{{--                                    <th></th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
+
                                     <tr>
                                     <td>{{ $cnt }}</td>
+                                        <td> <input type="checkbox" name="check" id="Check_{{ $user->id }}" value="{{$user->id}}"> </td>
                                     <td><strong>{{ $user->user_id }}</strong></td>
                                     <td>{{ $user->name }}</td>
-                                    <td>{{ $user->company_name }}</td>
+
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>
@@ -224,13 +273,13 @@
                                     <td style="width: 70px">
                                         <button class="btn btn-block btn-success btn-sm" type="button" name="btn" data-user_id="{{ $user->id }}"  >수정</button>
                                     </td>
-                                    <td style="width: 70px">
-                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-block btn-danger btn-sm">삭제</button>
-                                        </form>
-                                    </td>
+{{--                                    <td style="width: 70px">--}}
+{{--                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">--}}
+{{--                                            @csrf--}}
+{{--                                            @method('DELETE')--}}
+{{--                                            <button class="btn btn-block btn-danger btn-sm">삭제</button>--}}
+{{--                                        </form>--}}
+{{--                                    </td>--}}
                                 </tr>
                                 <?php $cnt--;?>
                                 @endforeach
@@ -246,7 +295,7 @@
                                                 <select name="sch_key">
                                                     <option value="user_id" {{ ($sch_key=="user_id") ? "selected" : ""  }}>ID</option>
                                                     <option value="name" {{ ($sch_key=="name") ? "selected" : ""  }}>이름</option>
-                                                    <option value="company_name" {{ ($sch_key=="company_name") ? "selected" : ""  }}>회사명</option>
+
                                                     <option value="created_at" {{ ($sch_key=="created_at") ? "selected" : ""  }} >가입일자</option>
                                                 </select>&nbsp;
                                                 <input class="form-control" id="input" type="text" name="sch" value="{{ $sch }}" placeholder="검색어" autocomplete="sch" style="display: {{ ($sch_key=="created_at") ? "none;" : "block;"  }}"  >
@@ -294,12 +343,12 @@
                                         <input class="form-control" type="text" placeholder="Name" name="name" value="" disabled required autofocus>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col">
-                                        <label>회사명</label>
-                                        <input class="form-control" type="text" placeholder="company_name" name="company_name" value="" required autofocus>
-                                    </div>
+                            <div class="form-group row">
+                                <div class="col">
+                                    <label>비밀번호</label>
+                                    <input class="form-control" type="password" placeholder="비밀번호를 입력하세요" name="password" value=""  autofocus>
                                 </div>
+                            </div>
                                 <div class="form-group row">
                                     <div class="col">
                                         <label>연락처</label>

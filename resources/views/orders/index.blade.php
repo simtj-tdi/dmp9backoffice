@@ -78,6 +78,10 @@
                                     <thead>
                                     <tr>
                                         <th>No.</th>
+                                        <th>
+                                            <div>User ID</div>
+                                            <div>User 이름</div>
+                                        </th>
                                         <th>주문번호</th>
                                         <th>구매내역</th>
                                         <th>구매날짜</th>
@@ -89,7 +93,27 @@
                                     <tbody>
                                     @foreach($orders as $order)
                                         <tr>
-                                            <td>{{ $order->id }}</td>
+                                            <td>
+                                                {{ $order->id }}
+                                                @if ($order->new_date == '1')
+                                                    <img src="/assets/img/new.png" width="15" height="15" >
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <span>User ID :</span>
+                                                    @if ($order->user)
+                                                        <a href="/users?sch_key=user_id&sch={{ $order->user->user_id }}"&sch1=&sch2=>{{ $order->user->user_id }}</a>
+                                                    @endif
+                                                </div>
+                                                <div>
+                                                    <span>User 이름 :</span>
+                                                    @if ($order->user)
+                                                        <a href="/users?sch_key=name&sch={{ $order->user->name }}"&sch1=&sch2=>{{ $order->user->name }}</a>
+                                                    @endif
+                                                </div>
+                                            </td>
+
                                             <td>{{ $order->order_no }}</td>
                                             <td>{{ $order->order_name }}</td>
                                             <td>{{ $order->created_at }}</td>

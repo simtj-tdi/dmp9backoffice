@@ -185,7 +185,7 @@
                     data.goods_id = $(this).data("goods_id");
                     data.data_count = $(this).parent().parent().find("input[name=data_count]").val();
                     data.buy_price = $(this).parent().parent().find("input[name=buy_price]").val();
-                    data.expiration_date = $(this).parent().parent().find("input[name=expiration_date]").val();
+
                     data.states = "2";
                     var jsonData = JSON.stringify(data);
 
@@ -335,7 +335,6 @@
                                         @if (Route::current()->getActionMethod() == "cart_state_1")
                                             <col width="200px">
                                             <col width="200px">
-                                            <col width="200px">
                                         @else
                                             <col width="200px">
                                             <col width="200px">
@@ -353,6 +352,7 @@
                                     <thead>
                                     <tr>
                                         <th>No.</th>
+
                                         <th>
                                             <div>User ID</div>
                                             <div>User 이름</div>
@@ -368,9 +368,7 @@
                                             <th>
                                                 구매가격
                                             </th>
-                                            <th>
-                                                유효기간
-                                            </th>
+
                                         @else
                                         <th>
                                             <div>데이터추출수</div>
@@ -399,13 +397,18 @@
                                     <tbody>
                                     @forelse($carts as $cart)
                                         <tr style="background:rgba(0, 0, 21, 0.05);">
-                                            <td>{{ $cart->goods->id }}</td>
                                             <td>
-                                                <div>
-                                                    <span>User ID :</span> {{ $cart->user->user_id }}
+                                                {{ $cart->goods->id }}
+                                                @if ($cart->new_date == '1')
+                                                    <img src="/assets/img/new.png" width="15" height="15" >
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div><span>User ID :</span>
+                                                    <a href="/users?sch_key=user_id&sch={{ $cart->user->user_id }}"&sch1=&sch2=>{{ $cart->user->user_id }}</a>
                                                 </div>
-                                                <div>
-                                                    <span>User 이름 :</span> {{ $cart->user->name }}
+                                                <div><span>User 이름 :</span>
+                                                    <a href="/users?sch_key=name&sch={{ $cart->user->name }}"&sch1=&sch2=>{{ $cart->user->name }}</a>
                                                 </div>
                                             </td>
                                             <td>
@@ -424,17 +427,7 @@
                                                 <td>
                                                     <input class="form-control" type="number"  name="buy_price" value="" placeholder="구매가격"  required autofocus>
                                                 </td>
-                                                <td>
-                                                    <div class="input-group">
-                                                        <input class="form-control" type="text"  id="expiration_date_{{ $cart->goods->id }}" name="expiration_date"  placeholder="유효기간" value="{{$default_expiration_date}}"  autofocus>
-                                                        <span class="input-group-append">
-                                                            <button class="btn btn-dark" type="button" onclick="$('#expiration_date_{{ $cart->goods->id }}').datepicker('show');" style="z-index: 0;">
-                                                              <i class="cil-calendar"></i>
-                                                            </button>
-                                                        </span>
-                                                    </div>
-{{--                                                    <input class="form-control" type="text"  id="expiration_date1" name="expiration_date"  placeholder="유효기간" value="{{$default_expiration_date}}"  autofocus>--}}
-                                                </td>
+
                                             @else
                                             <td>
                                                 <div>

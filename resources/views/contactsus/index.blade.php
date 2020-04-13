@@ -97,7 +97,12 @@
                                 <tbody>
                                 @foreach($contactsus as $contactsu)
                                     <tr>
-                                        <td>{{ $cnt }}</td>
+                                        <td>
+                                            {{ $cnt }}
+                                            @if ($contactsu->new_date == '1')
+                                                <img src="/assets/img/new.png" width="15" height="15" >
+                                            @endif
+                                        </td>
                                         <td><strong>{{ $contactsu->name }}</strong></td>
                                         <td>{{ $contactsu->phone }}</td>
                                         <td>{{ $contactsu->email }}</td>
